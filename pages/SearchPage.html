@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" id="htmlRoot">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title id="pageTitle">Search — The Enchanted Library / البحث — المكتبة السحرية</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=IM+Fell+English:ital@0;1&family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Scheherazade+New:wght@400;700&family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../css/shared.css">
+  <link rel="stylesheet" href="../css/SearchPage.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+  <div id="particles"></div>
+  <div class="petal-container" id="petalContainer"></div>
+
+  <!-- ===== MODE TOGGLE ===== -->
+  <div class="mode-toggle-wrap">
+    <button class="mode-btn active" id="modeDay" onclick="setMode('day')"><i class="fa-solid fa-sun"></i> Day</button>
+    <button class="mode-btn" id="modeNight" onclick="setMode('night')"><i class="fa-solid fa-moon"></i> Night</button>
+  </div>
+
+  <!-- ===== NAV ===== -->
+  <nav>
+    <a href="../pages/homepage.html" class="nav-logo" data-en="✦ The Enchanted Library ✦" data-ar="✦ المكتبة المسحورة ✦">✦ The Enchanted
+      Library ✦</a>
+
+    <ul class="nav-links">
+
+      <!-- Browse -->
+      <li class="nav-dropdown">
+        <a href="#" data-en="Browse" data-ar="تصفح">Browse</a>
+        <div class="dropdown-menu">
+          <a href="../pages/SearchPage.html" class="active" data-en="Search Books" data-ar="البحث عن الكتب">Search Books</a>
+          <a href="../pages/authors.html" data-en="By Author" data-ar="حسب المؤلف">By Author</a>
+          <a href="../pages/publishers.html" data-en="By Publisher" data-ar="حسب الناشر">By Publisher</a>
+          <a href="../pages/MyLibrary.html" data-en="My Library" data-ar="مكتبتي">My Library</a>
+        </div>
+      </li>
+
+      <!-- Community -->
+      <li class="nav-dropdown">
+        <a href="#" data-en="Community" data-ar="المجتمع">Community</a>
+        <div class="dropdown-menu">
+          
+          <a href="../pages/community.html" data-en="Book Club Forum" data-ar="منتدى نادي القراءة">Book Club Forum</a>
+          <a href="../pages/blog.html" data-en="Blog" data-ar="المدونة">Blog</a>
+          <a href="../pages/events.html" data-en="Author Events" data-ar="فعاليات المؤلفين">Author Events</a>
+        </div>
+      </li>
+
+      <!-- Fair -->
+      <li>
+        <a href="../pages/BookPage.html" data-en="Book Fair" data-ar="معرض الكتاب">Book Fair</a>
+      </li>
+
+      <!-- About -->
+      <li class="nav-dropdown">
+        <a href="#" data-en="About" data-ar="عن الموقع">About</a>
+        <div class="dropdown-menu">
+          <a href="../pages/contactus.html" data-en="Contact Us" data-ar="اتصل بنا">Contact Us</a>
+          <a href="../pages/newsletter.html" data-en="Subscription" data-ar="الاشتراك">Subscription</a>
+        </div>
+      </li>
+
+
+      <!-- Auth -->
+      <li><a href="../pages/profile.html" data-en="Profile" data-ar="الملف الشخصي">Profile</a></li>
+
+      <!-- Language -->
+      <li>
+        <div class="language-switch">
+          <button onclick="setLanguage('en')" id="btn-en" class="active">EN</button>
+          <button onclick="setLanguage('ar')" id="btn-ar">AR</button>
+        </div>
+      </li>
+
+    </ul>
+  </nav>
+
+  <!-- HERO SEARCH -->
+  <div class="search-hero">
+    <div class="hero-bg-orbs">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="orb orb-3"></div>
+    </div>
+    <div class="hero-content">
+      <span class="eyebrow" id="heroEyebrow" data-en="✦ &nbsp; Search &amp; Discover &nbsp; ✦" data-ar="✦ &nbsp; ابحث واكتشف &nbsp; ✦">✦ &nbsp; ابحث واكتشف &nbsp; ✦</span>
+      <h1 id="heroTitle"><span data-en="Search the" data-ar="ابحث في">ابحث في</span> <em id="heroTitleEm" data-en="Enchanted Library" data-ar="المكتبة السحرية">المكتبة السحرية</em></h1>
+      <p class="hero-sub" id="heroSub" data-en="«Not every book is right for everyone, but the right book is waiting for you»" data-ar="«ليس كلّ كتاب مناسباً لكل شخص، لكنّ الكتاب المناسب ينتظرك»">«ليس كلّ كتاب مناسباً لكل شخص، لكنّ الكتاب المناسب ينتظرك»</p>
+
+      <div class="search-bar-wrap">
+        <div class="search-bar">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="mainSearch" class="search-input" autocomplete="off"
+            data-placeholder-en="Search by title, author, genre, or year..."
+            data-placeholder-ar="ابحث بالعنوان أو المؤلف أو التصنيف أو السنة..."
+            placeholder="ابحث بالعنوان أو المؤلف أو التصنيف أو السنة...">
+          <button class="search-clear" id="clearBtn" onclick="clearSearch()" style="display:none;">✕</button>
+          <button class="search-btn" onclick="executeSearch()">
+            <span id="searchBtnLabel" data-en="Search" data-ar="بحث">بحث</span>
+            <span class="btn-glow"></span>
+          </button>
+        </div>
+        <div class="autocomplete-dropdown" id="autocompleteDropdown"></div>
+      </div>
+
+      <!-- Advanced filters -->
+      <div class="advanced-row">
+        <div class="adv-field">
+          <label class="adv-label" id="labelGenre" data-en="Genre" data-ar="التصنيف">التصنيف</label>
+          <select class="adv-select" id="filterGenre">
+            <option value="" id="optAllGenres" data-en="All Genres" data-ar="جميع التصنيفات">جميع التصنيفات</option>
+            <option value="romance">رومانسي / Romance</option>
+            <option value="adventure">مغامرات / Adventure</option>
+            <option value="classic">كلاسيكيات / Classics</option>
+            <option value="Fiction Books">روايات خيالية / Fiction</option>
+            <option value="mystery">غموض / Mystery</option>
+            <option value="poetry">شعر / Poetry</option>
+            <option value="cartoon">كاريكاتير / Cartoon</option>
+            <option value="Science books">كتب علمية / Science</option>
+            <option value="Self Help Books">تطوير الذات / Self Help</option>
+            <option value="fantasy">خيال / Fantasy</option>
+          </select>
+        </div>
+        <div class="adv-field">
+          <label class="adv-label" id="labelAuthor" data-en="Author" data-ar="المؤلف">المؤلف</label>
+          <input type="text" class="adv-input" id="filterAuthor" data-placeholder-en="e.g. Austen..." data-placeholder-ar="مثل: أوستن..." placeholder="مثل: أوستن...">
+        </div>
+        <div class="adv-field">
+          <label class="adv-label" id="labelRating" data-en="Min Rating" data-ar="الحد الأدنى للتقييم">الحد الأدنى للتقييم</label>
+          <select class="adv-select" id="filterRating">
+            <option value="0" id="optAnyRating" data-en="Any Rating" data-ar="أي تقييم">أي تقييم</option>
+            <option value="3">★★★ 3+</option>
+            <option value="4">★★★★ 4+</option>
+            <option value="4.5">★★★★½ 4.5+</option>
+            <option value="5">★★★★★ 5</option>
+          </select>
+        </div>
+        <div class="adv-field">
+          <label class="adv-label" id="labelYear" data-en="Year Range" data-ar="نطاق السنة">نطاق السنة</label>
+          <div class="year-inputs">
+            <input type="number" class="adv-input year-in" id="filterYearFrom" data-placeholder-en="From" data-placeholder-ar="من" placeholder="من">
+            <span class="year-sep">—</span>
+            <input type="number" class="adv-input year-in" id="filterYearTo" data-placeholder-en="To" data-placeholder-ar="إلى" placeholder="إلى">
+          </div>
+        </div>
+        <button class="adv-reset" onclick="resetFilters()" id="resetBtn" data-en="✦ Reset All" data-ar="✦ مسح الكل">✦ مسح الكل</button>
+      </div>
+    </div>
+    <div class="header-divider">
+      <div class="divider-line"></div>
+      <span class="divider-rose">🌹</span>
+      <div class="divider-line"></div>
+    </div>
+  </div>
+
+  <!-- RESULTS -->
+  <div class="results-wrapper">
+    <div class="results-header" id="resultsHeader" style="display:none;">
+      <div class="res-left">
+        <span class="res-count" id="resCount"></span>
+        <span class="res-query" id="resQuery"></span>
+      </div>
+      <div class="res-right">
+        <select class="sort-select" id="sortSelect" onchange="sortResults(this.value)">
+          <option value="relevance" id="sortRelevance" data-en="Sort: Relevance" data-ar="ترتيب: الصلة">ترتيب: الصلة</option>
+          <option value="title" id="sortTitle" data-en="Sort: Title" data-ar="ترتيب: العنوان">ترتيب: العنوان</option>
+          <option value="author" id="sortAuthor" data-en="Sort: Author" data-ar="ترتيب: المؤلف">ترتيب: المؤلف</option>
+          <option value="rating" id="sortRating" data-en="Sort: Rating ↓" data-ar="ترتيب: التقييم ↓">ترتيب: التقييم ↓</option>
+          <option value="year" id="sortYear" data-en="Sort: Year" data-ar="ترتيب: السنة">ترتيب: السنة</option>
+        </select>
+        <button class="view-btn active" onclick="setView('grid',this)" title="Grid">⊞</button>
+        <button class="view-btn" onclick="setView('list',this)" title="List">☰</button>
+        <button class="view-btn" onclick="setView('details',this)" title="Details">≡</button>
+      </div>
+    </div>
+
+    <div class="filter-chips" id="filterChips"></div>
+    <div id="booksContainer" class="books-grid"></div>
+
+    <div class="empty-state" id="emptyState" style="display:none;">
+      <div class="empty-rose">🌹</div>
+      <h3 id="emptyTitle" data-en="No books found in the Enchanted Collection…" data-ar="لم يُعثر على كتب في المجموعة السحرية…">لم يُعثر على كتب في المجموعة السحرية…</h3>
+      <p id="emptyDesc" data-en="Try a different title, author, or genre — the library holds many secrets." data-ar="جرّب عنواناً أو مؤلفاً أو تصنيفاً مختلفاً — المكتبة تحوي أسراراً كثيرة.">جرّب عنواناً أو مؤلفاً أو تصنيفاً مختلفاً — المكتبة تحوي أسراراً كثيرة.</p>
+      <button class="btn-retry" onclick="resetFilters()" id="retryBtn" data-en="✦ Clear Filters" data-ar="✦ مسح الفلاتر">✦ مسح الفلاتر</button>
+    </div>
+
+    <div class="initial-state" id="initialState">
+      <div class="init-icon">📚</div>
+      <h3 id="initialTitle" data-en="Begin Your Search Journey" data-ar="ابدأ رحلة البحث">ابدأ رحلة البحث</h3>
+      <p id="initialDesc" data-en="Type a title or author, or choose a filter to explore the collection." data-ar="اكتب عنواناً أو اسم مؤلف، أو اختر فلتراً لاستكشاف المجموعة السحرية.">اكتب عنواناً أو اسم مؤلف، أو اختر فلتراً لاستكشاف المجموعة السحرية.</p>
+      <div class="quick-genres">
+        <span class="quick-label" id="quickBrowseLabel" data-en="Quick Browse:" data-ar="تصفّح سريع:">تصفّح سريع:</span>
+        <button class="quick-pill" onclick="quickSearch('romance')" id="qpRomance" data-en="❤ Romance" data-ar="❤ رومانسي">❤ رومانسي</button>
+        <button class="quick-pill" onclick="quickSearch('adventure')" id="qpAdventure" data-en="⚔ Adventure" data-ar="⚔ مغامرات">⚔ مغامرات</button>
+        <button class="quick-pill" onclick="quickSearch('classic')" id="qpClassic" data-en="📜 Classics" data-ar="📜 كلاسيكيات">📜 كلاسيكيات</button>
+        <button class="quick-pill" onclick="quickSearch('mystery')" id="qpMystery" data-en="🔎 Mystery" data-ar="🔎 غموض">🔎 غموض</button>
+        <button class="quick-pill" onclick="quickSearch('cartoon')" id="qpCartoon" data-en="🎨 Cartoon" data-ar="🎨 كاريكاتير">🎨 كاريكاتير</button>
+        <button class="quick-pill" onclick="quickSearch('poetry')" id="qpPoetry" data-en="🖋 Poetry" data-ar="🖋 شعر">🖋 شعر</button>
+      </div>
+      <div class="popular-searches">
+        <span class="quick-label" id="popularLabel" data-en="Popular Searches:" data-ar="الأكثر بحثاً:">الأكثر بحثاً:</span>
+        <button class="pop-tag" onclick="setAndSearch('Pride & Prejudice')" id="popTag1" data-en="Pride & Prejudice" data-ar="كبرياء وتحامل">كبرياء وتحامل</button>
+        <button class="pop-tag" onclick="setAndSearch('Sherlock Holmes')" id="popTag2" data-en="Sherlock Holmes" data-ar="شيرلوك هولمز">شيرلوك هولمز</button>
+        <button class="pop-tag" onclick="setAndSearch('Jane Austen')" id="popTag3" data-en="Jane Austen" data-ar="جين أوستن">جين أوستن</button>
+        <button class="pop-tag" onclick="setAndSearch('Asterix')" id="popTag4" data-en="Asterix" data-ar="أستريكس">أستريكس</button>
+        <button class="pop-tag" onclick="setAndSearch('Spider-Man')" id="popTag5" data-en="Spider-Man" data-ar="سبايدر مان">سبايدر مان</button>
+        <button class="pop-tag" onclick="setAndSearch('Hanan Lashin')" id="popTag6" data-en="Hanan Lashin" data-ar="حنان لاشين">حنان لاشين</button>
+      </div>
+    </div>
+
+    <div class="pagination" id="pagination"></div>
+  </div>
+
+  <div class="toast" id="toast">🔖 <span id="toastMsg"></span></div>
+
+  <footer>
+    <div class="footer-logo" id="footerLogo" data-en="✦ Belle's Enchanted Library ✦" data-ar="✦ مكتبة بيل السحرية ✦">✦ مكتبة بيل السحرية ✦</div>
+    <p class="footer-quote" id="footerQuote" data-en="«There's something there that wasn't there before.»" data-ar="«ثمّة شيء هناك لم يكن موجوداً من قبل.»">«ثمّة شيء هناك لم يكن موجوداً من قبل.»</p>
+    <div class="footer-links">
+      <a href="../pages/homepage.html" id="ftHome" data-en="Home" data-ar="الرئيسية">الرئيسية</a>
+      <a href="BookPage.html" id="ftBooks" data-en="Browse" data-ar="تصفّح">تصفّح</a>
+      <a href="#" id="ftSearch" data-en="Search" data-ar="البحث">البحث</a>
+      <a href="MyLibrary.html" id="ftLibrary" data-en="My Library" data-ar="مكتبتي">مكتبتي</a>
+    </div>
+    <p class="footer-copy" data-en="🌹 &nbsp; An Enchanted Tale &nbsp; 🌹" data-ar="🌹 &nbsp; حكاية سحرية &nbsp; 🌹">🌹 &nbsp; حكاية سحرية &nbsp; 🌹</p>
+  </footer>
+
+  <script src="../js/global.js"></script>
+  <script src="../js/SearchPage.js"></script>
+</body>
+
+</html>

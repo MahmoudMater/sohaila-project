@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lost Your Key? - The Enchanted Library</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;500;600&family=IM+Fell+English:ital@0;1&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../css/forgot.css">
+</head>
+
+<body data-theme="enchanted">
+
+    <!-- Background -->
+    <div class="library-bg">
+        <div class="bookshelf-layer"></div>
+        <div class="vignette"></div>
+    </div>
+    <div class="candle-left"></div>
+    <div class="candle-right"></div>
+    <canvas id="particles"></canvas>
+
+    <!-- Controls Bar: Theme + Language -->
+    <div class="controls-bar">
+        <div class="theme-toggle" role="group" aria-label="Switch theme">
+            <button class="theme-btn active" id="btn-enchanted" onclick="setTheme('enchanted')">🌙 Enchanted</button>
+            <button class="theme-btn" id="btn-reader" onclick="setTheme('reader')">☀️ Reader</button>
+        </div>
+        <div class="lang-toggle" role="group" aria-label="Switch language">
+            <button class="lang-btn active" id="btn-lang" onclick="toggleLang()">عربي</button>
+        </div>
+    </div>
+
+    <!-- Forgot Card -->
+    <div class="login-card" role="main">
+        <p class="eyebrow">✦ Find Your Lost Story ✦</p>
+        <h1 class="card-title">Lost Your Key?</h1>
+        <p class="card-subtitle">"Even the most elusive stories can be found again…"</p>
+
+        <div class="divider">
+            <div class="divider-line"></div>
+            <span class="divider-glyph">❧</span>
+            <div class="divider-line"></div>
+        </div>
+
+        <p class="intro-text" id="intro-text">Provide your scroll address and we shall send a guiding light to restore
+            your access.</p>
+
+        <form id="forgot-form" novalidate>
+            <div class="form-group">
+                <label for="email" id="email-label">Where shall we send the guiding light?</label>
+                <input type="email" id="email" placeholder="your.name@realm.com" autocomplete="email">
+                <p class="field-error" id="email-error">This path does not exist in our library…</p>
+            </div>
+
+            <button type="submit" class="btn-submit" id="submit-btn">
+                🕯️ Cast Recovery Spell
+            </button>
+        </form>
+
+        <div class="card-footer">
+            <button class="link-styled" id="login-btn" onclick="handleLogin()">Remembered your key? Return.</button>
+        </div>
+    </div>
+
+    <div class="epigraph">"Every lost key has a door waiting for it."</div>
+    <div class="toast" id="toast"></div>
+    <script src="../js/global.js"></script>
+    <script src="../js/forgot.js"></script>
+
+</body>
+
+</html>

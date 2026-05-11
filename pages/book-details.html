@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title id="pageTitle">Book Details — The Enchanted library</title>
+ 
+  <!-- Same fonts as BookPage -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet" />
+ 
+  <link rel="stylesheet" href="../css/book-details.css" />
+</head>
+<body>
+ 
+  <!-- ═══════════════════════════════════════════════
+       FLOATING PARTICLES BACKGROUND
+  ════════════════════════════════════════════════ -->
+  <div id="particles" aria-hidden="true"></div>
+ 
+ 
+  <!-- ═══════════════════════════════════════════════
+       NAVIGATION
+  ════════════════════════════════════════════════ -->
+  <nav class="main-nav" id="mainNav">
+    <a href="../pages/homepage.html" class="nav-logo">✦ The Enchanted library ✦</a>
+    <ul class="nav-links">
+      <li><a href="../pages/homepage.html">Home</a></li>
+      <li><a href="../pages/BookPage.html" class="active">Browse</a></li>
+      <li><a href="../pages/SearchPage.html">Search</a></li>
+      <li><a href="../pages/MyLibrary.html">My Library</a></li>
+      <li><a href="../pages/homepage.html#moments">Moments</a></li>
+      <li>
+        <a href="#" class="lang-toggle" onclick="event.preventDefault(); toggleLanguage();">
+          <span class="lang-globe">🌐</span>
+          <span id="langToggleText">Arabic</span>
+        </a>
+      </li>
+      <li>
+        <a href="checkout.html?mode=cart" class="cart-nav-link" title="Cart">
+          🛒 <span class="cart-badge" id="cartBadge">0</span>
+        </a>
+      </li>
+      <li>
+        <button class="theme-toggle-btn" id="themeToggleBtn" onclick="toggleTheme()" title="Toggle theme" aria-label="Toggle light/dark theme">
+          <span id="themeIcon">☀️</span>
+        </button>
+      </li>
+    </ul>
+    <button class="nav-hamburger" id="navHamburger" aria-label="Open menu">☰</button>
+  </nav>
+ 
+  <!-- Mobile nav drawer -->
+  <div class="nav-drawer" id="navDrawer">
+    <button class="nav-drawer-close" id="navDrawerClose" aria-label="Close menu">✕</button>
+    <ul>
+      <li><a href="../pages/homepage.html">Home</a></li>
+      <li><a href="../pages/BookPage.html">Browse</a></li>
+      <li><a href="../pages/SearchPage.html">Search</a></li>
+      <li><a href="../pages/MyLibrary.html">My Library</a></li>
+    </ul>
+  </div>
+ 
+ 
+  <!-- ═══════════════════════════════════════════════
+       BACK BUTTON
+  ════════════════════════════════════════════════ -->
+  <div class="back-bar">
+    <a href="../pages/BookPage.html" class="back-btn">
+      <span class="back-arrow">←</span>
+      <span>Return to Library</span>
+    </a>
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="../pages/homepage.html">Home</a>
+      <span class="breadcrumb-sep">›</span>
+      <a href="../pages/BookPage.html">Browse</a>
+      <span class="breadcrumb-sep">›</span>
+      <span id="breadcrumbTitle">Book Details</span>
+    </nav>
+  </div>
+ 
+ 
+  <!-- ═══════════════════════════════════════════════
+       SECTION 1 — HERO
+       JS targets: #heroSection, #bookCover, #bookBadge,
+       #bookTitle, #bookAuthor, #bookGenreTag,
+       #bookPublisher, #bookYear, #heroRatingStars,
+       #heroRatingValue, #heroReviewsCount,
+       #heroMainPrice, #heroHeroBg
+  ════════════════════════════════════════════════ -->
+  <section class="hero-section reveal" id="heroSection">
+ 
+    <!-- Blurred background derived from cover color — JS sets style -->
+    <div class="hero-bg" id="heroHeroBg" aria-hidden="true"></div>
+ 
+    <div class="hero-inner">
+ 
+      <!-- LEFT: Cover -->
+      <div class="hero-cover-wrapper">
+        <div class="hero-cover-glow" id="heroCoverGlow" aria-hidden="true"></div>
+        <div class="hero-cover-frame">
+          <img
+            src=""
+            alt="Book cover"
+            id="bookCover"
+            class="hero-cover-img"
+            loading="eager"
+          />
+          <!-- Badge overlay (popular / rare / new / trending) -->
+          <span class="cover-badge" id="bookBadge" aria-label="Book badge"></span>
+        </div>
+        <!-- Quick action icons below cover -->
+        <div class="cover-quick-actions">
+          <button class="quick-icon-btn" id="quickFavBtn" onclick="toggleFavourite()" title="Add to Favourites" aria-label="Add to favourites">
+            <span class="quick-icon">♡</span>
+          </button>
+          <button class="quick-icon-btn" onclick="shareBook()" title="Share" aria-label="Share book">
+            <span class="quick-icon">⎘</span>
+          </button>
+          <button class="quick-icon-btn" onclick="printDetails()" title="Print" aria-label="Print details">
+            <span class="quick-icon">⎙</span>
+          </button>
+        </div>
+      </div>
+ 
+      <!-- RIGHT: Info -->
+      <div class="hero-info">
+ 
+        <!-- Genre tag -->
+        <span class="hero-genre-tag" id="bookGenreTag">Genre</span>
+ 
+        <!-- Title -->
+        <h1 class="hero-title" id="bookTitle">Loading…</h1>
+ 
+        <!-- Author -->
+        <p class="hero-author">
+          <span class="hero-author-label">by</span>
+          <a href="#" class="hero-author-link" id="bookAuthorLink">
+            <span id="bookAuthor">—</span>
+          </a>
+        </p>
+ 
+        <!-- Meta chips row -->
+        <div class="hero-meta-row">
+          <span class="meta-chip" id="bookPublisher">Publisher</span>
+          <span class="meta-chip" id="bookYear">Year</span>
+          <span class="meta-chip" id="bookLanguage">Language</span>
+          <span class="meta-chip" id="bookPages">Pages</span>
+        </div>
+ 
+        <!-- Star rating -->
+        <div class="hero-rating-block">
+          <div class="star-display" id="heroRatingStars" aria-label="Rating stars">
+            <!-- JS renders filled/half/empty spans -->
+          </div>
+          <span class="rating-number" id="heroRatingValue">—</span>
+          <span class="rating-slash">/</span>
+          <span class="rating-max">5</span>
+          <span class="reviews-pill" id="heroReviewsCount">— reviews</span>
+        </div>
+ 
+        <!-- Price block -->
+        <div class="hero-price-block">
+          <span class="price-label">Starting from</span>
+          <span class="price-value" id="heroMainPrice">—</span>
+          <span class="price-currency">EGP</span>
+        </div>
+ 
+        <!-- CTA Buttons -->
+        <div class="hero-buttons">
+          <button class="btn-primary" onclick="openPreviewModal()" aria-label="Preview sample pages">
+            <span class="btn-icon">👁</span>
+            <span>Preview Sample</span>
+          </button>
+          <button class="btn-secondary" onclick="scrollToSection('comparePricesSection')" aria-label="Compare prices">
+            <span class="btn-icon">⚖</span>
+            <span>Compare Prices</span>
+          </button>
+          <button class="btn-secondary btn-fav" id="heroFavBtn" onclick="toggleFavourite()" aria-label="Add to favourites">
+            <span class="btn-icon" id="heroFavIcon">♡</span>
+            <span id="heroFavText">Add to Favourites</span>
+          </button>
+          <button class="btn-gold" onclick="buyNow()" aria-label="Buy this book">
+            <span class="btn-icon">🛒</span>
+            <span>Buy Now</span>
+          </button>
+          <button class="btn-secondary" onclick="addToCart()" aria-label="Add to cart" id="addToCartBtn">
+            <span class="btn-icon">🛒</span>
+            <span>Add to Cart</span>
+          </button>
+        </div>
+ 
+        <!-- Tags -->
+        <div class="hero-tags" id="heroTags">
+          <!-- JS injects tag spans -->
+        </div>
+ 
+      </div><!-- /hero-info -->
+    </div><!-- /hero-inner -->
+  </section>
+ 
+ 
+  <!-- ═══════════════════════════════════════════════
+       SECTION DIVIDER
+  ════════════════════════════════════════════════ -->
+  <div class="section-divider" aria-hidden="true">
+    <div class="divider-line"></div>
+    <span class="divider-ornament">✦ 📖 ✦</span>
+    <div class="divider-line"></div>
+  </div>
+ 
+ 
+  <!-- ═══════════════════════════════════════════════
+       SECTION 2 — BOOK DESCRIPTION
+       JS targets: #bookDescription, #readMoreBtn
+  ════════════════════════════════════════════════ -->
+  <section class="description-section reveal" id="descriptionSection">
+    <div class="section-container">
+      <header class="section-header">
+        <span class="section-eyebrow">✦ About This Volume</span>
+        <h2 class="section-title">The Story</h2>
+      </header>
+ 
+      <div class="description-card glass-card">
+        <div class="description-text-wrap">
+          <p class="description-text" id="bookDescription">
+            <!-- JS injects full description -->
+          </p>
+        </div>
+        <!-- Read More / Less toggle -->
+        <button class="read-more-btn" id="readMoreBtn" onclick="toggleDescription()" aria-expanded="false">
+          <span id="readMoreBtnText">Read More</span>
+          <span class="read-more-arrow" id="readMoreArrow">▼</span>
+        </button>
+      </div>
+ 
+      <!-- Additional details grid -->
+      <div class="details-grid reveal" id="detailsGrid">
+        <!-- JS injects detail items: ISBN, Format, Language, etc. -->
+      </div>
+ 
+    </div>
+  </section>
+ 
+ 
+  <!-- ═══════════════════════════════════════════════
+       SECTION DIVIDER
+  ════════════════════════════════════════════════ -->
+  <div class="section-divider" aria-hidden="true">
+    <div class="divider-line"></div>
+    <span class="divider-ornament">✦ ⚖ ✦</span>
+    <div class="divider-line"></div>
+  </div>
+ 
+ 
+  <!-- ═══════════════════════════════════════════════
+       SECTION 3 — COMPARE PRICES
+       JS targets: #pricesTableBody, #cheapestNote,
+       #sortPricesSelect, #comparePricesSection
+  ════════════════════════════════════════════════ -->
+  <section class="compare-section reveal" id="comparePricesSection">
+    <div class="section-container">
+      <header class="section-header">
+        <span class="section-eyebrow">✦ Best Deals</span>
+        <h2 class="section-title">Compare Prices</h2>
+      </header>
+ 
+      <!-- Cheapest highlight note -->
+      <div class="cheapest-note glass-card" id="cheapestNote" style="display:none;">
+        <span class="cheapest-icon">💰</span>
+        <span id="cheapestNoteText">Best price found at —</span>
+      </div>
+ 
+      <!-- Sort control -->
+      <div class="compare-controls">
+        <label for="sortPricesSelect" class="sort-label">Sort by:</label>
+        <select class="sort-select" id="sortPricesSelect" onchange="sortPrices(this.value)">
+          <option value="asc">Price: Low to High</option>
+          <option value="desc">Price: High to Low</option>
+          <option value="store">Store Name</option>
+        </select>
+      </div>
+ 
+      <!-- Prices table -->
+      <div class="table-wrapper glass-card">
+        <table class="prices-table" id="pricesTable">
+          <thead>
+            <tr>
+              <th scope="col" class="th-store">Store</th>
+              <th scope="col" class="th-price">Price</th>
+              <th scope="col" class="th-delivery">Delivery</th>
+              <th scope="col" class="th-availability">Availability</th>
+              <th scope="col" class="th-action">Action</th>
+            </tr>
+          </thead>
+          <tbody id="pricesTableBody">
+            <!-- JS renders rows; each row has class "cheapest-row" on best price -->
+            <tr class="table-placeholder">
+              <td colspan="5">
+                <span class="placeholder-icon">⚖</span>
+                <span>Loading prices…</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+ 
+    </div>
+  </section>
+ 
+ 
+  <!-- ═══════════════════════════════════════════════
+       SECTION DIVIDER
+  ════════════════════════════════════════════════ -->
+  <div class="section-divider" aria-hidden="true">
+    <div class="divider-line"></div>
+    <span class="divider-ornament">✦ 👁 ✦</span>
+    <div class="divider-line"></div>
+  </div>
+ 
+ 
+  <!-- ═══════════════════════════════════════════════
+       SECTION 4 — DIGITAL PREVIEW
+       JS targets: #previewSection, #previewThumbsGrid
+  ════════════════════════════════════════════════ -->
+  <section class="preview-section reveal" id="previewSection">
+    <div class="section-container">
+      <header class="section-header">
+        <span class="section-eyebrow">✦ Flip Through</span>
+        <h2 class="section-title">Sample Preview</h2>
+        <p class="section-subtitle">Peek inside before you commit your heart to it.</p>
+      </header>
+ 
+      <!-- Thumbnail strip — JS injects page thumbnails -->
+      <div class="preview-thumbs-grid" id="previewThumbsGrid">
+        <!-- Placeholder card -->
+        <div class="preview-thumb-placeholder glass-card">
+          <span class="preview-thumb-icon">📄</span>
+          <span>Page 1</span>
+        </div>
+        <div class="preview-thumb-placeholder glass-card">
+          <span class="preview-thumb-icon">📄</span>
+          <span>Page 2</span>
+        </div>
+        <div class="preview-thumb-placeholder glass-card">
+          <span class="preview-thumb-icon">📄</span>
+          <span>Page 3</span>
+        </div>
+      </div>
+ 
+      <!-- Open modal button -->
+      <div class="preview-open-wrap">
+        <button class="btn-primary btn-preview-open" onclick="openPreviewModal()" aria-label="Open full preview">
+          <span class="btn-icon">📖</span>
+          <span>Open Full Preview</span>
+        </button>
+      </div>
+    </div>
+  </section>
+ 
+ 
+  <!-- ═══════════════════════════════════════════════
+       PREVIEW MODAL
+       JS targets: #previewModal, #previewModalInner,
+       #previewPagesContainer, #previewCurrentPage,
+       #previewTotalPages, #previewModalTitle
+  ════════════════════════════════════════════════ -->
+  <div class="modal-overlay" id="previewModal" role="dialog" aria-modal="true" aria-labelledby="previewModalTitle" style="display:none;">
+    <div class="modal-card glass-card" id="previewModalInner">
+ 
+      <!-- Modal header -->
+      <div class="modal-header">
+        <h3 class="modal-title" id="previewModalTitle">Sample Preview</h3>
+        <button class="modal-close-btn" onclick="closePreviewModal()" aria-label="Close preview">✕</button>
+      </div>
+ 
+      <!-- Page display area -->
+      <div class="preview-pages-container" id="previewPagesContainer">
+        <!-- JS injects current page image or text -->
+        <div class="preview-page-placeholder">
+          <span class="page-placeholder-icon">📖</span>
+          <p>Preview loading…</p>
+        </div>
+      </div>
+ 
+      <!-- Navigation controls -->
+      <div class="modal-nav">
+        <button class="modal-nav-btn" id="prevPageBtn" onclick="previewPrevPage()" aria-label="Previous page" disabled>‹ Prev</button>
+        <span class="modal-page-counter">
+          Page <span id="previewCurrentPage">1</span> of <span id="previewTotalPages">—</span>
+        </span>
+        <button class="modal-nav-btn" id="nextPageBtn" onclick="previewNextPage()" aria-label="Next page">Next ›</button>
+      </div>
+ 
+    </div>
+  </div>
+ 
+ 
+  <!-- ═══════════════════════════════════════════════
+       SECTION DIVIDER
+  ════════════════════════════════════════════════ -->
+  <!-- ═══════════════════════════════════════════════
+       SECTION — VIDEO PREVIEW (only for select books)
+       JS targets: #videoSection, #videoWrapper
+  ════════════════════════════════════════════════ -->
+  <section class="video-section reveal" id="videoSection" style="display:none;">
+    <div class="section-container">
+      <header class="section-header">
+        <span class="section-eyebrow">✦ Watch</span>
+        <h2 class="section-title">Video Preview</h2>
+        <p class="section-subtitle">A cinematic glimpse into this timeless tale.</p>
+      </header>
+      <div class="video-wrapper" id="videoWrapper">
+        <!-- JS injects iframe -->
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider" id="videoDivider" aria-hidden="true" style="display:none;">
+    <div class="divider-line"></div>
+    <span class="divider-ornament">✦ 🎬 ✦</span>
+    <div class="divider-line"></div>
+  </div>
+
+
+  <div class="section-divider" aria-hidden="true">
+    <div class="divider-line"></div>
+    <span class="divider-ornament">✦ ★ ✦</span>
+    <div class="divider-line"></div>
+  </div>
+ 
+ 
+  <!-- ═══════════════════════════════════════════════
+       SECTION 5 — RATINGS ANALYTICS
+       JS targets: #ratingsAvgValue, #ratingsAvgStars,
+       #ratingsAvgTotal, #ratingBar5, #ratingBar4,
+       #ratingBar3, #ratingBar2, #ratingBar1,
+       #ratingPct5 … #ratingPct1,
+       #ratingCount5 … #ratingCount1
+  ════════════════════════════════════════════════ -->
+  <section class="ratings-section reveal" id="ratingsSection">
+    <div class="section-container">
+      <header class="section-header">
+        <span class="section-eyebrow">✦ Community Voice</span>
+        <h2 class="section-title">Ratings Overview</h2>
+      </header>
+ 
+      <div class="ratings-layout glass-card">
+ 
+        <!-- Left: Big average number -->
+        <div class="ratings-avg-block">
+          <span class="ratings-avg-number" id="ratingsAvgValue">—</span>
+          <div class="ratings-avg-stars" id="ratingsAvgStars" aria-label="Average rating stars">
+            <!-- JS renders stars -->
+          </div>
+          <span class="ratings-avg-total" id="ratingsAvgTotal">— ratings</span>
+        </div>
+ 
+        <!-- Right: Bar chart breakdown -->
+        <div class="ratings-bars-block">
+ 
+          <!-- 5 stars -->
+          <div class="rating-bar-row">
+            <span class="bar-label">5 ★</span>
+            <div class="bar-track" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="5 star percentage">
+              <div class="bar-fill bar-fill--gold" id="ratingBar5" style="width:0%"></div>
+            </div>
+            <span class="bar-pct" id="ratingPct5">0%</span>
+            <span class="bar-count" id="ratingCount5">(0)</span>
+          </div>
+ 
+          <!-- 4 stars -->
+          <div class="rating-bar-row">
+            <span class="bar-label">4 ★</span>
+            <div class="bar-track" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="4 star percentage">
+              <div class="bar-fill bar-fill--gold" id="ratingBar4" style="width:0%"></div>
+            </div>
+            <span class="bar-pct" id="ratingPct4">0%</span>
+            <span class="bar-count" id="ratingCount4">(0)</span>
+          </div>
+ 
+          <!-- 3 stars -->
+          <div class="rating-bar-row">
+            <span class="bar-label">3 ★</span>
+            <div class="bar-track" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="3 star percentage">
+              <div class="bar-fill bar-fill--mid" id="ratingBar3" style="width:0%"></div>
+            </div>
+            <span class="bar-pct" id="ratingPct3">0%</span>
+            <span class="bar-count" id="ratingCount3">(0)</span>
+          </div>
+ 
+          <!-- 2 stars -->
+          <div class="rating-bar-row">
+            <span class="bar-label">2 ★</span>
+            <div class="bar-track" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="2 star percentage">
+              <div class="bar-fill bar-fill--low" id="ratingBar2" style="width:0%"></div>
+            </div>
+            <span class="bar-pct" id="ratingPct2">0%</span>
+            <span class="bar-count" id="ratingCount2">(0)</span>
+          </div>
+ 
+          <!-- 1 star -->
+          <div class="rating-bar-row">
+            <span class="bar-label">1 ★</span>
+            <div class="bar-track" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="1 star percentage">
+              <div class="bar-fill bar-fill--low" id="ratingBar1" style="width:0%"></div>
+            </div>
+            <span class="bar-pct" id="ratingPct1">0%</span>
+            <span class="bar-count" id="ratingCount1">(0)</span>
+          </div>
+ 
+        </div><!-- /ratings-bars-block -->
+ 
+      </div><!-- /ratings-layout -->
+    </div>
+  </section>
+ 
+ 
+  <!-- ═══════════════════════════════════════════════
+       SECTION DIVIDER
+  ════════════════════════════════════════════════ -->
+  <div class="section-divider" aria-hidden="true">
+    <div class="divider-line"></div>
+    <span class="divider-ornament">✦ 💬 ✦</span>
+    <div class="divider-line"></div>
+  </div>
+ 
+ 
+  <!-- ═══════════════════════════════════════════════
+       SECTION 6 — REVIEWS
+       JS targets: #reviewsContainer, #reviewsCount,
+       #sortReviewsSelect, #writeReviewForm,
+       #reviewsSection
+  ════════════════════════════════════════════════ -->
+  <section class="reviews-section reveal" id="reviewsSection">
+    <div class="section-container">
+ 
+      <header class="section-header">
+        <span class="section-eyebrow">✦ Reader Stories</span>
+        <h2 class="section-title">
+          Reviews
+          <span class="reviews-total-badge" id="reviewsCount">0</span>
+        </h2>
+      </header>
+ 
+      <!-- Sort + Filter controls -->
+      <div class="reviews-controls">
+        <label for="sortReviewsSelect" class="sort-label">Sort by:</label>
+        <select class="sort-select" id="sortReviewsSelect" onchange="sortReviews(this.value)">
+          <option value="newest">Newest First</option>
+          <option value="oldest">Oldest First</option>
+          <option value="highest">Highest Rating</option>
+          <option value="lowest">Lowest Rating</option>
+        </select>
+ 
+        <button class="btn-write-review" onclick="toggleWriteReview()" aria-expanded="false" aria-controls="writeReviewForm" id="writeReviewToggleBtn">
+          <span>✏ Write a Review</span>
+        </button>
+      </div>
+ 
+      <!-- Write Review Form — hidden by default, toggled by JS -->
+      <div class="write-review-panel glass-card" id="writeReviewForm" style="display:none;" aria-hidden="true">
+        <h3 class="write-review-title">Your Review</h3>
+ 
+        <!-- Star picker -->
+        <div class="star-picker" id="reviewStarPicker" role="group" aria-label="Select rating">
+          <button class="star-pick-btn" data-value="1" onclick="pickStar(1)" aria-label="1 star">★</button>
+          <button class="star-pick-btn" data-value="2" onclick="pickStar(2)" aria-label="2 stars">★</button>
+          <button class="star-pick-btn" data-value="3" onclick="pickStar(3)" aria-label="3 stars">★</button>
+          <button class="star-pick-btn" data-value="4" onclick="pickStar(4)" aria-label="4 stars">★</button>
+          <button class="star-pick-btn" data-value="5" onclick="pickStar(5)" aria-label="5 stars">★</button>
+        </div>
+        <input type="hidden" id="reviewRatingValue" value="0" />
+ 
+        <div class="review-form-fields">
+          <div class="form-group">
+            <label for="reviewUsername" class="form-label">Your Name</label>
+            <input type="text" id="reviewUsername" class="form-input" placeholder="Enter your name" maxlength="60" autocomplete="name" />
+          </div>
+          <div class="form-group">
+            <label for="reviewComment" class="form-label">Your Review</label>
+            <textarea id="reviewComment" class="form-textarea" placeholder="Share your thoughts about this book…" rows="4" maxlength="1000"></textarea>
+          </div>
+        </div>
+ 
+        <div class="form-actions">
+          <button class="btn-submit-review" onclick="submitReview()" aria-label="Submit review">Submit Review ✦</button>
+          <button class="btn-cancel-review" onclick="toggleWriteReview()" aria-label="Cancel">Cancel</button>
+        </div>
+      </div>
+ 
+      <!-- Reviews grid — JS injects review cards here -->
+      <div class="reviews-container" id="reviewsContainer">
+        <!-- Each card structure for JS reference:
+          <article class="review-card glass-card">
+            <div class="review-card-header">
+              <div class="reviewer-avatar" aria-label="User avatar">
+                <span class="avatar-initials">AB</span>
+              </div>
+              <div class="reviewer-meta">
+                <span class="reviewer-name">Username</span>
+                <span class="reviewer-date">Jan 2025</span>
+              </div>
+              <div class="review-stars" aria-label="Rating">★★★★☆</div>
+            </div>
+            <p class="review-body">Review text here…</p>
+            <div class="review-helpful-row">
+              <button class="helpful-btn">👍 Helpful (3)</button>
+            </div>
+          </article>
+        -->
+ 
+        <!-- Placeholder shown before JS loads -->
+        <div class="reviews-placeholder" id="reviewsPlaceholder">
+          <span class="placeholder-icon">💬</span>
+          <p>Loading reviews…</p>
+        </div>
+      </div>
+ 
+      <!-- Load more reviews -->
+      <div class="load-more-reviews" id="loadMoreReviews" style="display:none;">
+        <button class="btn-load-reviews" onclick="loadMoreReviews()">
+          <span>Load More Reviews ✦</span>
+        </button>
+      </div>
+ 
+    </div>
+  </section>
+ 
+ 
+  <!-- ═══════════════════════════════════════════════
+       SECTION DIVIDER
+  ════════════════════════════════════════════════ -->
+  <div class="section-divider" aria-hidden="true">
+    <div class="divider-line"></div>
+    <span class="divider-ornament">✦ 📚 ✦</span>
+    <div class="divider-line"></div>
+  </div>
+ 
+ 
+  <!-- ═══════════════════════════════════════════════
+       SECTION 7 — RELATED BOOKS
+       JS targets: #relatedBooksGrid, #relatedSection
+  ════════════════════════════════════════════════ -->
+  <section class="related-section reveal" id="relatedSection">
+    <div class="section-container">
+ 
+      <header class="section-header">
+        <span class="section-eyebrow">✦ You May Also Love</span>
+        <h2 class="section-title">Related Books</h2>
+        <p class="section-subtitle">Curated from the same enchanted shelves.</p>
+      </header>
+ 
+      <!-- Related books grid — JS injects book cards -->
+      <div class="related-books-grid" id="relatedBooksGrid">
+        <!-- Each card structure for JS reference:
+          <article class="related-book-card glass-card" onclick="goToBook(id)">
+            <div class="related-cover-wrap">
+              <img src="..." alt="cover" class="related-cover-img" loading="lazy" />
+              <div class="related-cover-overlay">
+                <button class="related-view-btn">View Details</button>
+              </div>
+            </div>
+            <div class="related-book-info">
+              <span class="related-genre-tag">Genre</span>
+              <h4 class="related-book-title">Title</h4>
+              <p class="related-book-author">Author</p>
+              <div class="related-book-rating">★★★★☆ 4.7</div>
+            </div>
+          </article>
+        -->
+ 
+        <!-- Placeholders -->
+        <div class="related-placeholder glass-card" aria-hidden="true">
+          <div class="placeholder-cover"></div>
+          <div class="placeholder-text-block">
+            <div class="placeholder-line short"></div>
+            <div class="placeholder-line long"></div>
+            <div class="placeholder-line medium"></div>
+          </div>
+        </div>
+        <div class="related-placeholder glass-card" aria-hidden="true">
+          <div class="placeholder-cover"></div>
+          <div class="placeholder-text-block">
+            <div class="placeholder-line short"></div>
+            <div class="placeholder-line long"></div>
+            <div class="placeholder-line medium"></div>
+          </div>
+        </div>
+        <div class="related-placeholder glass-card" aria-hidden="true">
+          <div class="placeholder-cover"></div>
+          <div class="placeholder-text-block">
+            <div class="placeholder-line short"></div>
+            <div class="placeholder-line long"></div>
+            <div class="placeholder-line medium"></div>
+          </div>
+        </div>
+        <div class="related-placeholder glass-card" aria-hidden="true">
+          <div class="placeholder-cover"></div>
+          <div class="placeholder-text-block">
+            <div class="placeholder-line short"></div>
+            <div class="placeholder-line long"></div>
+            <div class="placeholder-line medium"></div>
+          </div>
+        </div>
+      </div>
+ 
+    </div>
+  </section>
+ 
+ 
+  <!-- ═══════════════════════════════════════════════
+       TOAST NOTIFICATION
+       JS targets: #toast, #toastMsg
+  ════════════════════════════════════════════════ -->
+  <div class="toast" id="toast" role="status" aria-live="polite">
+    📚 <span id="toastMsg"></span>
+  </div>
+ 
+ 
+  <!-- ═══════════════════════════════════════════════
+       FOOTER
+  ════════════════════════════════════════════════ -->
+  <footer class="main-footer">
+    <div class="footer-inner">
+ 
+      <!-- Brand column -->
+      <div class="footer-col footer-col--brand">
+        <div class="footer-logo">✦ The Enchanted library ✦</div>
+        <p class="footer-tagline">"There's something there that wasn't there before."</p>
+        <!-- Social links -->
+        <div class="footer-social">
+          <a href="#" class="social-link" aria-label="Facebook">𝕗</a>
+          <a href="#" class="social-link" aria-label="Instagram">𝕚</a>
+          <a href="#" class="social-link" aria-label="Twitter / X">𝕏</a>
+          <a href="#" class="social-link" aria-label="Goodreads">𝔾</a>
+        </div>
+      </div>
+ 
+      <!-- Navigation column -->
+      <div class="footer-col footer-col--nav">
+        <h4 class="footer-col-title">Navigation</h4>
+        <ul class="footer-nav-list">
+          <li><a href="../pages/homepage.html">Home</a></li>
+          <li><a href="../pages/BookPage.html">Browse Books</a></li>
+          <li><a href="../pages/SearchPage.html">Search</a></li>
+          <li><a href="../pages/MyLibrary.html">My Library</a></li>
+          <li><a href="../pages/authors.html">Authors</a></li>
+          <li><a href="../pages/blog.html">Blog</a></li>
+        </ul>
+      </div>
+ 
+      <!-- Pages column -->
+      <div class="footer-col footer-col--pages">
+        <h4 class="footer-col-title">Services</h4>
+        <ul class="footer-nav-list">
+          <li><a href="../pages/book-details.html">Compare Prices</a></li>
+          <li><a href="../pages/book-details.html">Book Previews</a></li>
+          <li><a href="../pages/community.html">Book Club</a></li>
+          <li><a href="../pages/book-details.html">Online Store</a></li>
+          <li><a href="../pages/events.html">Events</a></li>
+          <li><a href="../pages/contactus.html">Contact Us</a></li>
+        </ul>
+      </div>
+ 
+      <!-- Newsletter column -->
+      <div class="footer-col footer-col--newsletter">
+        <h4 class="footer-col-title">Newsletter</h4>
+        <p class="footer-newsletter-desc">
+          Get enchanted — receive curated literary picks, new arrivals, and exclusive events.
+        </p>
+        <div class="newsletter-form" id="footerNewsletterForm">
+          <input
+            type="email"
+            id="newsletterEmail"
+            class="newsletter-input"
+            placeholder="your@email.com"
+            aria-label="Your email address"
+            autocomplete="email"
+          />
+          <button class="newsletter-btn" onclick="subscribeNewsletter()" aria-label="Subscribe to newsletter">
+            Subscribe ✦
+          </button>
+        </div>
+        <p class="newsletter-note">No spam. Unsubscribe anytime.</p>
+      </div>
+ 
+    </div>
+ 
+    <!-- Footer bottom bar -->
+    <div class="footer-bottom">
+      <span class="footer-copy">🌹 &nbsp; The Enchanted library &nbsp;—&nbsp; An Enchanted Library &nbsp; 🌹</span>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy Policy</a>
+        <span>·</span>
+        <a href="#">Terms of Use</a>
+        <span>·</span>
+        <a href="../pages/contactus.html">Contact</a>
+      </div>
+    </div>
+  </footer>
+ 
+ 
+  <!-- ═══════════════════════════════════════════════
+       SCRIPTS
+       Load Sara's data first, then Sohila's extra data,
+       then the page logic.
+  ════════════════════════════════════════════════ -->
+<script src="../js/BookPage.js"></script>
+<script src="../data/book-details-data.js"></script>
+<script src="../js/book-details.js"></script>
+</body>
+</html>

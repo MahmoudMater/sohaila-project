@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Community | The Enchanted Library
+    </title>
+
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/community.css">
+    <link rel="stylesheet" href="../css/shared.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Cormorant+Garamond:wght@300;400;500;600;700&family=IM+Fell+English&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div id="particles"></div>
+
+<!-- ===== MODE TOGGLE ===== -->
+<div class="mode-toggle-wrap">
+    <button class="mode-btn active" id="modeDay" onclick="setMode('day')"><i class="fa-solid fa-sun"></i> Day</button>
+    <button class="mode-btn" id="modeNight" onclick="setMode('night')"><i class="fa-solid fa-moon"></i> Night</button>
+</div>
+
+<!-- navbar -->
+<nav>
+    <a href="../pages/homepage.html" class="nav-logo" data-en="✦ The Enchanted Library ✦" data-ar="✦ المكتبة المسحورة ✦">✦ The Enchanted Library ✦</a>
+    <ul class="nav-links">
+      <li class="nav-dropdown">
+        <a href="#" data-en="Browse" data-ar="تصفح">Browse</a>
+        <div class="dropdown-menu">
+          <a href="../pages/SearchPage.html" data-en="Search Books" data-ar="البحث عن الكتب">Search Books</a>
+          <a href="../pages/authors.html" data-en="By Author" data-ar="حسب المؤلف">By Author</a>
+          <a href="../pages/publishers.html" data-en="By Publisher" data-ar="حسب الناشر">By Publisher</a>
+          <a href="../pages/MyLibrary.html" data-en="My Library" data-ar="مكتبتي">My Library</a>
+        </div>
+      </li>
+      <li class="nav-dropdown">
+        <a href="#" data-en="Community" data-ar="المجتمع">Community</a>
+        <div class="dropdown-menu">
+          <a href="../pages/community.html" data-en="Book Club Forum" data-ar="منتدى نادي القراءة">Book Club Forum</a>
+          <a href="../pages/blog.html" data-en="Blog" data-ar="المدونة">Blog</a>
+          <a href="../pages/events.html" data-en="Author Events" data-ar="فعاليات المؤلفين">Author Events</a>
+        </div>
+      </li>
+      <li><a href="../pages/BookPage.html" data-en="Book Fair" data-ar="معرض الكتاب">Book Fair</a></li>
+
+      <li><a href="../pages/profile.html" data-en="Profile" data-ar="الملف الشخصي">Profile</a></li>
+      <li>
+        <div class="language-switch">
+          <button onclick="setLanguage('en')" id="btn-en" class="active">EN</button>
+          <button onclick="setLanguage('ar')" id="btn-ar">AR</button>
+        </div>
+      </li>
+    </ul>
+</nav>
+
+<!-- hero -->
+
+<section class="community-hero">
+
+    <div class="community-left reveal">
+        <h1 data-en="Readers Community" data-ar="مجتمع القراء">Readers Community</h1>
+        <p class="hero-text" data-en="Connect with readers, share reviews, and join book clubs." data-ar="تواصل مع القراء، وشارك المراجعات، وانضم إلى نوادي الكتاب.">
+            Connect with readers, share reviews, and join book clubs.
+        </p>
+    </div>
+
+</section>
+
+<!-- stats -->
+
+<section class="community-stats">
+
+    <div class="community-stat-card reveal">
+        <h3 data-en="Members" data-ar="الأعضاء">Members</h3>
+        <p>240</p>
+    </div>
+    <div class="community-stat-card reveal">
+        <h3 data-en="Discussions" data-ar="النقاشات">Discussions</h3>
+        <p>56</p>
+    </div>
+    <div class="community-stat-card reveal">
+        <h3 data-en="Reviews" data-ar="المراجعات">Reviews</h3>
+        <p>180</p>
+    </div>
+
+</section>
+
+<!-- discussions -->
+
+<section class="discussion-section">
+    <h2 data-en="Latest Discussions" data-ar="أحدث النقاشات">Latest Discussions</h2>
+    <div class="discussion-grid">
+        <div class="discussion-card reveal card">
+            <h3 data-en="Best Fantasy Books?" data-ar="أفضل كتب الفانتازيا؟">Best Fantasy Books?</h3>
+            <p data-en="Share your top fantasy recommendations." data-ar="شاركنا أفضل ترشيحاتك لكتب الفانتازيا.">Share your top fantasy recommendations.</p>
+        </div>
+        <div class="discussion-card reveal card">
+            <h3 data-en="Favorite Author?" data-ar="مؤلفك المفضل؟">Favorite Author?</h3>
+            <p data-en="Talk about authors that changed your life." data-ar="تحدث عن المؤلفين الذين غيروا حياتك.">Talk about authors that changed your life.</p>
+        </div>
+        <div class="discussion-card reveal card">
+            <h3 data-en="Book Club Picks" data-ar="اختيارات نادي الكتاب">Book Club Picks</h3>
+            <p data-en="Vote for the next monthly reading." data-ar="صوت للقراءة الشهرية القادمة.">Vote for the next monthly reading.</p>
+        </div>
+    </div>
+</section>
+
+<!-- activity -->
+
+<section class="activity-section">
+    <h2 data-en="Community Activity" data-ar="نشاط المجتمع">Community Activity</h2>
+    <div class="activity-box card reveal">
+        <ul>
+            <li data-en="Emma posted a review." data-ar="إيما نشرت مراجعة.">Emma posted a review.</li>
+            <li data-en="Noah joined Mystery Club." data-ar="نوح انضم إلى نادي الغموض.">Noah joined Mystery Club.</li>
+            <li data-en="Sophia started a discussion." data-ar="صوفيا بدأت نقاشاً.">Sophia started a discussion.</li>
+            <li data-en="Liam shared book recommendations." data-ar="ليام شارك ترشيحات كتب.">Liam shared book recommendations.</li>
+        </ul>
+    </div>
+</section>
+
+<!-- footer -->
+ <section class="chat-section">
+    <h2 data-en="Live Chat" data-ar="دردشة مباشرة">Live Chat</h2>
+    <div class="chat-container card">
+        <div class="chat-messages" id="chat-messages">
+            <div class="message">
+                <strong data-en="Emma:" data-ar="إيما:">Emma:</strong>
+                <span data-en="Anyone reading Atomic Habits?" data-ar="هل يقرأ أحدكم العادات الذرية؟">Anyone reading Atomic Habits?</span>
+            </div>
+            <div class="message">
+                <strong data-en="Noah:" data-ar="نوح:">Noah:</strong>
+                <span data-en="Yes, chapter 3 is amazing." data-ar="نعم، الفصل الثالث مذهل.">Yes, chapter 3 is amazing.</span>
+            </div>
+        </div>
+        <div class="chat-input-box">
+            <input type="text" id="chat-input" placeholder="Type your message..." data-en="Type your message..." data-ar="اكتب رسالتك...">
+            <button id="send-btn" data-en="Send" data-ar="إرسال">Send</button>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <h2 data-en="The Enchanted Library" data-ar="المكتبة المسحورة">The Enchanted Library</h2>
+    <p data-en="A world of books and stories." data-ar="عالم من الكتب والقصص.">A world of books and stories.</p>
+</footer>
+
+<script src="../js/global.js"></script>
+
+</body>
+</html>

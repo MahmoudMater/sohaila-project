@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Newsletter Subscription — Enchanted Library / الاشتراك في النشرة البريدية — المكتبة السحرية</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=IM+Fell+English:ital@0;1&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../css/newsletter.css">
+  <link rel="stylesheet" href="../css/shared.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+  <!-- ===== PARTICLES ===== -->
+  <div id="particles"></div>
+
+  <!-- ===== MODE TOGGLE ===== -->
+  <div class="mode-toggle-wrap">
+    <button class="mode-btn active" id="modeDay" onclick="setMode('day')"><i class="fa-solid fa-sun"></i> Day</button>
+    <button class="mode-btn" id="modeNight" onclick="setMode('night')"><i class="fa-solid fa-moon"></i> Night</button>
+  </div>
+
+  <!-- Background window -->
+  <svg class="bg-window" viewBox="0 0 600 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <ellipse cx="300" cy="300" rx="280" ry="280" stroke="#c9a84c" stroke-width="2" />
+    <ellipse cx="300" cy="300" rx="220" ry="220" stroke="#c9a84c" stroke-width="1" />
+    <path d="M300 20 L300 580 M20 300 L580 300" stroke="#c9a84c" stroke-width="1" />
+    <path d="M300 20 L580 300 L300 580 L20 300 Z" stroke="#c9a84c" stroke-width="1.5" />
+    <circle cx="300" cy="300" r="80" stroke="#d4af37" stroke-width="2" />
+  </svg>
+
+  <div class="page-bg"></div>
+
+  <!-- ===== NAV ===== -->
+  <nav>
+    <a href="../pages/homepage.html" class="nav-logo" data-en="✦ The Enchanted Library ✦" data-ar="✦ المكتبة المسحورة ✦">✦ The Enchanted
+      Library ✦</a>
+
+    <ul class="nav-links">
+
+      <!-- Browse -->
+      <li class="nav-dropdown">
+        <a href="#" data-en="Browse" data-ar="تصفح">Browse</a>
+        <div class="dropdown-menu">
+          <a href="../pages/SearchPage.html" data-en="Search Books" data-ar="البحث عن الكتب">Search Books</a>
+          <a href="../pages/authors.html" data-en="By Author" data-ar="حسب المؤلف">By Author</a>
+          <a href="../pages/publishers.html" data-en="By Publisher" data-ar="حسب الناشر">By Publisher</a>
+          <a href="../pages/MyLibrary.html" data-en="My Library" data-ar="مكتبتي">My Library</a>
+        </div>
+      </li>
+
+      <!-- Community -->
+      <li class="nav-dropdown">
+        <a href="#" data-en="Community" data-ar="المجتمع">Community</a>
+        <div class="dropdown-menu">
+          
+          <a href="../pages/community.html" data-en="Book Club Forum" data-ar="منتدى نادي القراءة">Book Club Forum</a>
+          <a href="../pages/blog.html" data-en="Blog" data-ar="المدونة">Blog</a>
+          <a href="../pages/events.html" data-en="Author Events" data-ar="فعاليات المؤلفين">Author Events</a>
+        </div>
+      </li>
+
+      <!-- Fair -->
+      <li>
+        <a href="../pages/BookPage.html" data-en="Book Fair" data-ar="معرض الكتاب">Book Fair</a>
+      </li>
+
+      <!-- About -->
+      <li class="nav-dropdown">
+        <a href="#" data-en="About" data-ar="عن الموقع">About</a>
+        <div class="dropdown-menu">
+          <a href="../pages/contactus.html" data-en="Contact Us" data-ar="اتصل بنا">Contact Us</a>
+          <a href="../pages/newsletter.html" class="active" data-en="Subscription" data-ar="الاشتراك">Subscription</a>
+        </div>
+      </li>
+
+      <!-- Auth -->
+
+      <li><a href="../pages/profile.html" data-en="Profile" data-ar="الملف الشخصي">Profile</a></li>
+
+      <!-- Language -->
+      <li>
+        <div class="language-switch">
+          <button onclick="setLanguage('en')" id="btn-en" class="active">EN</button>
+          <button onclick="setLanguage('ar')" id="btn-ar">AR</button>
+        </div>
+      </li>
+
+    </ul>
+  </nav>
+
+  <!-- PAGE WRAPPER -->
+  <div class="page-wrapper">
+
+    <!-- HERO -->
+    <div class="page-hero">
+      <p class="page-eyebrow" data-en="✦  &nbsp; Stay Enchanted  &nbsp; ✦" data-ar="✦  &nbsp; ابقَ مسحوراً  &nbsp; ✦">✦
+        &nbsp; Stay Enchanted &nbsp; ✦</p>
+      <h1 class="page-title">
+        <span data-en="Newsletter" data-ar="النشرة البريدية">Newsletter</span>
+        <em data-en="Subscription" data-ar="الاشتراك">Subscription</em>
+      </h1>
+      <p class="page-subtitle" data-en="Receive tales, releases & enchanted discoveries"
+        data-ar="استقبل القصص والإصدارات والاكتشافات الرائعة">Receive tales, releases & enchanted discoveries</p>
+      <div class="hero-divider">
+        <div class="divider-line"></div>
+        <span class="divider-rose">🌹</span>
+        <div class="divider-line"></div>
+      </div>
+    </div>
+
+    <div class="newsletter-wrap">
+
+      <!-- BENEFITS STRIP -->
+      <div class="benefits-strip">
+        <div class="benefit-item">
+          <span class="benefit-icon">📚</span>
+          <div class="benefit-title" data-en="Weekly Picks" data-ar="اختيارات أسبوعية">Weekly Picks</div>
+          <div class="benefit-desc" data-en="Curated book recommendations every Thursday"
+            data-ar="توصيات كتب مختارة كل خميس">Curated book recommendations every Thursday</div>
+        </div>
+        <div class="benefit-item">
+          <span class="benefit-icon">🌹</span>
+          <div class="benefit-title" data-en="Exclusive Offers" data-ar="عروض حصرية">Exclusive Offers</div>
+          <div class="benefit-desc" data-en="Special discounts for subscribers only"
+            data-ar="خصومات خاصة للمشتركين فقط">Special discounts for subscribers only</div>
+        </div>
+        <div class="benefit-item">
+          <span class="benefit-icon">🕯️</span>
+          <div class="benefit-title" data-en="Author Events" data-ar="فعاليات المؤلفين">Author Events</div>
+          <div class="benefit-desc" data-en="First access to readings & signings"
+            data-ar="أول وصول إلى جلسات القراءة والتوقيع">First access to readings & signings</div>
+        </div>
+        <div class="benefit-item">
+          <span class="benefit-icon">✨</span>
+          <div class="benefit-title" data-en="Literary News" data-ar="أخبار أدبية">Literary News</div>
+          <div class="benefit-desc" data-en="Award updates, new releases & reviews"
+            data-ar="تحديثات الجوائز والإصدارات الجديدة والمراجعات">Award updates, new releases & reviews</div>
+        </div>
+      </div>
+
+      <!-- FORM CARD -->
+      <div class="form-card">
+        <div class="form-card-corner tl"></div>
+        <div class="form-card-corner tr"></div>
+        <div class="form-card-corner bl"></div>
+        <div class="form-card-corner br"></div>
+
+        <form id="newsletter-form" novalidate>
+          <div class="form-grid">
+
+            <!-- ── Section 1: Personal Info ── -->
+            <div class="form-section-title" data-en="Personal Information" data-ar="المعلومات الشخصية">Personal
+              Information</div>
+
+            <div class="form-group">
+              <label class="form-label" for="firstName">
+                <span data-en="First Name" data-ar="الاسم الأول">First Name</span>
+                <span class="req">*</span>
+              </label>
+              <input id="firstName" class="form-input" data-placeholder-en="e.g. Belle" data-placeholder-ar="مثال: بيل"
+                placeholder="e.g. Belle" type="text">
+              <span class="error-msg" id="err-firstName" data-en="Please enter your first name"
+                data-ar="الرجاء إدخال اسمك الأول">Please enter your first name</span>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="lastName">
+                <span data-en="Last Name" data-ar="الاسم الأخير">Last Name</span>
+                <span class="req">*</span>
+              </label>
+              <input id="lastName" class="form-input" data-placeholder-en="e.g. Beaumont"
+                data-placeholder-ar="مثال: بومون" placeholder="e.g. Beaumont" type="text">
+              <span class="error-msg" id="err-lastName" data-en="Please enter your last name"
+                data-ar="الرجاء إدخال اسمك الأخير">Please enter your last name</span>
+            </div>
+
+            <div class="form-group full">
+              <label class="form-label" for="email">
+                <span data-en="Email Address" data-ar="عنوان البريد الإلكتروني">Email Address</span>
+                <span class="req">*</span>
+              </label>
+              <input id="email" class="form-input" data-placeholder-en="your@enchanted.library"
+                data-placeholder-ar="بريدك@المكتبة.السحرية" placeholder="your@enchanted.library" type="email">
+              <span class="error-msg" id="err-email" data-en="Please enter a valid email address"
+                data-ar="الرجاء إدخال عنوان بريد إلكتروني صحيح">Please enter a valid email address</span>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="phone">
+                <span data-en="Phone (Optional)" data-ar="رقم الهاتف (اختياري)">Phone (Optional)</span>
+              </label>
+              <input id="phone" class="form-input" data-placeholder-en="+20 10 0000 0000"
+                data-placeholder-ar="+٢٠ ١٠ ٠٠٠٠ ٠٠٠٠" placeholder="+20 10 0000 0000" type="tel">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="country">
+                <span data-en="Country" data-ar="الدولة">Country</span>
+                <span class="req">*</span>
+              </label>
+              <select id="country" class="form-select form-input">
+                <option value="" data-en="— Select your country —" data-ar="— اختر دولتك —">— Select your country —
+                </option>
+                <option value="eg" data-en="Egypt" data-ar="مصر">Egypt</option>
+                <option value="sa" data-en="Saudi Arabia" data-ar="المملكة العربية السعودية">Saudi Arabia</option>
+                <option value="ae" data-en="UAE" data-ar="الإمارات">UAE</option>
+                <option value="jo" data-en="Jordan" data-ar="الأردن">Jordan</option>
+                <option value="lb" data-en="Lebanon" data-ar="لبنان">Lebanon</option>
+                <option value="other" data-en="Other" data-ar="أخرى">Other</option>
+              </select>
+              <span class="error-msg" id="err-country" data-en="Please select your country"
+                data-ar="الرجاء اختيار دولتك">Please select your country</span>
+            </div>
+
+            <!-- ── Section 2: Preferences ── -->
+            <div class="form-section-title" data-en="Reading Preferences" data-ar="تفضيلات القراءة">Reading Preferences
+            </div>
+
+            <div class="form-group full">
+              <label class="form-label">
+                <span data-en="Favorite Genres (select all that apply)"
+                  data-ar="الأنواع الأدبية المفضلة (اختر كل ما ينطبق)">Favorite Genres (select all that apply)</span>
+              </label>
+              <div class="checkbox-group">
+                <label class="checkbox-item">
+                  <input type="checkbox" name="genre" value="fiction">
+                  <span class="checkbox-box"></span>
+                  <span class="checkbox-label" data-en="📖 Literary Fiction" data-ar="📖 الروايات الأدبية">📖 Literary
+                    Fiction</span>
+                </label>
+                <label class="checkbox-item">
+                  <input type="checkbox" name="genre" value="mystery">
+                  <span class="checkbox-box"></span>
+                  <span class="checkbox-label" data-en="🔍 Mystery & Thriller" data-ar="🔍 الغموض والتشويق">🔍 Mystery &
+                    Thriller</span>
+                </label>
+                <label class="checkbox-item">
+                  <input type="checkbox" name="genre" value="romance">
+                  <span class="checkbox-box"></span>
+                  <span class="checkbox-label" data-en="🌹 Romance" data-ar="🌹 الرومانسية">🌹 Romance</span>
+                </label>
+                <label class="checkbox-item">
+                  <input type="checkbox" name="genre" value="fantasy">
+                  <span class="checkbox-box"></span>
+                  <span class="checkbox-label" data-en="🧙 Fantasy & Magic" data-ar="🧙 الخيال والسحر">🧙 Fantasy &
+                    Magic</span>
+                </label>
+                <label class="checkbox-item">
+                  <input type="checkbox" name="genre" value="history">
+                  <span class="checkbox-box"></span>
+                  <span class="checkbox-label" data-en="📜 Historical Fiction" data-ar="📜 الروايات التاريخية">📜
+                    Historical Fiction</span>
+                </label>
+                <label class="checkbox-item">
+                  <input type="checkbox" name="genre" value="poetry">
+                  <span class="checkbox-box"></span>
+                  <span class="checkbox-label" data-en="✒️ Poetry & Verse" data-ar="✒️ الشعر والنثر">✒️ Poetry &
+                    Verse</span>
+                </label>
+                <label class="checkbox-item">
+                  <input type="checkbox" name="genre" value="nonfiction">
+                  <span class="checkbox-box"></span>
+                  <span class="checkbox-label" data-en="💡 Non-Fiction" data-ar="💡 غير روائي">💡 Non-Fiction</span>
+                </label>
+                <label class="checkbox-item">
+                  <input type="checkbox" name="genre" value="children">
+                  <span class="checkbox-box"></span>
+                  <span class="checkbox-label" data-en="🌟 Children's Books" data-ar="🌟 كتب الأطفال">🌟 Children's
+                    Books</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="form-group full">
+              <label class="form-label">
+                <span data-en="Newsletter Frequency" data-ar="تكرار النشرة البريدية">Newsletter Frequency</span>
+                <span class="req">*</span>
+              </label>
+              <div class="radio-group" id="freq-group">
+                <label class="radio-item">
+                  <input type="radio" name="frequency" value="daily">
+                  <span class="radio-dot"></span>
+                  <span class="radio-label" data-en="Daily" data-ar="يومياً">Daily</span>
+                </label>
+                <label class="radio-item">
+                  <input type="radio" name="frequency" value="weekly" checked>
+                  <span class="radio-dot"></span>
+                  <span class="radio-label" data-en="Weekly" data-ar="أسبوعياً">Weekly</span>
+                </label>
+                <label class="radio-item">
+                  <input type="radio" name="frequency" value="biweekly">
+                  <span class="radio-dot"></span>
+                  <span class="radio-label" data-en="Bi-Weekly" data-ar="كل أسبوعين">Bi-Weekly</span>
+                </label>
+                <label class="radio-item">
+                  <input type="radio" name="frequency" value="monthly">
+                  <span class="radio-dot"></span>
+                  <span class="radio-label" data-en="Monthly" data-ar="شهرياً">Monthly</span>
+                </label>
+              </div>
+              <span class="error-msg" id="err-freq" data-en="Please choose a frequency"
+                data-ar="الرجاء اختيار تكرار">Please choose a frequency</span>
+            </div>
+
+            <!-- ── Section 3: More ── -->
+            <div class="form-section-title" data-en="Tell Us More" data-ar="أخبرنا المزيد">Tell Us More</div>
+
+            <div class="form-group full">
+              <label class="form-label" for="message">
+                <span data-en="Favorite Book or Author (Optional)" data-ar="كتابك أو مؤلفك المفضل (اختياري)">Favorite
+                  Book or Author (Optional)</span>
+              </label>
+              <textarea id="message" class="form-input form-textarea"
+                data-placeholder-en="e.g. Pride and Prejudice by Jane Austen — a world I return to often…"
+                data-placeholder-ar="مثال: روايات نجيب محفوظ — عالم لا أمل من العودة إليه…"
+                placeholder="e.g. Pride and Prejudice by Jane Austen — a world I return to often…" rows="4"></textarea>
+            </div>
+
+            <div class="form-group full">
+              <label class="checkbox-item" style="width:fit-content; border-color:rgba(201,168,76,0.25);">
+                <input type="checkbox" id="agree" required>
+                <span class="checkbox-box"></span>
+                <span class="checkbox-label" data-en="I agree to receive enchanted letters from the Enchanted Library."
+                  data-ar="أوافق على تلقي رسائل سحرية من المكتبة المسحورة.">I agree to receive enchanted letters from
+                  the Enchanted Library.</span>
+              </label>
+              <span class="error-msg" id="err-agree" data-en="You must agree to subscribe"
+                data-ar="يجب الموافقة للاشتراك">You must agree to subscribe</span>
+            </div>
+
+            <!-- SUBMIT -->
+            <div class="form-actions">
+              <button type="submit" class="btn-submit">
+                <span class="btn-rose">🌹</span>
+                <span data-en="Subscribe Now" data-ar="اشترك الآن">Subscribe Now</span>
+              </button>
+            </div>
+
+          </div>
+        </form>
+      </div>
+
+      <!-- Candles -->
+      <div class="candles-row">
+        <div class="candle">
+          <div class="flame"></div>
+          <div class="wick"></div>
+          <div class="wax-body"></div>
+        </div>
+        <div class="candle">
+          <div class="flame"></div>
+          <div class="wick"></div>
+          <div class="wax-body" style="height:80px;"></div>
+        </div>
+        <div class="candle">
+          <div class="flame"></div>
+          <div class="wick"></div>
+          <div class="wax-body" style="height:50px;"></div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+      <div class="footer-logo" data-en="✦ The Enchanted Library ✦" data-ar="✦ المكتبة المسحورة ✦">✦ المكتبة المسحورة ✦</div>
+      <p class="footer-quote" data-en="«A reader lives a thousand lives before he dies.» — George R.R. Martin" data-ar="«القارئ يعيش ألف حياة قبل أن يموت.» — جورج ر. ر. مارتن">«القارئ يعيش ألف حياة قبل أن يموت.» — جورج ر. ر. مارتن</p>
+      <div class="footer-links">
+        <a href="../pages/homepage.html" data-en="Home" data-ar="الرئيسية">الرئيسية</a>
+        <a href="BookPage.html" data-en="Browse" data-ar="تصفّح">تصفّح</a>
+        <a href="SearchPage.html" data-en="Search" data-ar="البحث">البحث</a>
+        <a href="MyLibrary.html" data-en="My Library" data-ar="مكتبتي">مكتبتي</a>
+      </div>
+      <p class="footer-copy" data-en="🌹 &nbsp; An Enchanted Tale &nbsp; 🌹" data-ar="🌹 &nbsp; حكاية سحرية &nbsp; 🌹">🌹 &nbsp; حكاية سحرية &nbsp; 🌹</p>
+    </footer>
+  </div>
+
+  <!-- SUCCESS MODAL -->
+  <div class="modal-overlay" id="successModal">
+    <div class="modal-box">
+      <span class="modal-rose">🌹</span>
+      <div class="modal-title" data-en="You're Enchanted!" data-ar="أنت الآن مسحور!">You're Enchanted!</div>
+      <p class="modal-text"
+        data-en="Welcome to the Enchanted Library family. Your first letter will arrive soon — watch for the golden glow in your inbox."
+        data-ar="مرحباً بك في عائلة المكتبة المسحورة. ستصل رسالتك الأولى قريباً — راقب البريد الوارد بحثاً عن البريق الذهبي.">
+        Welcome to the Enchanted Library family. Your first letter will arrive soon — watch for the golden glow in your
+        inbox.
+      </p>
+      <button class="modal-close" id="modalCloseBtn" data-en="Return to the Library" data-ar="العودة إلى المكتبة">Return
+        to the Library</button>
+    </div>
+  </div>
+
+  <script src="../js/global.js"></script>
+  <script src="../js/newsletter.js"></script>
+</body>
+
+</html>

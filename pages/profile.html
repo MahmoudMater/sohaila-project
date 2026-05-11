@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Reader's Chamber — Profile / غرفة القارئ — الملف الشخصي</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;500;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../css/profile.css">
+  <link rel="stylesheet" href="../css/shared.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body class="theme-enchanted lang-en">
+
+  <div class="particles" id="particles"></div>
+
+  <!-- ===== MODE TOGGLE ===== -->
+  <div class="mode-toggle-wrap">
+    <button class="mode-btn active" id="modeDay" onclick="setMode('day')"><i class="fa-solid fa-sun"></i> Day</button>
+    <button class="mode-btn" id="modeNight" onclick="setMode('night')"><i class="fa-solid fa-moon"></i> Night</button>
+  </div>
+
+  <!-- ===== NAV ===== -->
+  <nav>
+    <a href="../pages/homepage.html" class="nav-logo" data-en="✦ The Enchanted Library ✦" data-ar="✦ المكتبة المسحورة ✦">✦ The Enchanted
+      Library ✦</a>
+
+    <ul class="nav-links">
+
+      <!-- Browse -->
+      <li class="nav-dropdown">
+        <a href="#" data-en="Browse" data-ar="تصفح">Browse</a>
+        <div class="dropdown-menu">
+          <a href="../pages/SearchPage.html" data-en="Search Books" data-ar="البحث عن الكتب">Search Books</a>
+          <a href="../pages/authors.html" data-en="By Author" data-ar="حسب المؤلف">By Author</a>
+          <a href="../pages/publishers.html" data-en="By Publisher" data-ar="حسب الناشر">By Publisher</a>
+          <a href="../pages/MyLibrary.html" data-en="My Library" data-ar="مكتبتي">My Library</a>
+        </div>
+      </li>
+
+      <!-- Community -->
+      <li class="nav-dropdown">
+        <a href="#" data-en="Community" data-ar="المجتمع">Community</a>
+        <div class="dropdown-menu">
+          <a href="../pages/book-details.html" data-en="Reviews & Ratings" data-ar="التقييمات والمراجعات">Reviews &
+            Ratings</a>
+          <a href="../pages/community.html" data-en="Book Club Forum" data-ar="منتدى نادي القراءة">Book Club Forum</a>
+          <a href="../pages/blog.html" data-en="Blog" data-ar="المدونة">Blog</a>
+          <a href="../pages/events.html" data-en="Author Events" data-ar="فعاليات المؤلفين">Author Events</a>
+        </div>
+      </li>
+
+      <!-- Fair -->
+      <li>
+        <a href="../pages/BookPage.html" data-en="Book Fair" data-ar="معرض الكتاب">Book Fair</a>
+      </li>
+
+      <!-- About -->
+      <li class="nav-dropdown">
+        <a href="#" data-en="About" data-ar="عن الموقع">About</a>
+        <div class="dropdown-menu">
+          <a href="../pages/contactus.html" data-en="Contact Us" data-ar="اتصل بنا">Contact Us</a>
+          <a href="../pages/newsletter.html" data-en="Subscription" data-ar="الاشتراك">Subscription</a>
+        </div>
+      </li>
+
+      <!-- Auth -->
+
+      <li><a href="../pages/profile.html" class="active" data-en="Profile" data-ar="الملف الشخصي">Profile</a></li>
+
+      <!-- Language -->
+      <li>
+        <div class="language-switch">
+          <button onclick="setLanguage('en')" id="btn-en" class="active">EN</button>
+          <button onclick="setLanguage('ar')" id="btn-ar">AR</button>
+        </div>
+      </li>
+
+    </ul>
+  </nav>
+
+  <div class="main" style="margin-top: 80px;">
+
+    <!-- Quote -->
+    <div class="top-quote">
+      <span class="q-mark">"</span>
+      <span class="q-text" id="topQuote" data-en="A reader lives a thousand lives before he dies." data-ar="القارئ يعيش ألف حياة قبل أن يموت.">A reader lives a thousand lives before he dies.</span>
+      <span class="q-mark">"</span>
+    </div>
+
+    <!-- Membership Card -->
+    <div class="membership-card">
+      <div class="card-inner">
+        <div class="avatar-wrap">
+          <div class="avatar-ring" onclick="document.getElementById('avatarInput').click()" title="Change photo">
+            <img class="avatar-img" id="avatarImg"
+              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='38' r='22' fill='%23c8922a' opacity='.4'/%3E%3Cellipse cx='50' cy='85' rx='32' ry='20' fill='%23c8922a' opacity='.3'/%3E%3C/svg%3E"
+              alt="Profile">
+          </div>
+          <button class="avatar-edit" onclick="document.getElementById('avatarInput').click()">✏️</button>
+          <input type="file" id="avatarInput" class="avatar-input" accept="image/*">
+        </div>
+        <div class="card-info">
+          <div class="card-label" id="knownLabel" data-en="Known Within the Library As" data-ar="يُعرف في المكتبة بـ">Known Within the Library As</div>
+          <div class="card-name" id="displayName">Shahd Ehab</div>
+          <div class="rank-badge">⭐ <span id="rankText" data-en="Keeper of Tales" data-ar="حارس الحكايات">Keeper of Tales</span></div>
+          <div class="card-meta">
+            <div class="meta-row">📜 <span id="displayEmail">shahdalsahar@gmail.com</span></div>
+            <div class="meta-row">📚 <span id="displayGenre">Fantasy · Romance</span></div>
+          </div>
+        </div>
+        <div class="card-stats">
+          <div class="stat-box">
+            <div class="stat-num" id="booksCount">24</div>
+            <div class="stat-label" id="statLabelBooks" data-en="Books Read" data-ar="كتاباً مقروءاً">Books Read</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">312</div>
+            <div class="stat-label" id="statLabelHours" data-en="Hours Reading" data-ar="ساعة قراءة">Hours Reading</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">8</div>
+            <div class="stat-label" id="statLabelReviews" data-en="Reviews" data-ar="مراجعة">Reviews</div>
+          </div>
+        </div>
+      </div>
+      <div class="member-since" id="memberSince" data-en="Member Since · September 2023" data-ar="عضو منذ · سبتمبر ٢٠٢٣">Member Since · September 2023</div>
+    </div>
+
+
+    <!-- About Panel -->
+    <div class="tab-panel active" id="panel-about">
+      <div class="section-title" id="sec-about" data-en="✦ Reader Profile" data-ar="✦ ملف القارئ">✦ Reader Profile</div>
+      <div class="about-grid">
+        <div class="info-field">
+          <div class="info-label" id="labelName" data-en="Known As" data-ar="يُعرف بـ">Known As</div>
+          <div class="info-val"><input type="text" id="inputName" value="ShahdEhab" oninput="updateName(this.value)">
+          </div>
+        </div>
+        <div class="info-field">
+          <div class="info-label" id="labelEmail" data-en="Messenger Owl Destination" data-ar="وجهة بومة المراسلة">Messenger Owl Destination</div>
+          <div class="info-val"><input type="email" id="inputEmail" value="shahd@gmail.com"
+              oninput="updateEmail(this.value)"></div>
+        </div>
+        <div class="info-field">
+          <div class="info-label" id="labelGenre" data-en="Favorite Realm" data-ar="العالم المفضل">Favorite Realm</div>
+          <div class="info-val">
+            <select id="inputGenre" onchange="updateGenre(this.value)">
+              <option value="Fantasy · Romance">Fantasy · Romance</option>
+              <option value="Mystery · Thriller">Mystery · Thriller</option>
+              <option value="Classics · Poetry">Classics · Poetry</option>
+              <option value="Science Fiction">Science Fiction</option>
+              <option value="Historical Fiction">Historical Fiction</option>
+            </select>
+          </div>
+        </div>
+        <div class="info-field">
+          <div class="info-label" id="labelRank" data-en="Library Rank" data-ar="الرتبة في المكتبة">Library Rank</div>
+          <div class="info-val">
+            <select id="inputRank" onchange="updateRank(this.value)">
+              <option>Curious Reader</option>
+              <option>Story Collector</option>
+              <option selected>Keeper of Tales</option>
+              <option>Master of Books</option>
+            </select>
+          </div>
+        </div>
+        <div class="info-field">
+          <div class="info-label" id="labelAuthor" data-en="Favorite Author" data-ar="المؤلف المفضل">Favorite Author</div>
+          <div class="info-val"><input type="text" id="inputAuthor" value="Gabriel García Márquez"></div>
+        </div>
+        <div class="info-field">
+          <div class="info-label" id="labelChapter" data-en="Last Visited Chapter" data-ar="آخر فصل تم زيارته">Last Visited Chapter</div>
+          <div class="info-val"><input type="text" id="inputChapter" value="Ch. 17 — The Whispering Tower"></div>
+        </div>
+      </div>
+      <div class="progress-section">
+        <div class="section-title" style="margin-top:1.5rem;" id="sec-progress" data-en="✦ Reading Adventure" data-ar="✦ مغامرة القراءة">✦ Reading Adventure</div>
+        <div class="progress-label"><span id="prog1Label" data-en="Monthly Goal" data-ar="الهدف الشهري">Monthly Goal</span><span>18 / 24</span></div>
+        <div class="progress-bar">
+          <div class="progress-fill" style="width:75%"></div>
+        </div>
+        <br>
+        <div class="progress-label"><span id="prog2Label" data-en="This Week" data-ar="هذا الأسبوع">This Week</span><span>4 / 7 hrs</span></div>
+        <div class="progress-bar">
+          <div class="progress-fill" style="width:57%"></div>
+        </div>
+      </div>
+      <div class="actions">
+        <button class="btn-rewrite" onclick="saveProfile()">✨ <span id="btnRewrite" data-en="Rewrite Your Story" data-ar="أعد كتابة قصتك">Rewrite Your Story</span></button>
+        <button class="btn-leave" onclick="location.href='../login.html'">🌙 <span id="btnLeave" data-en="Leave the Library" data-ar="مغادرة المكتبة">Leave the Library</span></button>
+      </div>
+    </div>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+    </footer>
+
+  </div>
+
+
+  <div class="toast" id="toast"></div>
+
+  <script src="../js/global.js"></script>
+  <script src="../js/profile.js"></script>
+</body>
+
+</html>

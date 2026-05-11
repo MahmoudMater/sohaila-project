@@ -1,0 +1,490 @@
+/* ================= ROOT ================= */
+
+:root{
+
+    --gold:#c9a84c;
+    --gold-light:#e8c97a;
+    --gold-dark:#8a6412;
+
+    --dark:#0d0a06;
+    --deep:#1a1208;
+    --warm:#24180d;
+
+    --cream:#f7edd8;
+
+    --glass:
+    rgba(26,18,8,.88);
+
+}
+
+/* ================= RESET ================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    font-family:
+    'Cormorant Garamond',
+    serif;
+
+    background:
+
+    radial-gradient(
+        circle at top left,
+        rgba(201,168,76,.05),
+        transparent 30%
+    ),
+
+    radial-gradient(
+        circle at bottom right,
+        rgba(201,168,76,.04),
+        transparent 35%
+    ),
+
+    linear-gradient(
+        160deg,
+        #0d0a06 0%,
+        #1a1208 45%,
+        #24180d 75%,
+        #0d0a06 100%
+    );
+
+    color:var(--cream);
+
+    min-height:100vh;
+
+    overflow-x:hidden;
+}
+
+/* ================= LINKS ================= */
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+a:visited{
+    color:inherit;
+}
+
+/* ================= NAVBAR ================= */
+
+.navbar{
+
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:100%;
+
+    z-index:1000;
+
+    padding:25px 70px;
+
+    display:flex;
+
+    justify-content:
+    space-between;
+
+    align-items:center;
+
+    background:
+    rgba(13,10,6,.78);
+
+    backdrop-filter:
+    blur(12px);
+
+    border-bottom:
+    1px solid rgba(201,168,76,.08);
+}
+
+.logo{
+
+    font-family:
+    'Playfair Display',
+    serif;
+
+    font-size:22px;
+
+    font-style:italic;
+
+    color:var(--gold);
+
+    letter-spacing:2px;
+}
+
+/* ================= NAV LINKS ================= */
+
+.nav-links{
+
+    display:flex;
+
+    gap:40px;
+
+    list-style:none;
+}
+
+.nav-links a{
+
+    font-family:
+    'IM Fell English',
+    serif;
+
+    font-size:14px;
+
+    letter-spacing:2px;
+
+    color:
+    rgba(247,237,216,.75);
+
+    transition:.3s;
+}
+
+.nav-links a:hover{
+    color:var(--gold);
+}
+
+/* ================= NAV CONTROLS ================= */
+
+.nav-controls{
+    display:flex;
+    gap:14px;
+}
+
+.nav-btn{
+
+    padding:14px 18px;
+
+    border:none;
+
+    border-radius:14px;
+
+    cursor:pointer;
+
+    background:
+    rgba(201,168,76,.08);
+
+    color:var(--gold);
+
+    font-weight:600;
+
+    transition:.3s;
+}
+
+.nav-btn:hover{
+
+    transform:
+    translateY(-2px);
+
+    background:
+    rgba(201,168,76,.15);
+}
+
+/* ================= BUTTONS ================= */
+
+.primary-btn{
+
+    border:none;
+
+    border-radius:18px;
+
+    cursor:pointer;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    padding:16px 30px;
+
+    background:
+    linear-gradient(
+        135deg,
+        var(--gold-light),
+        var(--gold),
+        var(--gold-dark)
+    );
+
+    color:#1a1208;
+
+    transition:.3s;
+}
+
+.primary-btn:hover{
+
+    transform:
+    translateY(-3px);
+
+    box-shadow:
+    0 10px 30px rgba(201,168,76,.25);
+}
+
+/* ================= CARDS ================= */
+
+.card{
+
+    background:
+    var(--glass);
+
+    border:
+    1px solid rgba(201,168,76,.08);
+
+    border-radius:28px;
+
+    backdrop-filter:
+    blur(10px);
+
+    transition:.3s;
+}
+
+.card:hover{
+
+    transform:
+    translateY(-8px);
+
+    border-color:
+    rgba(201,168,76,.22);
+}
+
+/* ================= TABLE ================= */
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+thead th,
+tbody td{
+
+    padding:22px;
+
+    text-align:left;
+
+    border-bottom:
+    1px solid rgba(201,168,76,.08);
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+
+    padding:80px;
+
+    text-align:center;
+
+    border-top:
+    1px solid rgba(201,168,76,.08);
+}
+
+footer h2{
+
+    font-family:
+    'Playfair Display',
+    serif;
+
+    color:var(--gold);
+
+    font-size:42px;
+
+    margin-bottom:20px;
+}
+
+footer p{
+
+    font-size:24px;
+
+    color:
+    rgba(247,237,216,.70);
+}
+
+/* ================= PARTICLES ================= */
+
+#particles{
+
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100%;
+
+    z-index:-1;
+
+    overflow:hidden;
+}
+
+.particle{
+
+    position:absolute;
+
+    border-radius:50%;
+
+    background:
+    rgba(201,168,76,.35);
+
+    box-shadow:
+    0 0 12px rgba(201,168,76,.35);
+}
+
+/* ================= REVEAL ================= */
+
+.reveal{
+
+    opacity:0;
+
+    transform:
+    translateY(40px);
+
+    transition:
+    all .8s ease;
+}
+
+.reveal.active{
+
+    opacity:1;
+
+    transform:
+    translateY(0);
+}
+
+/* ================= LIGHT MODE ================= */
+
+body.light-mode{
+
+    background:
+
+    linear-gradient(
+        160deg,
+        #f6f0e4 0%,
+        #ece1ca 100%
+    );
+
+    color:#2a1c0f;
+}
+
+/* navbar */
+
+body.light-mode .navbar{
+    background:
+    rgba(246,240,228,.92);
+}
+
+/* logo */
+
+body.light-mode .logo{
+    color:var(--gold-dark);
+}
+
+/* nav links */
+
+body.light-mode .nav-links a{
+    color:#3d2a16;
+}
+
+body.light-mode .nav-links a:hover{
+    color:var(--gold-dark);
+}
+
+/* headings */
+
+body.light-mode h1,
+body.light-mode h2,
+body.light-mode h3{
+    color:#2a1c0f;
+}
+
+/* paragraphs */
+
+body.light-mode p,
+body.light-mode li{
+    color:#3d2a16;
+}
+
+/* cards */
+
+body.light-mode .card,
+body.light-mode .stat-card,
+body.light-mode .community-stat-card,
+body.light-mode .store-card,
+body.light-mode .module-card{
+
+    background:
+    rgba(255,255,255,.75);
+
+    border:
+    1px solid rgba(0,0,0,.05);
+}
+
+/* buttons */
+
+body.light-mode .nav-btn{
+
+    background:
+    rgba(42,28,15,.08);
+
+    color:var(--gold-dark);
+}
+
+body.light-mode .primary-btn{
+    color:white;
+}
+
+/* footer */
+
+body.light-mode footer h2{
+    color:var(--gold-dark);
+}
+
+/* dark tables in light mode */
+
+body.light-mode .dashboard-table table,
+body.light-mode .inventory-box table{
+
+    background:
+    rgba(42,28,15,.92);
+
+    border-radius:25px;
+}
+
+body.light-mode table th{
+    color:var(--gold-light);
+}
+
+body.light-mode table td{
+    color:var(--cream);
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:1000px){
+
+    .navbar{
+        padding:20px 25px;
+    }
+
+    .nav-links{
+        display:none;
+    }
+
+}
+
+@media(max-width:700px){
+
+    footer{
+        padding:50px 25px;
+    }
+
+    footer h2{
+        font-size:32px;
+    }
+
+}

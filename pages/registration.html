@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>المكتبة المسحورة — انضم إلى الحكاية</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;500;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Scheherazade+New:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../css/registration.css">
+</head>
+
+<body class="theme-enchanted lang-ar">
+  <div class="particles-container" id="particles"></div>
+
+  <!-- زر التحكم العلوي -->
+  <div class="top-controls">
+    <button class="ctrl-btn" onclick="toggleLang()" id="langBtn">
+      <span id="langIcon">🌐</span>
+      <span id="langLabel">English</span>
+    </button>
+    <button class="ctrl-btn" onclick="toggleTheme()" id="themeBtn">
+      <span id="themeIcon">📖</span>
+      <span id="themeLabel">القارئ العصري</span>
+    </button>
+  </div>
+
+  <div class="card-wrapper">
+    <div class="illustration-header">
+      <div class="illustration-circle" id="illustrationCircle">
+        <img src="../image/Beauty and the beast.jpeg" alt="Beauty and the Beast">
+      </div>
+    </div>
+    <div class="card" style="position:relative;">
+      <div class="success-overlay" id="successOverlay">
+        <div class="success-icon">🍂</div>
+        <div class="success-title" id="successTitle">أهلاً بك، أيها القارئ العزيز</div>
+        <div class="success-text" id="successText" style="font-size:1rem;margin-top:0.5rem;line-height:1.7;">أبواب
+          المكتبة تفتح لك.<br><em>حكايتك بدأت للتو…</em></div>
+      </div>
+      <div class="card-header">
+        <div class="inspiration-line" id="inspirationLine">مستوحاة من الجمال والوحش — حيث يفتح الفضول كل باب.</div>
+        <div class="card-title" id="cardTitle">انضم إلى<br>المكتبة المسحورة</div>
+        <div class="ornament">❆ ❆ ❆</div>
+        <div class="card-subtitle" id="cardSubtitle">"كل حكاية عظيمة تبدأ باسم…"</div>
+      </div>
+      <div class="card-intro" id="cardIntro">ادخل عالماً مستوحىً من قصص السحر، حيث يصبح كل قارئ جزءاً من مكتبة حية. سجّل
+        الآن وافتح بوابة الكتب والعوالم والحكايات التي لا حدود لها.</div>
+      <form id="regForm" novalidate>
+        <div class="form-group">
+          <label class="field-label" for="name"><span class="icon">🪶</span><span id="nameLabel">اسمك</span></label>
+          <span class="field-question" id="nameQ">بماذا نناديك، أيها المسافر؟</span>
+          <input class="field-input" type="text" id="name" placeholder="أدخل اسمك…" autocomplete="name">
+          <div class="validation-msg" id="nameMsg"></div>
+        </div>
+        <div class="form-group">
+          <label class="field-label" for="email"><span class="icon">📜</span><span id="emailLabel">عنوان
+              بريدك</span></label>
+          <span class="field-question" id="emailQ">إلى أين نرسل فصلك القادم؟</span>
+          <input class="field-input" type="email" id="email" placeholder="بريدك@مثال.com" autocomplete="email">
+          <div class="validation-msg" id="emailMsg"></div>
+        </div>
+        <div class="form-group">
+          <label class="field-label" for="password"><span class="icon">🗝️</span><span id="passLabel">كلمة
+              السر</span></label>
+          <span class="field-question" id="passQ">أنشئ مفتاح باب مكتبتك</span>
+          <input class="field-input" type="password" id="password" placeholder="اكتب كلمة السر…"
+            autocomplete="new-password">
+          <div class="strength-bar-wrap">
+            <div class="strength-seg" id="s1"></div>
+            <div class="strength-seg" id="s2"></div>
+            <div class="strength-seg" id="s3"></div>
+            <div class="strength-seg" id="s4"></div>
+          </div>
+          <div class="validation-msg" id="passMsg"></div>
+        </div>
+        <div class="form-group">
+          <label class="field-label" for="confirm"><span class="icon">✨</span><span id="confirmLabel">تأكيد كلمة
+              السر</span></label>
+          <span class="field-question" id="confirmQ">كرر كلمة السر لتأكيد رحلتك</span>
+          <input class="field-input" type="password" id="confirm" placeholder="أعد كلمة السر…"
+            autocomplete="new-password">
+          <div class="validation-msg" id="confirmMsg"></div>
+        </div>
+        <button type="submit" class="submit-btn" id="submitBtn">✨ ادخل المكتبة</button>
+      </form>
+      <div class="card-footer" id="cardFooter">هل أنت قارئ بالفعل؟ <a href="../login.html" id="loginLink">عُد
+          إلى المكتبة
+          ←</a></div>
+    </div>
+  </div>
+
+  <script src="../js/global.js"></script>
+  <script src="../js/registration.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,168 @@
+/* checkout.css — BookVerse Enchanted Checkout */
+:root {
+  --gold:#c9a84c; --gold-light:#e8c97a; --gold-dim:#7a5c1e;
+  --rose:#8b1a3a; --rose-light:#c44f6a;
+  --dark:#0d0a06; --deep:#1a1208; --warm:#2a1f10;
+  --cream:#f7edd8; --cream-dim:rgba(247,237,216,0.6);
+  --glass:rgba(42,31,16,0.6); --glass-border:rgba(201,168,76,0.15);
+  --radius:4px; --transition:0.35s cubic-bezier(0.4,0,0.2,1);
+}
+body.light-theme {
+  --dark:#f8f4ec; --deep:#f0ebe0; --warm:#e8e0d0;
+  --cream:#1a1208; --cream-dim:rgba(26,18,8,0.65);
+  --glass:rgba(255,250,240,0.75); --glass-border:rgba(160,130,60,0.22);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Cormorant Garamond',serif;
+  background:var(--dark); color:var(--cream);
+  min-height:100vh; overflow-x:hidden;
+}
+.checkout-wrap{
+  max-width:900px; margin:0 auto; padding:60px 40px 80px;
+  position:relative; z-index:1;
+}
+.checkout-header{text-align:center; margin-bottom:48px;}
+.checkout-logo{
+  font-family:'Playfair Display',serif; font-size:22px;
+  font-style:italic; color:var(--gold); text-decoration:none;
+  letter-spacing:2px; display:inline-block; margin-bottom:24px;
+  text-shadow:0 0 20px rgba(201,168,76,0.5);
+}
+.checkout-title{
+  font-family:'Playfair Display',serif; font-size:clamp(28px,5vw,48px);
+  font-weight:900; font-style:italic; color:var(--cream); margin-bottom:8px;
+}
+.checkout-subtitle{
+  font-size:16px; font-style:italic; color:var(--cream-dim);
+}
+.checkout-grid{
+  display:grid; grid-template-columns:1fr 1fr; gap:36px;
+}
+@media(max-width:700px){.checkout-grid{grid-template-columns:1fr}}
+
+/* Order summary */
+.order-card{
+  background:var(--glass); border:1px solid var(--glass-border);
+  border-radius:var(--radius); padding:28px 30px;
+  backdrop-filter:blur(8px);
+}
+.order-card h3{
+  font-family:'Playfair Display',serif; font-size:20px;
+  font-style:italic; margin-bottom:20px; color:var(--cream);
+}
+.order-item{
+  display:flex; gap:16px; padding:14px 0;
+  border-bottom:1px solid rgba(201,168,76,0.1);
+}
+.order-item:last-child{border-bottom:none}
+.order-item img{
+  width:60px; height:80px; object-fit:cover; border-radius:2px;
+  border:1px solid rgba(201,168,76,0.15);
+}
+.order-item-info{flex:1}
+.order-item-title{
+  font-family:'Playfair Display',serif; font-size:16px;
+  font-style:italic; color:var(--cream); margin-bottom:2px;
+}
+.order-item-author{font-size:13px; color:var(--cream-dim)}
+.order-item-price{
+  font-family:'Playfair Display',serif; font-size:20px;
+  font-weight:700; color:var(--gold); white-space:nowrap;
+}
+.order-item-qty{font-size:12px; color:var(--cream-dim); margin-top:2px;}
+.order-total{
+  display:flex; justify-content:space-between; align-items:baseline;
+  padding:18px 0 0; margin-top:12px;
+  border-top:1px solid rgba(201,168,76,0.25);
+}
+.order-total-label{
+  font-family:'IM Fell English',serif; font-size:12px;
+  letter-spacing:3px; text-transform:uppercase; color:var(--cream-dim);
+}
+.order-total-value{
+  font-family:'Playfair Display',serif; font-size:28px;
+  font-weight:700; color:var(--gold);
+  text-shadow:0 0 16px rgba(201,168,76,0.4);
+}
+
+/* Checkout form */
+.checkout-form-card{
+  background:var(--glass); border:1px solid var(--glass-border);
+  border-radius:var(--radius); padding:28px 30px;
+  backdrop-filter:blur(8px);
+}
+.checkout-form-card h3{
+  font-family:'Playfair Display',serif; font-size:20px;
+  font-style:italic; margin-bottom:20px; color:var(--cream);
+}
+.form-group{display:flex; flex-direction:column; gap:6px; margin-bottom:16px}
+.form-label{
+  font-family:'IM Fell English',serif; font-size:10px;
+  letter-spacing:3px; text-transform:uppercase; color:rgba(201,168,76,0.6);
+}
+.form-input,.form-select{
+  width:100%; font-family:'Cormorant Garamond',serif; font-size:16px;
+  background:rgba(13,10,6,0.7); border:1px solid rgba(201,168,76,0.2);
+  color:var(--cream); padding:11px 14px; border-radius:var(--radius);
+  transition:border-color 0.3s; outline:none;
+}
+body.light-theme .form-input,body.light-theme .form-select{background:rgba(248,244,236,0.8)}
+.form-input::placeholder{color:rgba(247,237,216,0.25)}
+.form-input:focus,.form-select:focus{border-color:rgba(201,168,76,0.5)}
+.form-select option{background:var(--deep); color:var(--cream)}
+.btn-place-order{
+  width:100%; margin-top:8px; display:flex; align-items:center;
+  justify-content:center; gap:8px;
+  font-family:'IM Fell English',serif; font-size:13px;
+  letter-spacing:4px; text-transform:uppercase;
+  padding:14px 28px; border-radius:var(--radius); cursor:pointer;
+  background:linear-gradient(135deg,var(--gold-light),var(--gold),var(--gold-dim));
+  color:var(--dark); border:none; transition:all 0.3s;
+}
+.btn-place-order:hover{
+  box-shadow:0 6px 28px rgba(201,168,76,0.45);
+  transform:translateY(-2px); filter:brightness(1.1);
+}
+.btn-place-order:disabled{opacity:0.4; cursor:not-allowed; transform:none}
+
+/* Confirmation */
+.confirmation{
+  text-align:center; padding:60px 30px;
+  background:var(--glass); border:1px solid var(--glass-border);
+  border-radius:var(--radius); backdrop-filter:blur(8px);
+  animation:slideUp 0.5s ease;
+}
+@keyframes slideUp{from{transform:translateY(30px);opacity:0}to{transform:translateY(0);opacity:1}}
+.confirmation-icon{font-size:64px; margin-bottom:16px; display:block}
+.confirmation h2{
+  font-family:'Playfair Display',serif; font-size:32px;
+  font-style:italic; color:var(--gold); margin-bottom:12px;
+}
+.confirmation p{font-size:17px; color:var(--cream-dim); margin-bottom:24px; line-height:1.7}
+.btn-back{
+  display:inline-flex; align-items:center; gap:8px;
+  font-family:'IM Fell English',serif; font-size:12px;
+  letter-spacing:3px; text-transform:uppercase;
+  color:var(--gold); text-decoration:none;
+  border:1px solid rgba(201,168,76,0.35);
+  padding:10px 24px; border-radius:var(--radius); transition:all 0.3s;
+}
+.btn-back:hover{border-color:var(--gold); background:rgba(201,168,76,0.08)}
+
+/* Empty state */
+.empty-cart{text-align:center; padding:80px 30px; color:var(--cream-dim)}
+.empty-cart-icon{font-size:64px; opacity:0.3; display:block; margin-bottom:16px}
+
+/* Nav controls */
+.checkout-nav{
+  display:flex; justify-content:space-between; align-items:center;
+  padding:20px 40px; position:relative; z-index:10;
+}
+.checkout-nav .theme-toggle-btn{
+  background:transparent; border:1px solid rgba(201,168,76,0.3);
+  color:var(--gold); font-size:16px; width:36px; height:36px;
+  border-radius:var(--radius); cursor:pointer;
+  display:flex; align-items:center; justify-content:center;
+}

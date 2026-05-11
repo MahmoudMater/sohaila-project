@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forge a New Key - The Enchanted Library</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;500;600&family=IM+Fell+English:ital@0;1&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../css/reset.css">
+</head>
+
+<body data-theme="enchanted">
+
+    <!-- Background -->
+    <div class="library-bg">
+        <div class="bookshelf-layer"></div>
+        <div class="vignette"></div>
+    </div>
+    <div class="candle-left"></div>
+    <div class="candle-right"></div>
+    <canvas id="particles"></canvas>
+
+    <!-- Controls Bar: Theme + Language -->
+    <div class="controls-bar">
+        <div class="theme-toggle" role="group" aria-label="Switch theme">
+            <button class="theme-btn active" id="btn-enchanted" onclick="setTheme('enchanted')">🌙 Enchanted</button>
+            <button class="theme-btn" id="btn-reader" onclick="setTheme('reader')">☀️ Reader</button>
+        </div>
+        <div class="lang-toggle" role="group" aria-label="Switch language">
+            <button class="lang-btn active" id="btn-lang" onclick="toggleLang()">عربي</button>
+        </div>
+    </div>
+
+    <!-- Reset Password Card -->
+    <div class="login-card" role="main">
+        <p class="eyebrow" id="eyebrow">✦ A New Beginning ✦</p>
+        <h1 class="card-title" id="card-title">Forge a New Key</h1>
+        <p class="card-subtitle" id="card-subtitle">"Every key can be remade anew…"</p>
+
+        <div class="divider">
+            <div class="divider-line"></div>
+            <span class="divider-glyph">❧</span>
+            <div class="divider-line"></div>
+        </div>
+
+        <p class="intro-text" id="intro-text">Whisper a new password to forge your new key.</p>
+
+        <form id="reset-form" novalidate>
+            <div class="form-group">
+                <label for="password" id="pass-label">Your New Secret Key</label>
+                <input type="password" id="password" placeholder="············">
+                <p class="field-error" id="pass-error">This key is too weak for the enchanted doors…</p>
+            </div>
+
+            <div class="form-group">
+                <label for="confirm" id="confirm-label">Confirm Your Key</label>
+                <input type="password" id="confirm" placeholder="············">
+                <p class="field-error" id="confirm-error">The keys do not match. Try again…</p>
+            </div>
+
+            <button type="submit" class="btn-submit" id="submit-btn" style="margin-top: 2rem;">
+                🗝️ Forge Key
+            </button>
+        </form>
+
+        <div class="card-footer">
+            <button class="link-styled" id="login-btn" onclick="handleLogin()">Return to the doors without
+                forging.</button>
+        </div>
+    </div>
+
+    <div class="epigraph" id="epigraph">"Every lost key has a door waiting for its return."</div>
+    <div class="toast" id="toast"></div>
+    <script src="../js/global.js"></script>
+    <script src="../js/reset.js"></script>
+
+</body>
+
+</html>

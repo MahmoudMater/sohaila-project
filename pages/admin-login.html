@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Access | The Enchanted Library</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;500;600&family=IM+Fell+English:ital@0;1&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../css/login.css">
+  <style>
+    /* Custom Admin Theme Colors */
+    body[data-theme="enchanted"] .login-card {
+        border-color: rgba(201, 168, 76, 0.4);
+        box-shadow: 0 0 60px rgba(201, 168, 76, 0.15);
+    }
+    .eyebrow {
+        color: #e8c97a;
+    }
+  </style>
+</head>
+
+<body data-theme="enchanted">
+
+  <!-- Background -->
+  <div class="library-bg">
+    <div class="bookshelf-layer"></div>
+    <div class="vignette"></div>
+  </div>
+  <div class="candle-left"></div>
+  <div class="candle-right"></div>
+  <canvas id="particles"></canvas>
+
+  <!-- Controls Bar: Theme + Language -->
+  <div class="controls-bar">
+    <div class="theme-toggle" role="group" aria-label="Switch theme">
+      <button class="theme-btn active" id="btn-enchanted" onclick="setTheme('enchanted')">🌙 Enchanted</button>
+      <button class="theme-btn" id="btn-reader" onclick="setTheme('reader')">☀️ Reader</button>
+    </div>
+    <div class="lang-toggle" role="group" aria-label="Switch language">
+      <button class="lang-btn active" id="btn-lang" onclick="toggleLang()">عربي</button>
+    </div>
+  </div>
+
+  <!-- Admin Login Card -->
+  <div class="login-card" role="main">
+    <p class="eyebrow" data-en="✦ Restricted Archive Access ✦" data-ar="✦ وصول الأرشيف المقيد ✦">✦ Restricted Archive Access ✦</p>
+    <h1 class="card-title" data-en="Librarian Login" data-ar="تسجيل دخول أمين المكتبة">Librarian Login</h1>
+    <p class="card-subtitle" data-en="&quot;Only the guardians may alter the ancient scrolls...&quot;" data-ar="&quot;فقط الحراس هم من يمكنهم تعديل المخطوطات القديمة...&quot;">"Only the guardians may alter the ancient scrolls..."</p>
+
+    <div class="divider">
+      <div class="divider-line"></div>
+      <span class="divider-glyph">❧</span>
+      <div class="divider-line"></div>
+    </div>
+
+    <p class="intro-text" data-en="Enter your administrative credentials to manage the library's magical foundations." data-ar="أدخل بيانات الاعتماد الإدارية الخاصة بك لإدارة الأسس السحرية للمكتبة.">
+        Enter your administrative credentials to manage the library's magical foundations.
+    </p>
+
+    <form id="admin-login-form" novalidate>
+      <div class="form-group">
+        <label for="email" data-en="Admin Identifier" data-ar="معرف المسؤول">Admin Identifier</label>
+        <input type="email" id="email" placeholder="admin@enchanted.realm" autocomplete="email">
+        <p class="field-error" id="email-error" data-en="Unauthorized access attempt..." data-ar="محاولة وصول غير مصرح بها...">Unauthorized access attempt...</p>
+      </div>
+
+      <div class="form-group">
+        <label for="password" data-en="Guardian Key" data-ar="مفتاح الحارس">Guardian Key</label>
+        <input type="password" id="password" placeholder="············">
+        <p class="field-error" id="pass-error" data-en="The seal remains unbroken..." data-ar="الختم لا يزال غير مكسور...">The seal remains unbroken...</p>
+      </div>
+
+      <button type="submit" class="btn-submit" id="submit-btn" data-en="🗝 Unlock Dashboard" data-ar="🗝 فتح لوحة التحكم">
+        🗝 Unlock Dashboard
+      </button>
+    </form>
+
+    <div class="card-footer">
+      <a href="../pages/homepage.html" class="link-styled" data-en="Return to Library" data-ar="العودة للمكتبة">Return to Library</a>
+    </div>
+  </div>
+
+  <div class="epigraph" data-en="&quot;Knowledge is the ultimate magic, and the librarian its keeper.&quot;" data-ar="&quot;المعرفة هي السحر الأسمى، وأمين المكتبة هو حارسها.&quot;">"Knowledge is the ultimate magic, and the librarian its keeper."</div>
+  <div class="toast" id="toast"></div>
+
+  <script src="../js/global.js"></script>
+  <script src="../js/admin-login.js"></script>
+
+</body>
+
+</html>

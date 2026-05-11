@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Author Events & Interviews – Enchanted Pages / فعاليات المؤلفين والمقابلات - صفحات مسحورة</title>
+
+  <!-- Same fonts as home page -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=IM+Fell+English:ital@0;1&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="../css/events.css">
+  <link rel="stylesheet" href="../css/shared.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+
+<body>
+
+  <!-- ===== PARTICLES ===== -->
+  <div id="particles"></div>
+
+  <!-- ===== MODE TOGGLE ===== -->
+  <div class="mode-toggle-wrap">
+    <button class="mode-btn active" id="modeDay" onclick="setMode('day')"><i class="fa-solid fa-sun"></i> Day</button>
+    <button class="mode-btn" id="modeNight" onclick="setMode('night')"><i class="fa-solid fa-moon"></i> Night</button>
+  </div>
+
+  <!-- ===== NAV ===== -->
+  <nav>
+    <a href="../pages/homepage.html" class="nav-logo" data-en="✦ The Enchanted Library ✦"
+      data-ar="✦ المكتبة المسحورة ✦">✦ The Enchanted
+      Library ✦</a>
+
+    <ul class="nav-links">
+
+      <!-- Browse -->
+      <li class="nav-dropdown">
+        <a href="#" data-en="Browse" data-ar="تصفح">Browse</a>
+        <div class="dropdown-menu">
+          <a href="../pages/SearchPage.html" data-en="Search Books" data-ar="البحث عن الكتب">Search Books</a>
+          <a href="../pages/authors.html" data-en="By Author" data-ar="حسب المؤلف">By Author</a>
+          <a href="../pages/publishers.html" data-en="By Publisher" data-ar="حسب الناشر">By Publisher</a>
+          <a href="../pages/MyLibrary.html" data-en="My Library" data-ar="مكتبتي">My Library</a>
+        </div>
+      </li>
+
+      <!-- Community -->
+      <li class="nav-dropdown">
+        <a href="#" data-en="Community" data-ar="المجتمع">Community</a>
+        <div class="dropdown-menu">
+          
+          <a href="../pages/community.html" data-en="Book Club Forum" data-ar="منتدى نادي القراءة">Book Club Forum</a>
+          <a href="../pages/blog.html" data-en="Blog" data-ar="المدونة">Blog</a>
+          <a href="../pages/events.html" class="active" data-en="Author Events" data-ar="فعاليات المؤلفين">Author
+            Events</a>
+        </div>
+      </li>
+
+      <!-- Fair -->
+      <li>
+        <a href="../pages/BookPage.html" data-en="Book Fair" data-ar="معرض الكتاب">Book Fair</a>
+      </li>
+
+      <!-- About -->
+      <li class="nav-dropdown">
+        <a href="#" data-en="About" data-ar="عن الموقع">About</a>
+        <div class="dropdown-menu">
+          <a href="../pages/contactus.html" data-en="Contact Us" data-ar="اتصل بنا">Contact Us</a>
+          <a href="../pages/newsletter.html" data-en="Subscription" data-ar="الاشتراك">Subscription</a>
+        </div>
+      </li>
+
+      <!-- Auth -->
+
+      <li><a href="../pages/profile.html" data-en="Profile" data-ar="الملف الشخصي">Profile</a></li>
+
+      <!-- Language -->
+      <li>
+        <div class="language-switch">
+          <button onclick="setLanguage('en')" id="btn-en" class="active">EN</button>
+          <button onclick="setLanguage('ar')" id="btn-ar">AR</button>
+        </div>
+      </li>
+
+    </ul>
+  </nav>
+
+  <!-- ===== PAGE HERO ===== -->
+  <section class="page-hero">
+    <div class="page-hero-bg"></div>
+
+    <div class="page-hero-content">
+      <p class="hero-eyebrow" data-en="Conversations with the Masters of the Written Word"
+        data-ar="محادثات مع أساتذة الكلمة المكتوبة">Conversations with the Masters of the Written Word</p>
+      <h1 class="page-hero-title">
+        <span data-en="Author" data-ar="فعاليات">Author</span>
+        <em data-en="Events &" data-ar="المؤلفين">Events &amp;</em>
+        <span data-en="Interviews" data-ar="والمقابلات">Interviews</span>
+      </h1>
+      <p class="page-hero-sub" data-en="Step behind the page — meet the minds that create worlds"
+        data-ar="خطوة وراء الصفحة — قابل العقول التي تصنع العوالم">Step behind the page — meet the minds that create
+        worlds</p>
+      <div class="hero-divider">
+        <div class="divider-line"></div>
+        <span class="divider-icon">✦</span>
+        <div class="divider-line"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FILTER BAR ===== -->
+  <div class="filter-section" id="filterBar">
+    <span class="filter-label" data-en="Filter:" data-ar="تصفية:">Filter:</span>
+    <div class="filter-pills">
+      <button class="pill active" data-filter="all" data-en="All" data-ar="الكل">All</button>
+      <button class="pill" data-filter="interview" data-en="Interviews" data-ar="مقابلات">Interviews</button>
+      <button class="pill" data-filter="signing" data-en="Book Signings" data-ar="توقيع كتب">Book Signings</button>
+      <button class="pill" data-filter="panel" data-en="Panels" data-ar="ندوات">Panels</button>
+      <button class="pill" data-filter="reading" data-en="Readings" data-ar="قراءات">Readings</button>
+      <button class="pill" data-filter="workshop" data-en="Workshops" data-ar="ورش عمل">Workshops</button>
+    </div>
+    <div class="search-wrap">
+      <span class="search-icon">🔍</span>
+      <input class="search-input" id="eventSearch" type="text" data-placeholder-en="Search events…"
+        data-placeholder-ar="ابحث عن الفعاليات…" placeholder="Search events…" aria-label="Search events" />
+    </div>
+  </div>
+
+  <!-- ===== FEATURED INTERVIEW — Shakespeare ===== -->
+  <section class="featured-section">
+    <span class="section-tag" data-en="✦ Featured Interview" data-ar="✦ مقابلة متميزة">✦ Featured Interview</span>
+
+    <div class="featured-card reveal">
+      <!-- LEFT: portrait -->
+      <div class="featured-visual">
+        <div class="glow-orb"></div>
+        <div class="corner corner-tl"></div>
+        <div class="corner corner-tr"></div>
+        <div class="corner corner-bl"></div>
+        <div class="corner corner-br"></div>
+        <div class="author-portrait">
+          <img src="../image/2.jpeg" alt="William Shakespeare" class="featured-author-img">
+
+          <div class="author-portrait-name">William Shakespeare</div>
+          <div class="author-portrait-role">Playwright · Poet · Dramatist</div>
+        </div>
+      </div>
+
+      <!-- RIGHT: content -->
+      <div class="featured-body">
+        <div class="featured-category" data-en="🎙 Legendary Interview · Classic Literature"
+          data-ar="🎙 مقابلة أسطورية · أدب كلاسيكي">🎙 Legendary Interview · Classic Literature</div>
+        <h2 class="featured-title">
+          <span data-en="All the World's a Stage" data-ar="العالم كله مسرح">All the World's a Stage</span><br>
+          <em data-en="And Every Soul Plays a Part" data-ar="وكل روح تلعب دوراً">And Every Soul Plays a Part</em>
+        </h2>
+        <p class="featured-excerpt"
+          data-en="William Shakespeare reflects on tragedy, ambition, love, and the timeless nature of humanity through his greatest plays."
+          data-ar="وليام شكسبير يتأمل في المأساة والطموح والحب والطبيعة الخالدة للبشرية من خلال أعظم مسرحياته.">
+          William Shakespeare reflects on tragedy, ambition, love, and the timeless nature
+          of humanity through his greatest plays including <em>Hamlet</em>,
+          <em>Macbeth</em>, and <em>Romeo & Juliet</em>.
+        </p>
+        <blockquote class="featured-quote-block"
+          data-en="«All the world's a stage, and all the men and women merely players.»"
+          data-ar="«العالم كله مسرح، وجميع الرجال والنساء ليسوا سوى لاعبين.»">
+          "All the world's a stage, and all the men and women merely players."
+        </blockquote>
+        <div class="featured-meta">
+          <div class="meta-item">🕯 <span data-en="45 min read" data-ar="٤٥ دقيقة قراءة">45 min read</span></div>
+          <div class="meta-item">📅 <span data-en="May 3, 2026" data-ar="٣ مايو، ٢٠٢٦">May 3, 2026</span></div>
+          <div class="meta-item">📚 <span data-en="Drama · Poetry · Tragedy" data-ar="دراما · شعر · مأساة">Drama ·
+              Poetry · Tragedy</span></div>
+        </div>
+        <a href="#" class="btn-enchanted" onclick="openModal('shakespeare'); return false;"
+          data-en="Read Full Interview" data-ar="اقرأ المقابلة الكاملة">Read Full Interview</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FEATURED INTERVIEW — Hanan Lashin ===== -->
+  <section class="featured-section">
+    <span class="section-tag" data-en="✦ Featured Interview" data-ar="✦ مقابلة متميزة">✦ Featured Interview</span>
+
+    <div class="featured-card reveal">
+      <!-- LEFT: portrait -->
+      <div class="featured-visual">
+        <div class="glow-orb"></div>
+        <div class="corner corner-tl"></div>
+        <div class="corner corner-tr"></div>
+        <div class="corner corner-bl"></div>
+        <div class="corner corner-br"></div>
+        <div class="author-portrait">
+          <img src="../image/37.jpeg" alt="Hanan Lashin" class="featured-author-img">
+          <div class="author-portrait-name">Hanan Lashin</div>
+          <div class="author-portrait-role">Novelist · Spiritual Fiction · Kingdom Series</div>
+        </div>
+      </div>
+
+      <!-- RIGHT: content -->
+      <div class="featured-body">
+        <div class="featured-category" data-en="🎙 Featured Interview · Egyptian Literature"
+          data-ar="🎙 مقابلة متميزة · أدب مصري">🎙 Featured Interview · Egyptian Literature</div>
+        <h2 class="featured-title">
+          <span data-en="«Stories heal the soul" data-ar="«القصص تشفي الروح">"Stories heal the soul</span><br>
+          <em data-en="before they entertain the mind»" data-ar="قبل أن تُمتع العقل»">before they entertain the
+            mind"</em>
+        </h2>
+        <p class="featured-excerpt"
+          data-en="Hanan Lashin reflects on faith, human emotions, and how she writes stories that touch souls."
+          data-ar="حنان لاشين تتحدث عن الإيمان والمشاعر الإنسانية وكيف تكتب قصصاً تلمس الأرواح.">
+          حنان لاشين تتحدث عن الإيمان والمشاعر الإنسانية وكيف تكتب قصصًا تلمس الأرواح
+          من خلال سلسلة <em>المملكة</em> وأعمالها الروحانية المؤثرة.
+        </p>
+        <blockquote class="featured-quote-block"
+          data-en="«Writing is not a talent gifted to me — it's a prayer I pray every day on paper.»"
+          data-ar="«الكتابة ليست موهبة وُهبت لي — هي صلاة أصليها كل يوم على الورق.»">
+          "الكتابة ليست موهبة وُهبت لي — هي صلاة أصليها كل يوم على الورق."
+        </blockquote>
+        <div class="featured-meta">
+          <div class="meta-item">🕯 <span data-en="30 min read" data-ar="٣٠ دقيقة قراءة">30 min read</span></div>
+          <div class="meta-item">📅 <span data-en="May 2, 2026" data-ar="٢ مايو، ٢٠٢٦">May 2, 2026</span></div>
+          <div class="meta-item">📚 <span data-en="Spiritual Fiction · Drama" data-ar="خيال روحاني · دراما">Spiritual
+              Fiction · Drama</span></div>
+        </div>
+        <a href="#" class="btn-enchanted" onclick="openModal('hanan'); return false;" data-en="Read Full Interview"
+          data-ar="اقرأ المقابلة الكاملة">Read Full Interview</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== UPCOMING EVENTS TIMELINE ===== -->
+  <section class="events-section" id="events">
+    <div class="events-section-header reveal">
+      <span class="section-tag" data-en="✦ Coming Up" data-ar="✦ قريباً">✦ Coming Up</span>
+      <h2><span data-en="Upcoming" data-ar="الفعاليات">Upcoming</span> <em data-en="Events"
+          data-ar="القادمة">Events</em></h2>
+      <p data-en="Mark your calendar — literature is happening near you"
+        data-ar="ضع علامة على تقويمك — الأدب يحدث بالقرب منك">Mark your calendar — literature is happening near you</p>
+    </div>
+
+    <div class="timeline" id="timelineContainer">
+
+      <!-- Event 1 -->
+      <div class="timeline-item" data-filter="interview">
+        <div class="event-card">
+          <div class="event-badge" data-en="Author Spotlight" data-ar="تسليط الضوء">Author Spotlight</div>
+          <img src="../image/csm_garcia_marquez__gabriel_f26894719d.jpg" alt="Gabriel García Márquez"
+            class="event-author-img">
+          <div class="event-title" data-en="«One Hundred Years of Solitude» — Literary Discussion"
+            data-ar="«مئة عام من العزلة» — نقاش أدبي">
+            "One Hundred Years of Solitude" — Literary Discussion
+          </div>
+          <div class="event-author">Gabriel García Márquez</div>
+          <p class="event-desc" data-en="Nobel Prize-winning Colombian author celebrated for magical realism."
+            data-ar="مؤلف كولومبي حائز على جائزة نوبل ومشهور بالواقعية السحرية.">
+            Nobel Prize-winning Colombian author celebrated for magical realism and masterpieces like One Hundred Years
+            of Solitude and Love in the Time of Cholera.
+          </p>
+          <div class="event-details">
+            <span class="event-detail">🕔 <span data-en="7:00 PM" data-ar="٧:٠٠ م">7:00 PM</span></span>
+            <span class="event-detail">📍 <span data-en="Alexandria Library Hall"
+                data-ar="قاعة مكتبة الإسكندرية">Alexandria Library Hall</span></span>
+            <span class="event-detail event-badge free" data-en="Free Entry" data-ar="دخول مجاني">Free Entry</span>
+          </div>
+        </div>
+        <div class="timeline-node">
+          <div class="node-dot"></div>
+        </div>
+        <div class="event-date-col">
+          <div class="event-date">22</div>
+          <div class="event-month" data-en="May 2026" data-ar="مايو ٢٠٢٦">May 2026</div>
+        </div>
+      </div>
+
+      <!-- Event 2 -->
+      <div class="timeline-item" data-filter="signing">
+        <div class="event-card">
+          <div class="event-badge" data-en="Book Signing" data-ar="توقيع كتاب">Book Signing</div>
+          <img src="../image/39.jpeg" alt="Amr Abdelhamid" class="event-author-img">
+          <div class="event-title" data-en="«Ard Zikola» — Meet & Signing" data-ar="«أرض زيكولا» — لقاء وتوقيع">
+            "أرض زيكولا" — Meet &amp; Signing
+          </div>
+          <div class="event-author">Amr Abdelhamid</div>
+          <p class="event-desc" data-en="Bestselling Egyptian fantasy novelist known for Ard Zikola."
+            data-ar="روائي خيال مصري الأكثر مبيعاً والمعروف بـ أرض زيكولا.">
+            Bestselling Egyptian fantasy novelist known for Ard Zikola and Qawaed Jarteen.
+          </p>
+          <div class="event-details">
+            <span class="event-detail">🕔 <span data-en="6:30 PM" data-ar="٦:٣٠ م">6:30 PM</span></span>
+            <span class="event-detail">📍 <span data-en="Cairo International Book Fair"
+                data-ar="معرض القاهرة الدولي للكتاب">Cairo International Book Fair</span></span>
+            <span class="event-detail event-badge free" data-en="Free Entry" data-ar="دخول مجاني">Free Entry</span>
+          </div>
+        </div>
+        <div class="timeline-node">
+          <div class="node-dot"></div>
+        </div>
+        <div class="event-date-col">
+          <div class="event-date">15</div>
+          <div class="event-month" data-en="May 2026" data-ar="مايو ٢٠٢٦">May 2026</div>
+        </div>
+      </div>
+
+      <!-- Event 3 -->
+      <div class="timeline-item" data-filter="reading">
+        <div class="event-card">
+          <div class="event-badge" data-en="Book Reading" data-ar="قراءة كتاب">Book Reading</div>
+          <img src="../image/1.jpeg" alt="Jane Austen" class="event-author-img">
+          <div class="event-title" data-en="«Pride and Prejudice» — Readers Gathering"
+            data-ar="«كبرياء وتحامل» — تجمع القراء">
+            "Pride and Prejudice" — Readers Gathering
+          </div>
+          <div class="event-author">Jane Austen</div>
+          <p class="event-desc" data-en="Iconic English novelist famous for romantic classics."
+            data-ar="روائية إنجليزية أيقونية مشهورة بالكلاسيكيات الرومانسية.">
+            Iconic English novelist famous for romantic classics like Pride and Prejudice, Sense and Sensibility, and
+            Emma.
+          </p>
+          <div class="event-details">
+            <span class="event-detail">🕔 <span data-en="4:00 PM" data-ar="٤:٠٠ م">4:00 PM</span></span>
+            <span class="event-detail">📍 <span data-en="Victorian Literature Lounge"
+                data-ar="صالة الأدب الفيكتوري">Victorian Literature Lounge</span></span>
+            <span class="event-detail event-badge free" data-en="Free Entry" data-ar="دخول مجاني">Free Entry</span>
+          </div>
+        </div>
+        <div class="timeline-node">
+          <div class="node-dot"></div>
+        </div>
+        <div class="event-date-col">
+          <div class="event-date">30</div>
+          <div class="event-month" data-en="May 2026" data-ar="مايو ٢٠٢٦">May 2026</div>
+        </div>
+      </div>
+
+    </div><!-- /timeline -->
+  </section>
+
+  <!-- ===== INTERVIEWS GRID ===== -->
+  <section class="interviews-section" id="interviews">
+    <div class="interviews-header reveal">
+      <div>
+        <span class="section-tag" data-en="✦ Recent Conversations" data-ar="✦ محادثات أخيرة">✦ Recent
+          Conversations</span>
+        <h2><span data-en="Interviews &" data-ar="المقابلات">Interviews &amp;</span> <em data-en="Highlights"
+            data-ar="وأبرز اللحظات">Highlights</em></h2>
+      </div>
+      <div class="view-toggle">
+        <button class="toggle-btn active" id="gridBtn" title="Grid view" aria-label="Grid view">⊞</button>
+        <button class="toggle-btn" id="listBtn" title="List view" aria-label="List view">☰</button>
+      </div>
+    </div>
+
+    <div class="interviews-grid" id="interviewsGrid">
+
+      <!-- Card: Amr Abdelhamid -->
+      <article class="interview-card" data-filter="interview" onclick="openModal('amr')">
+        <div class="card-visual">
+          <div class="card-visual-bg" style="background:linear-gradient(135deg,#0d1f0a,#1e4d14)"></div>
+          <img src="../image/39.jpeg" alt="Amr Abdelhamid" class="author-img">
+          <div class="card-overlay"></div>
+          <div class="card-play-btn">▶</div>
+          <div class="card-duration" data-en="38 min read" data-ar="٣٨ دقيقة قراءة">38 min read</div>
+        </div>
+        <div class="card-body">
+          <div class="card-genre">Fantasy · Egyptian Fiction</div>
+          <h3 class="card-title" data-en="«Fantasy is not an escape from reality — it's another way to understand it»"
+            data-ar="«الخيال ليس هروبًا من الواقع — هو طريقة أخرى لفهمه»">"الخيال ليس هروبًا من الواقع — هو طريقة أخرى
+            لفهمه"</h3>
+          <div class="card-author">Amr Abdelhamid</div>
+          <p class="card-excerpt" data-en="On building the world of Zikola and why fantasy mirrors society."
+            data-ar="حول بناء عالم زيكولا ولماذا يعكس الخيال المجتمع.">On building the world of Zikola, Egyptian
+            mythology, and why fantasy is the truest
+            mirror of society.</p>
+          <div class="card-footer">
+            <span class="card-date" data-en="May 15, 2026" data-ar="١٥ مايو، ٢٠٢٦">May 15, 2026</span>
+            <button class="card-read-btn" data-en="Read →" data-ar="اقرأ ←">Read →</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card: William Shakespeare -->
+      <article class="interview-card" data-filter="interview" onclick="openModal('shakespeare')">
+        <div class="card-visual">
+          <div class="card-visual-bg" style="background:linear-gradient(135deg,#1a0c20,#3a1a40)"></div>
+          <img src="../image/2.jpeg" alt="William Shakespeare" class="author-img">
+          <div class="card-overlay"></div>
+          <div class="card-play-btn">▶</div>
+          <div class="card-duration" data-en="45 min read" data-ar="٤٥ دقيقة قراءة">45 min read</div>
+        </div>
+        <div class="card-body">
+          <div class="card-genre">Drama · Poetry · Tragedy</div>
+          <h3 class="card-title" data-en="«All the world's a stage, and all the men and women merely players»"
+            data-ar="«العالم كله مسرح، وجميع الرجال والنساء ليسوا سوى لاعبين»">"All the world's a stage, and all the men
+            and women merely players"</h3>
+          <div class="card-author">William Shakespeare</div>
+          <p class="card-excerpt" data-en="On the architecture of tragedy and why Hamlet still haunts the human soul."
+            data-ar="عن بنية المأساة ولماذا لا يزال هاملت يطارد الروح البشرية.">On the architecture of tragedy, the
+            nature of love, and why Hamlet still haunts the
+            human soul.</p>
+          <div class="card-footer">
+            <span class="card-date" data-en="May 3, 2026" data-ar="٣ مايو، ٢٠٢٦">May 3, 2026</span>
+            <button class="card-read-btn" data-en="Read →" data-ar="اقرأ ←">Read →</button>
+          </div>
+        </div>
+      </article>
+
+    </div><!-- /interviews-grid -->
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="footer-logo" data-en="✦ The Enchanted Library ✦" data-ar="✦ المكتبة المسحورة ✦">✦ المكتبة المسحورة ✦
+    </div>
+    <p class="footer-quote" data-en="«A reader lives a thousand lives before he dies.» — George R.R. Martin"
+      data-ar="«القارئ يعيش ألف حياة قبل أن يموت.» — جورج ر. ر. مارتن">«القارئ يعيش ألف حياة قبل أن يموت.» — جورج ر. ر.
+      مارتن</p>
+    <div class="footer-links">
+      <a href="../pages/homepage.html" data-en="Home" data-ar="الرئيسية">الرئيسية</a>
+      <a href="../pages/BookPage.html" data-en="Browse" data-ar="تصفّح">تصفّح</a>
+      <a href="../pages/SearchPage.html" data-en="Search" data-ar="البحث">البحث</a>
+      <a href="../pages/MyLibrary.html" data-en="My Library" data-ar="مكتبتي">مكتبتي</a>
+    </div>
+    <p class="footer-copy" data-en="🌹 &nbsp; An Enchanted Tale &nbsp; 🌹" data-ar="🌹 &nbsp; حكاية سحرية &nbsp; 🌹">🌹
+      &nbsp; حكاية سحرية &nbsp; 🌹</p>
+  </footer>
+
+  <!-- ===== MODAL ===== -->
+  <div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true">
+    <div class="modal-box" id="modalBox">
+      <button class="modal-close" onclick="closeModal()" aria-label="Close modal">✕ Close</button>
+      <div id="modalContent"></div>
+    </div>
+  </div>
+
+  <script src="../js/global.js"></script>
+  <script src="../js/events.js"></script>
+
+</body>
+
+</html>

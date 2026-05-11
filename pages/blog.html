@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Literary Corner – Book Recommendations Blog / ركن الأدب - مدونة توصيات الكتب</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=IM+Fell+English:ital@0;1&family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&display=swap"
+    rel="stylesheet" />
+
+  <!-- External Stylesheet -->
+  <link rel="stylesheet" href="../css/blog.css" />
+  <link rel="stylesheet" href="../css/shared.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+  <!-- ===================== PARTICLES ===================== -->
+  <div id="particles"></div>
+
+  <!-- ===== MODE TOGGLE ===== -->
+  <div class="mode-toggle-wrap">
+    <button class="mode-btn active" id="modeDay" onclick="setMode('day')"><i class="fa-solid fa-sun"></i> Day</button>
+    <button class="mode-btn" id="modeNight" onclick="setMode('night')"><i class="fa-solid fa-moon"></i> Night</button>
+  </div>
+
+  <!-- ===== NAV ===== -->
+  <nav>
+    <a href="../pages/homepage.html" class="nav-logo" data-en="✦ The Enchanted Library ✦" data-ar="✦ المكتبة المسحورة ✦">✦ The Enchanted
+      Library ✦</a>
+
+    <ul class="nav-links">
+
+      <!-- Browse -->
+      <li class="nav-dropdown">
+        <a href="#" data-en="Browse" data-ar="تصفح">Browse</a>
+        <div class="dropdown-menu">
+          <a href="../pages/SearchPage.html" data-en="Search Books" data-ar="البحث عن الكتب">Search Books</a>
+          <a href="../pages/authors.html" data-en="By Author" data-ar="حسب المؤلف">By Author</a>
+          <a href="../pages/publishers.html" data-en="By Publisher" data-ar="حسب الناشر">By Publisher</a>
+          <a href="../pages/MyLibrary.html" data-en="My Library" data-ar="مكتبتي">My Library</a>
+        </div>
+      </li>
+
+      <!-- Community -->
+      <li class="nav-dropdown">
+        <a href="#" data-en="Community" data-ar="المجتمع">Community</a>
+        <div class="dropdown-menu">
+         
+          <a href="../pages/community.html" data-en="Book Club Forum" data-ar="منتدى نادي القراءة">Book Club Forum</a>
+          <a href="../pages/blog.html" class="active" data-en="Blog" data-ar="المدونة">Blog</a>
+          <a href="../pages/events.html" data-en="Author Events" data-ar="فعاليات المؤلفين">Author Events</a>
+        </div>
+      </li>
+
+      <!-- Fair -->
+      <li>
+        <a href="../pages/BookPage.html" data-en="Book Fair" data-ar="معرض الكتاب">Book Fair</a>
+      </li>
+
+      <!-- About -->
+      <li class="nav-dropdown">
+        <a href="#" data-en="About" data-ar="عن الموقع">About</a>
+        <div class="dropdown-menu">
+          <a href="../pages/contactus.html" data-en="Contact Us" data-ar="اتصل بنا">Contact Us</a>
+          <a href="../pages/newsletter.html" data-en="Subscription" data-ar="الاشتراك">Subscription</a>
+        </div>
+      </li>
+
+      <!-- Auth -->
+
+      <li><a href="../pages/profile.html" data-en="Profile" data-ar="الملف الشخصي">Profile</a></li>
+
+      <!-- Language -->
+      <li>
+        <div class="language-switch">
+          <button onclick="setLanguage('en')" id="btn-en" class="active">EN</button>
+          <button onclick="setLanguage('ar')" id="btn-ar">AR</button>
+        </div>
+      </li>
+
+    </ul>
+  </nav>
+
+  <!-- ===================== HERO ===================== -->
+  <section class="blog-hero">
+    <div class="blog-hero-bg"></div>
+    <div class="hero-book-deco">📖</div>
+
+    <div class="blog-hero-content">
+      <p class="blog-hero-eyebrow" data-en="✦ The Literary Corner ✦" data-ar="✦ ركن الأدب ✦">✦ The Literary Corner ✦</p>
+      <h1 class="blog-hero-title">
+        <em data-en="Blogs" data-ar="المدونات">Blogs</em>
+      </h1>
+      <p class="blog-hero-sub" data-en="Curated reads, honest reviews, and literary discoveries for every kind of reader." data-ar="قراءات منسقة، مراجعات صادقة، واكتشافات أدبية لكل نوع من القراء.">
+        Curated reads, honest reviews, and literary discoveries<br />
+        for every kind of reader.
+      </p>
+      <div class="hero-divider">
+        <div class="divider-line"></div>
+        <span class="divider-icon">🌹</span>
+        <div class="divider-line"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FILTER BAR ===================== -->
+  <div class="filter-section reveal">
+    <span class="filter-label" data-en="Filter:" data-ar="تصفية:">Filter:</span>
+    <button class="filter-btn active" onclick="filterPosts('all', this)" data-en="All" data-ar="الكل">All</button>
+    <button class="filter-btn" onclick="filterPosts('fiction', this)" data-en="Fiction" data-ar="روايات">Fiction</button>
+    <button class="filter-btn" onclick="filterPosts('non-fiction', this)" data-en="Non-Fiction" data-ar="كتب علمية">Non-Fiction</button>
+    <button class="filter-btn" onclick="filterPosts('mystery', this)" data-en="Mystery" data-ar="غموض">Mystery</button>
+    <button class="filter-btn" onclick="filterPosts('classics', this)" data-en="Classics" data-ar="كلاسيكيات">Classics</button>
+    <button class="filter-btn" onclick="filterPosts('fantasy', this)" data-en="Fantasy" data-ar="خيال">Fantasy</button>
+    <button class="filter-btn" onclick="filterPosts('sci-fi', this)" data-en="Sci-Fi" data-ar="خيال علمي">Sci-Fi</button>
+  </div>
+
+  <!-- ===================== BLOG LAYOUT ===================== -->
+  <div class="blog-layout">
+
+    <!-- ---- MAIN CONTENT ---- -->
+    <main>
+
+      <!-- FEATURED POST -->
+      <article class="featured-post reveal" data-category="classics" onclick="openModal('featured')">
+        <div class="featured-img">
+          <img src="../image/csm_garcia_marquez__gabriel_f26894719d.jpg" alt="Gabriel García Márquez">
+          <div class="featured-img-overlay"></div>
+          <span class="featured-badge" data-en="✦ Featured" data-ar="✦ مميز">
+            ✦ Featured
+          </span>
+        </div>
+        <div class="featured-body">
+          <p class="featured-tag" data-en="Magical Realism · Featured Author" data-ar="الواقعية السحرية · مؤلف متميز">Magical Realism · Featured Author</p>
+          <h2 data-en="Gabriel García Márquez — The Master of Magical Realism" data-ar="غابرييل غارسيا ماركيز — سيد الواقعية السحرية">
+            Gabriel García Márquez — The Master of Magical Realism
+          </h2>
+          <p data-en="Gabriel García Márquez transformed literature with his unforgettable storytelling, blending fantasy, politics, love, and loneliness into worlds that feel both magical and painfully real." data-ar="حول غابرييل غارسيا ماركيز الأدب بسرد قصصه الذي لا يُنسى، حيث مزج الخيال والسياسة والحب والوحدة في عوالم تبدو سحرية وحقيقية بشكل مؤلم.">
+            Gabriel García Márquez transformed literature with his unforgettable storytelling,
+            blending fantasy, politics, love, and loneliness into worlds that feel both magical
+            and painfully real. His novels continue to inspire generations of readers worldwide.
+          </p>
+          <div class="featured-meta">
+            <span data-en="📅 May 8, 2026" data-ar="📅 ٨ مايو، ٢٠٢٦">📅 May 8, 2026</span>
+            <span data-en="👤 Editorial Team" data-ar="👤 فريق التحرير">👤 Editorial Team</span>
+            <span data-en="⏱ 7 min read" data-ar="⏱ ٧ دقائق قراءة">⏱ 7 min read</span>
+          </div>
+          <a href="#" class="read-more-link" onclick="event.preventDefault(); openModal('featured')" data-en="Read Article →" data-ar="اقرأ المقال ←">
+            Read Article <span>→</span>
+          </a>
+        </div>
+      </article>
+
+      <!-- POSTS GRID -->
+      <div class="posts-grid" id="postsGrid">
+        <!-- Post 1 -->
+        <article class="post-card reveal" data-category="fantasy" onclick="openModal('post1')">
+          <div class="post-card-img">
+            <img src="../image/37.jpeg" alt="Hanan Lashin">
+          </div>
+          <div class="post-card-body">
+            <span class="post-category cat-fantasy" data-en="Fantasy" data-ar="خيال">Fantasy</span>
+            <h3 data-en="Hanan Lashin — The Queen of Emotional Fantasy" data-ar="حنان لاشين — ملكة الخيال العاطفي">Hanan Lashin — The Queen of Emotional Fantasy</h3>
+            <p data-en="Hanan Lashin captured readers with her emotional storytelling, deep characters, and imaginative worlds." data-ar="أسرت حنان لاشين القراء بسردها العاطفي وشخصياتها العميقة وعوالمها الخيالية.">
+              Hanan Lashin captured readers with her emotional storytelling, deep characters,
+              and imaginative worlds that combine fantasy with powerful human emotions.
+            </p>
+            <div class="post-footer">
+              <span data-en="Apr 28, 2026 · Sara Malik" data-ar="٢٨ أبريل، ٢٠٢٦ · سارة مالك">Apr 28, 2026 · Sara Malik</span>
+              <span class="stars">★★★★★</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Post 2 -->
+        <article class="post-card reveal" data-category="mystery" onclick="openModal('post2')">
+          <div class="post-card-img">
+            <img src="../image/39.jpeg" alt="Amr Abdel Hamid">
+          </div>
+          <div class="post-card-body">
+            <span class="post-category cat-fantasy" data-en="Fantasy" data-ar="خيال">Fantasy</span>
+            <h3 data-en="Amr Abdel Hamid — Building Worlds Beyond Imagination" data-ar="عمرو عبد الحميد — بناء عوالم تفوق الخيال">Amr Abdel Hamid — Building Worlds Beyond Imagination</h3>
+            <p data-en="Amr Abdel Hamid became one of the most beloved modern Arabic fantasy writers, creating rich fictional universes." data-ar="أصبح عمرو عبد الحميد واحداً من أكثر كتاب الخيال العربي المعاصرين شهرة، حيث أنشأ أكواناً خيالية غنية.">
+              Amr Abdel Hamid became one of the most beloved modern Arabic fantasy writers,
+              creating rich fictional universes filled with mystery, philosophy, and suspense.
+            </p>
+            <div class="post-footer">
+              <span data-en="Apr 22, 2026 · Omar Fawzi" data-ar="٢٢ أبريل، ٢٠٢٦ · عمر فوزي">Apr 22, 2026 · Omar Fawzi</span>
+              <span class="stars">★★★★★</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Post 3 -->
+        <article class="post-card reveal" data-category="non-fiction" onclick="openModal('post3')">
+          <div class="post-card-img">
+            <img src="../image/2.jpeg" alt="William Shakespeare">
+          </div>
+          <div class="post-card-body">
+            <span class="post-category cat-classics" data-en="Classics" data-ar="كلاسيكيات">Classics</span>
+            <h3 data-en="William Shakespeare — The Voice of Timeless Drama" data-ar="وليام شكسبير — صوت الدراما الخالدة">William Shakespeare — The Voice of Timeless Drama</h3>
+            <p data-en="William Shakespeare shaped world literature through unforgettable tragedies, comedies, and poetic language." data-ar="شكّل وليام شكسبير الأدب العالمي من خلال التراجيديات والكوميديات واللغة الشعرية التي لا تُنسى.">
+              William Shakespeare shaped world literature through unforgettable tragedies,
+              comedies, and poetic language that still influence theatre and storytelling today.
+            </p>
+            <div class="post-footer">
+              <span data-en="Apr 18, 2026 · Nour El-Din" data-ar="١٨ أبريل، ٢٠٢٦ · نور الدين">Apr 18, 2026 · Nour El-Din</span>
+              <span class="stars">★★★★☆</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Post 4 -->
+        <article class="post-card reveal" data-category="classics" onclick="openModal('post4')">
+          <div class="post-card-img">
+            <img src="../image/1.jpeg" alt="Jane Austen">
+          </div>
+          <div class="post-card-body">
+            <span class="post-category cat-classics" data-en="Classics" data-ar="كلاسيكيات">Classics</span>
+            <h3 data-en="Jane Austen — Romance, Wit, and Social Critique" data-ar="جين أوستن — الرومانسية والذكاء والنقد الاجتماعي">Jane Austen — Romance, Wit, and Social Critique</h3>
+            <p data-en="Jane Austen created some of literature's most beloved heroines, combining romance and intelligence." data-ar="أنشأت جين أوستن بعضاً من أكثر بطلات الأدب شهرة، حيث جمعت بين الرومانسية والذكاء.">
+              Jane Austen created some of literature's most beloved heroines, combining romance,
+              intelligence, and sharp observations about society in every novel she wrote.
+            </p>
+            <div class="post-footer">
+              <span data-en="Apr 14, 2026 · Amira Sayed" data-ar="١٤ أبريل، ٢٠٢٦ · أميرة سيد">Apr 14, 2026 · Amira Sayed</span>
+              <span class="stars">★★★★★</span>
+            </div>
+          </div>
+        </article>
+      </div><!-- /postsGrid -->
+
+    </main><!-- /main -->
+
+    <!-- ---- SIDEBAR ---- -->
+    <aside class="sidebar">
+      <!-- Search Widget -->
+      <div class="sidebar-widget reveal">
+        <h3 class="widget-title" data-en="🔎 Search Blog" data-ar="🔎 ابحث في المدونة">🔎 Search Blog</h3>
+        <div class="search-wrap">
+          <input type="text" class="search-input" id="blogSearch" data-placeholder-en="Search articles…" data-placeholder-ar="ابحث عن المقالات…" placeholder="Search articles…"
+            oninput="liveSearch(this.value)" />
+          <button class="search-btn" onclick="liveSearch(document.getElementById('blogSearch').value)">🔍</button>
+        </div>
+        <div class="search-results" id="searchResults"></div>
+      </div>
+
+      <!-- Popular Posts -->
+      <div class="sidebar-widget reveal">
+        <h3 class="widget-title" data-en="🔥 Most Popular" data-ar="🔥 الأكثر شهرة">🔥 Most Popular</h3>
+        <div class="popular-list">
+          <div class="popular-item" onclick="openModal('featured')">
+            <span class="popular-num">01</span>
+            <div class="popular-info">
+              <h4 data-en="Why Austen Still Rules Every Reading List" data-ar="لماذا لا تزال أوستن تتصدر كل قائمة قراءة">Why Austen Still Rules Every Reading List</h4>
+              <span>12.4k reads</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tags Cloud -->
+      <div class="sidebar-widget reveal">
+        <h3 class="widget-title" data-en="🏷️ Tags" data-ar="🏷️ الوسوم">🏷️ Tags</h3>
+        <div class="tags-cloud">
+          <span class="tag-chip" onclick="filterPosts('fiction', null)" data-en="Fiction" data-ar="روايات">Fiction</span>
+          <span class="tag-chip" onclick="filterPosts('classics', null)" data-en="Classics" data-ar="كلاسيكيات">Classics</span>
+          <span class="tag-chip" onclick="filterPosts('mystery', null)" data-en="Mystery" data-ar="غموض">Mystery</span>
+          <span class="tag-chip" onclick="filterPosts('fantasy', null)" data-en="Fantasy" data-ar="خيال">Fantasy</span>
+        </div>
+      </div>
+    </aside>
+
+  </div><!-- /blog-layout -->
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer>
+    <div class="footer-logo" data-en="✦ The Enchanted Library ✦" data-ar="✦ المكتبة المسحورة ✦">✦ المكتبة المسحورة ✦</div>
+    <p class="footer-quote" data-en="«Not all those who wander are lost — some are just lost in books.»" data-ar="«ليس كل من يهيم على وجهه تائهاً - البعض تائهون في الكتب فحسب.»">«ليس كل من يهيم على وجهه تائهاً - البعض تائهون في الكتب فحسب.»</p>
+    <div class="footer-links">
+      <a href="../pages/homepage.html" data-en="Home" data-ar="الرئيسية">الرئيسية</a>
+      <a href="BookPage.html" data-en="Browse" data-ar="تصفّح">تصفّح</a>
+      <a href="SearchPage.html" data-en="Search" data-ar="البحث">البحث</a>
+      <a href="MyLibrary.html" data-en="My Library" data-ar="مكتبتي">مكتبتي</a>
+    </div>
+    <p class="footer-copy" data-en="🌹 &nbsp; An Enchanted Tale &nbsp; 🌹" data-ar="🌹 &nbsp; حكاية سحرية &nbsp; 🌹">🌹 &nbsp; حكاية سحرية &nbsp; 🌹</p>
+  </footer>
+
+  <!-- ===================== POST MODAL ===================== -->
+  <div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
+    <div class="modal-box" id="modalBox">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <div id="modalContent"></div>
+    </div>
+  </div>
+
+  <script src="../js/global.js"></script>
+  <script src="../js/blog.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,250 @@
+/* ================= HERO ================= */
+
+.community-hero{
+    min-height:70vh;
+
+    padding:
+    140px 80px 80px;
+
+    display:flex;
+    align-items:center;
+}
+
+.community-left{
+    max-width:850px;
+}
+
+.community-left h1{
+    font-family:
+    'Playfair Display',
+    serif;
+
+    font-size:95px;
+
+    line-height:1;
+
+    margin-bottom:30px;
+
+    color:var(--cream);
+}
+
+.hero-text{
+    font-size:30px;
+
+    line-height:1.5;
+
+    color:
+    rgba(247,237,216,.82);
+
+    max-width:620px;
+}
+
+/* ================= STATS ================= */
+
+.community-stats{
+    padding:40px 80px;
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(3,1fr);
+
+    gap:30px;
+}
+
+.community-stat-card{
+    background:
+    var(--glass);
+
+    padding:35px;
+
+    border-radius:28px;
+
+    border:
+    1px solid rgba(201,168,76,.10);
+
+    transition:.3s;
+}
+
+.community-stat-card:hover{
+    transform:
+    translateY(-8px);
+}
+
+.community-stat-card h3{
+    font-size:30px;
+
+    margin-bottom:20px;
+
+    color:var(--cream);
+}
+
+.community-stat-card p{
+    font-size:54px;
+
+    color:var(--gold);
+}
+
+/* ================= DISCUSSIONS ================= */
+
+.discussion-section{
+    padding:80px;
+}
+
+.discussion-section h2{
+    font-family:
+    'Playfair Display',
+    serif;
+
+    font-size:52px;
+
+    color:var(--gold);
+
+    margin-bottom:35px;
+}
+
+.discussion-grid{
+    display:grid;
+
+    grid-template-columns:
+    repeat(3,1fr);
+
+    gap:30px;
+}
+
+.discussion-card{
+    padding:35px;
+}
+
+.discussion-card h3{
+    font-size:30px;
+
+    margin-bottom:18px;
+
+    color:var(--gold);
+}
+
+.discussion-card p{
+    font-size:22px;
+
+    line-height:1.6;
+
+    color:
+    rgba(247,237,216,.75);
+}
+
+/* ================= ACTIVITY ================= */
+
+.activity-section{
+    padding:80px;
+}
+
+.activity-section h2{
+    font-family:
+    'Playfair Display',
+    serif;
+
+    font-size:52px;
+
+    color:var(--gold);
+
+    margin-bottom:35px;
+}
+
+.activity-box{
+    padding:40px;
+}
+
+.activity-box ul{
+    list-style:none;
+}
+
+.activity-box li{
+    font-size:28px;
+
+    padding:18px 0;
+
+    border-bottom:
+    1px solid rgba(201,168,76,.08);
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:1100px){
+
+    .discussion-grid{
+        grid-template-columns:1fr;
+    }
+
+    .community-stats{
+        grid-template-columns:1fr;
+    }
+
+}
+
+@media(max-width:800px){
+
+    .community-left h1{
+        font-size:65px;
+    }
+
+    .hero-text{
+        font-size:24px;
+    }
+
+    .community-hero,
+    .community-stats,
+    .discussion-section,
+    .activity-section{
+        padding-left:25px;
+        padding-right:25px;
+    }
+
+}
+.chat-section{
+    padding:80px;
+}
+
+.chat-section h2{
+    font-size:52px;
+    margin-bottom:30px;
+    color:var(--gold);
+}
+
+.chat-container{
+    padding:30px;
+}
+
+.chat-messages{
+    height:350px;
+    overflow-y:auto;
+    margin-bottom:20px;
+}
+
+.message{
+    padding:15px;
+    margin-bottom:15px;
+    border-radius:15px;
+    background:rgba(201,168,76,.08);
+}
+
+.chat-input-box{
+    display:flex;
+    gap:15px;
+}
+
+.chat-input-box input{
+    flex:1;
+    padding:15px;
+    border:none;
+    border-radius:15px;
+    outline:none;
+}
+
+.chat-input-box button{
+    padding:15px 25px;
+    border:none;
+    border-radius:15px;
+    cursor:pointer;
+    background:var(--gold);
+}

@@ -1,0 +1,642 @@
+:root {
+  --gold: #c9a84c;
+  --gold-light: #e8c97a;
+  --gold-dim: #8a6e34;
+  --ink: #1a1008;
+  --parchment: #f5ead6;
+  --parchment-dark: #e8d4b0;
+  --shadow-brown: #2c1a0e;
+  --mist: rgba(200, 168, 100, 0.08);
+  --candle-glow: rgba(255, 210, 100, 0.15);
+}
+
+[data-theme="reader"] {
+  --bg-main: #f5ead6;
+  --bg-card: rgba(255, 250, 240, 0.95);
+  --text-primary: #1a1008;
+  --text-secondary: #4a3520;
+  --text-muted: #7a5c3a;
+  --border-color: rgba(180, 140, 70, 0.4);
+  --input-bg: rgba(255, 248, 235, 0.9);
+  --particle-color: rgba(150, 110, 40, 0.6);
+  --fog-color: rgba(200, 168, 100, 0.06);
+  --btn-text: #f5ead6;
+}
+
+[data-theme="enchanted"] {
+  --bg-main: #0a0608;
+  --bg-card: rgba(20, 12, 6, 0.92);
+  --text-primary: #e8c97a;
+  --text-secondary: #c9a84c;
+  --text-muted: #8a6e34;
+  --border-color: rgba(180, 140, 70, 0.25);
+  --input-bg: rgba(30, 18, 8, 0.85);
+  --particle-color: rgba(220, 180, 80, 0.5);
+  --fog-color: rgba(200, 150, 50, 0.04);
+  --btn-text: #0d0805;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Cormorant Garamond', serif;
+  background: var(--bg-main);
+  color: var(--text-primary);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.8s ease, color 0.8s ease;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Arabic RTL */
+body[dir="rtl"] {
+  font-family: 'Amiri', serif;
+}
+
+body[data-theme="enchanted"] {
+  background-image: radial-gradient(ellipse at 20% 50%, rgba(139, 26, 42, 0.12) 0%, transparent 60%), radial-gradient(ellipse at 80% 20%, rgba(200, 146, 42, 0.08) 0%, transparent 50%), radial-gradient(ellipse at 60% 80%, rgba(100, 50, 20, 0.15) 0%, transparent 50%);
+}
+
+body[data-theme="reader"] {
+  background-image: radial-gradient(ellipse at 30% 30%, rgba(180, 130, 40, 0.06) 0%, transparent 60%), radial-gradient(ellipse at 80% 80%, rgba(140, 90, 30, 0.05) 0%, transparent 50%);
+}
+
+body[dir="rtl"] .card-title,
+body[dir="rtl"] .eyebrow,
+body[dir="rtl"] label {
+  font-family: 'Cinzel', serif;
+}
+
+body[dir="rtl"] .card-title {
+  font-family: 'Amiri', serif;
+  font-size: clamp(20px, 4vw, 26px);
+}
+
+body[dir="rtl"] .eyebrow {
+  font-family: 'Amiri', serif;
+  letter-spacing: 0.05em;
+  font-size: 11px;
+}
+
+body[dir="rtl"] label {
+  font-family: 'Amiri', serif;
+  letter-spacing: 0.02em;
+  font-size: 12px;
+}
+
+body[dir="rtl"] input[type="email"],
+body[dir="rtl"] input[type="password"] {
+  text-align: right;
+  direction: rtl;
+}
+
+body[dir="rtl"] .card-footer {
+  flex-direction: row-reverse;
+}
+
+body[dir="rtl"] .login-card::before {
+  top: 12px;
+  right: 16px;
+  left: auto;
+}
+
+body[dir="rtl"] .login-card::after {
+  bottom: 12px;
+  left: 16px;
+  right: auto;
+}
+
+body[dir="rtl"] .btn-submit,
+body[dir="rtl"] .link-styled,
+body[dir="rtl"] .intro-text,
+body[dir="rtl"] .card-subtitle,
+body[dir="rtl"] .field-error,
+body[dir="rtl"] .epigraph {
+  font-family: 'Amiri', serif;
+  font-style: normal;
+}
+
+body[dir="rtl"] .card-subtitle,
+body[dir="rtl"] .intro-text {
+  font-style: italic;
+}
+
+/* ── Library Background ── */
+.library-bg {
+  display: none;
+}
+
+.bookshelf-layer {
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(90deg,
+      transparent,
+      transparent 38px,
+      rgba(140, 90, 30, 0.12) 38px,
+      rgba(140, 90, 30, 0.12) 40px),
+    repeating-linear-gradient(0deg,
+      transparent,
+      transparent 58px,
+      rgba(140, 90, 30, 0.08) 58px,
+      rgba(140, 90, 30, 0.08) 60px);
+}
+
+[data-theme="enchanted"] .bookshelf-layer {
+  background-image:
+    repeating-linear-gradient(90deg, transparent, transparent 38px, rgba(180, 130, 40, 0.08) 38px, rgba(180, 130, 40, 0.08) 40px),
+    repeating-linear-gradient(0deg, transparent, transparent 58px, rgba(180, 130, 40, 0.06) 58px, rgba(180, 130, 40, 0.06) 60px);
+}
+
+.vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 30%, var(--bg-main) 85%);
+}
+
+/* ── Candle Lights ── */
+.candle-left,
+.candle-right {
+  position: fixed;
+  width: 200px;
+  height: 400px;
+  border-radius: 50%;
+  filter: blur(60px);
+  z-index: 1;
+  animation: flicker 4s ease-in-out infinite;
+}
+
+.candle-left {
+  background: radial-gradient(ellipse, rgba(255, 180, 50, 0.18) 0%, transparent 70%);
+  left: -40px;
+  top: 30%;
+  animation-delay: 0.3s;
+}
+
+.candle-right {
+  background: radial-gradient(ellipse, rgba(255, 160, 30, 0.14) 0%, transparent 70%);
+  right: -40px;
+  top: 25%;
+  animation-delay: 1.2s;
+}
+
+@keyframes flicker {
+
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  30% {
+    opacity: 0.85;
+    transform: scale(0.97);
+  }
+
+  60% {
+    opacity: 0.92;
+    transform: scale(1.03);
+  }
+}
+
+/* ── Particles Canvas ── */
+#particles {
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* ── Controls Bar (Theme + Language) ── */
+.controls-bar {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 100;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+body[dir="rtl"] .controls-bar {
+  right: auto;
+  left: 1.5rem;
+  flex-direction: row-reverse;
+}
+
+.theme-toggle,
+.lang-toggle {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 50px;
+  padding: 6px;
+  display: flex;
+  gap: 4px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.theme-btn,
+.lang-btn {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  padding: 7px 14px;
+  border: none;
+  border-radius: 40px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  color: var(--text-muted);
+  background: transparent;
+}
+
+.lang-btn {
+  font-family: 'Amiri', serif;
+  font-size: 13px;
+  letter-spacing: 0;
+}
+
+.theme-btn.active,
+.lang-btn.active {
+  background: var(--gold);
+  color: #0d0805;
+}
+
+[data-theme="reader"] .theme-btn.active,
+[data-theme="reader"] .lang-btn.active {
+  background: var(--shadow-brown);
+  color: var(--parchment);
+}
+
+/* ── Main Card ── */
+.login-card {
+  position: relative;
+  z-index: 10;
+  width: min(480px, 90vw);
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  padding: 3rem 2.8rem 2.5rem;
+  backdrop-filter: blur(16px);
+  box-shadow:
+    0 0 60px rgba(180, 130, 40, 0.08),
+    0 40px 80px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(200, 168, 100, 0.15);
+  animation: revealFromDark 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes revealFromDark {
+  0% {
+    opacity: 0;
+    transform: translateY(24px) scale(0.97);
+    filter: brightness(0.3);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: brightness(1);
+  }
+}
+
+/* Corner ornaments */
+.login-card::before,
+.login-card::after {
+  content: '✦';
+  position: absolute;
+  font-size: 10px;
+  color: var(--gold-dim);
+  opacity: 0.6;
+}
+
+.login-card::before {
+  top: 12px;
+  left: 16px;
+}
+
+.login-card::after {
+  bottom: 12px;
+  right: 16px;
+}
+
+/* ── Header ── */
+.eyebrow {
+  font-family: 'Cinzel', serif;
+  font-size: 9px;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--gold);
+  text-align: center;
+  margin-bottom: 1.2rem;
+  opacity: 0.8;
+  animation: fadeUp 1s 0.3s both;
+}
+
+.card-title {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(18px, 4vw, 24px);
+  font-weight: 700;
+  color: var(--text-primary);
+  text-align: center;
+  line-height: 1.3;
+  margin-bottom: 0.5rem;
+  animation: fadeUp 1s 0.45s both;
+}
+
+.card-subtitle {
+  font-family: 'IM Fell English', serif;
+  font-style: italic;
+  font-size: 14px;
+  color: var(--text-muted);
+  text-align: center;
+  margin-bottom: 0.4rem;
+  animation: fadeUp 1s 0.55s both;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 1.4rem 0;
+  animation: fadeUp 1s 0.6s both;
+}
+
+.divider-line {
+  flex: 1;
+  height: 1px;
+  background: var(--border-color);
+}
+
+.divider-glyph {
+  color: var(--gold);
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+.intro-text {
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--text-muted);
+  text-align: center;
+  font-style: italic;
+  margin-bottom: 1.6rem;
+  animation: fadeUp 1s 0.65s both;
+}
+
+/* ── Form ── */
+.form-group {
+  margin-bottom: 1.25rem;
+  animation: fadeUp 1s both;
+}
+
+.form-group:nth-child(1) {
+  animation-delay: 0.7s;
+}
+
+.form-group:nth-child(2) {
+  animation-delay: 0.8s;
+}
+
+label {
+  display: block;
+  font-family: 'Cinzel', serif;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  background: var(--input-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 2px;
+  padding: 12px 16px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 16px;
+  color: var(--text-primary);
+  outline: none;
+  transition: all 0.35s ease;
+}
+
+input::placeholder {
+  color: var(--text-muted);
+  font-style: italic;
+  opacity: 0.6;
+}
+
+input:focus {
+  border-color: var(--gold-dim);
+  background: var(--input-bg);
+  box-shadow: 0 0 0 3px rgba(180, 130, 40, 0.12), 0 0 20px rgba(180, 130, 40, 0.08);
+}
+
+/* ── Validation Messages ── */
+.field-error {
+  font-family: 'IM Fell English', serif;
+  font-style: italic;
+  font-size: 12px;
+  color: #c0622a;
+  margin-top: 6px;
+  display: none;
+  animation: shakeIn 0.4s ease;
+}
+
+[data-theme="enchanted"] .field-error {
+  color: #e88050;
+}
+
+.field-error.show {
+  display: block;
+}
+
+@keyframes shakeIn {
+  0% {
+    transform: translateX(-6px);
+    opacity: 0;
+  }
+
+  40% {
+    transform: translateX(4px);
+  }
+
+  70% {
+    transform: translateX(-2px);
+  }
+
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* ── Submit Button ── */
+.btn-submit {
+  width: 100%;
+  padding: 14px;
+  background: var(--gold);
+  border: none;
+  border-radius: 2px;
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--btn-text);
+  cursor: pointer;
+  margin-top: 1.6rem;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  animation: fadeUp 1s 0.9s both;
+}
+
+body[dir="rtl"] .btn-submit {
+  font-family: 'Amiri', serif;
+  font-size: 15px;
+  letter-spacing: 0.05em;
+  text-transform: none;
+}
+
+.btn-submit::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.btn-submit:hover {
+  background: var(--gold-light);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 30px rgba(180, 130, 40, 0.35);
+}
+
+.btn-submit:hover::before {
+  transform: translateX(100%);
+}
+
+.btn-submit:active {
+  transform: translateY(0);
+}
+
+[data-theme="reader"] .btn-submit {
+  background: var(--shadow-brown);
+  color: var(--parchment);
+}
+
+[data-theme="reader"] .btn-submit:hover {
+  background: #4a2e14;
+  box-shadow: 0 6px 30px rgba(60, 30, 10, 0.25);
+}
+
+/* ── Footer Links ── */
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.4rem;
+  animation: fadeUp 1s 1s both;
+}
+
+.link-styled {
+  font-family: 'IM Fell English', serif;
+  font-style: italic;
+  font-size: 12px;
+  color: var(--text-muted);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  background: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  padding: 0;
+}
+
+.link-styled:hover {
+  color: var(--gold);
+  border-bottom-color: var(--gold-dim);
+}
+
+/* ── Bottom Epigraph ── */
+.epigraph {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'IM Fell English', serif;
+  font-style: italic;
+  font-size: 12px;
+  color: var(--text-muted);
+  opacity: 0.5;
+  text-align: center;
+  white-space: nowrap;
+  z-index: 10;
+  animation: fadeUp 1.5s 1.2s both;
+}
+
+/* ── Toast ── */
+.toast {
+  position: fixed;
+  bottom: 5rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 2px;
+  padding: 10px 20px;
+  font-family: 'IM Fell English', serif;
+  font-style: italic;
+  font-size: 13px;
+  color: var(--text-primary);
+  backdrop-filter: blur(10px);
+  z-index: 200;
+  opacity: 0;
+  transition: all 0.5s ease;
+  pointer-events: none;
+}
+
+body[dir="rtl"] .toast {
+  font-family: 'Amiri', serif;
+  font-style: normal;
+  font-size: 15px;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── Loading state ── */
+.btn-submit.loading {
+  pointer-events: none;
+  opacity: 0.7;
+  letter-spacing: 0.4em;
+}
+
+body[dir="rtl"] .btn-submit.loading {
+  letter-spacing: 0.05em;
+}

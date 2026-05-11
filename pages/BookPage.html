@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" id="htmlRoot">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title id="pageTitle">Browse Books — The Enchanted Library / تصفح الكتب — المكتبة السحرية</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=IM+Fell+English:ital@0;1&family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Scheherazade+New:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../css/shared.css">
+  <link rel="stylesheet" href="../css/BookPage.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+  <div id="particles"></div>
+
+  <!-- ===== MODE TOGGLE ===== -->
+  <div class="mode-toggle-wrap">
+    <button class="mode-btn active" id="modeDay" onclick="setMode('day')"><i class="fa-solid fa-sun"></i> Day</button>
+    <button class="mode-btn" id="modeNight" onclick="setMode('night')"><i class="fa-solid fa-moon"></i> Night</button>
+  </div>
+
+  <!-- ===== NAV ===== -->
+  <nav>
+    <a href="../pages/homepage.html" class="nav-logo" data-en="✦ The Enchanted Library ✦"
+      data-ar="✦ المكتبة المسحورة ✦">✦ The Enchanted
+      Library ✦</a>
+
+    <ul class="nav-links">
+
+      <!-- Browse -->
+      <li class="nav-dropdown">
+        <a href="#" data-en="Browse" data-ar="تصفح">Browse</a>
+        <div class="dropdown-menu">
+          <a href="../pages/SearchPage.html" data-en="Search Books" data-ar="البحث عن الكتب">Search Books</a>
+          <a href="../pages/authors.html" data-en="By Author" data-ar="حسب المؤلف">By Author</a>
+          <a href="../pages/publishers.html" data-en="By Publisher" data-ar="حسب الناشر">By Publisher</a>
+          <a href="../pages/MyLibrary.html" data-en="My Library" data-ar="مكتبتي">My Library</a>
+        </div>
+      </li>
+
+      <!-- Community -->
+      <li class="nav-dropdown">
+        <a href="#" data-en="Community" data-ar="المجتمع">Community</a>
+        <div class="dropdown-menu">
+         
+          <a href="../pages/community.html" data-en="Book Club Forum" data-ar="منتدى نادي القراءة">Book Club Forum</a>
+          <a href="../pages/blog.html" data-en="Blog" data-ar="المدونة">Blog</a>
+          <a href="../pages/events.html" data-en="Author Events" data-ar="فعاليات المؤلفين">Author Events</a>
+        </div>
+      </li>
+
+      <!-- Fair -->
+      <li>
+        <a href="../pages/BookPage.html" class="active" data-en="Book Fair" data-ar="معرض الكتاب">Book Fair</a>
+      </li>
+
+      <!-- About -->
+      <li class="nav-dropdown">
+        <a href="#" data-en="About" data-ar="عن الموقع">About</a>
+        <div class="dropdown-menu">
+          <a href="../pages/contactus.html" data-en="Contact Us" data-ar="اتصل بنا">Contact Us</a>
+          <a href="../pages/newsletter.html" data-en="Subscription" data-ar="الاشتراك">Subscription</a>
+        </div>
+      </li>
+
+      <!-- Auth -->
+
+      <li><a href="../pages/profile.html" data-en="Profile" data-ar="الملف الشخصي">Profile</a></li>
+
+      <!-- Language -->
+      <li>
+        <div class="language-switch">
+          <button onclick="setLanguage('en')" id="btn-en" class="active">EN</button>
+          <button onclick="setLanguage('ar')" id="btn-ar">AR</button>
+        </div>
+      </li>
+
+    </ul>
+  </nav>
+
+  <!-- ===== PAGE HEADER ===== -->
+  <div class="page-header">
+    <span class="eyebrow" data-en="✦ &nbsp; The Enchanted Collection &nbsp; ✦"
+      data-ar="✦ &nbsp; المجموعة السحرية &nbsp; ✦">
+      ✦ &nbsp; The Enchanted Collection &nbsp; ✦
+    </span>
+    <h1>
+      <span class="txt-en">Browse the <em>Library</em></span>
+      <span class="txt-ar" style="display:none;">تصفّح <em>المكتبة</em></span>
+    </h1>
+    <p>
+      <span class="txt-en">"A tale as old as time — and a library older still."</span>
+      <span class="txt-ar" style="display:none;">"حكاية بقدم الزمان — ومكتبة أقدم منه"</span>
+    </p>
+    <div class="header-divider">
+      <div class="divider-line"></div>
+      <span class="divider-icon">📚</span>
+      <div class="divider-line"></div>
+    </div>
+  </div>
+
+  <!-- ===== CONTROLS BAR ===== -->
+  <div class="controls-bar">
+    <div class="controls-left" id="filterPills">
+      <button class="filter-pill active" onclick="filterGenre('all',this)">
+        <span class="txt-en">All Books</span><span class="txt-ar" style="display:none;">جميع الكتب</span>
+      </button>
+      <button class="filter-pill" onclick="filterGenre('romance',this)">
+        <span class="txt-en">Romance</span><span class="txt-ar" style="display:none;">رومانسي</span>
+      </button>
+      <button class="filter-pill" onclick="filterGenre('adventure',this)">
+        <span class="txt-en">Adventure</span><span class="txt-ar" style="display:none;">مغامرات</span>
+      </button>
+      <button class="filter-pill" onclick="filterGenre('classic',this)">
+        <span class="txt-en">Classics</span><span class="txt-ar" style="display:none;">كلاسيكي</span>
+      </button>
+      <button class="filter-pill" onclick="filterGenre('Fiction Books',this)">
+        <span class="txt-en">Fiction Books</span><span class="txt-ar" style="display:none;">روايات</span>
+      </button>
+      <button class="filter-pill" onclick="filterGenre('mystery',this)">
+        <span class="txt-en">Mystery</span><span class="txt-ar" style="display:none;">غموض</span>
+      </button>
+      <button class="filter-pill" onclick="filterGenre('poetry',this)">
+        <span class="txt-en">Poetry</span><span class="txt-ar" style="display:none;">شعر</span>
+      </button>
+      <button class="filter-pill" onclick="filterGenre('cartoon',this)">
+        <span class="txt-en">Cartoon</span><span class="txt-ar" style="display:none;">كرتون</span>
+      </button>
+      <button class="filter-pill" onclick="filterGenre('Fantasy',this)">
+        <span class="txt-en">Fantasy</span><span class="txt-ar" style="display:none;">خيال</span>
+      </button>
+      <button class="filter-pill" onclick="filterGenre('Science books',this)">
+        <span class="txt-en">Science Books</span><span class="txt-ar" style="display:none;">علوم</span>
+      </button>
+      <button class="filter-pill" onclick="filterGenre('Self Help Books',this)">
+        <span class="txt-en">Self Help Books</span><span class="txt-ar" style="display:none;">تطوير الذات</span>
+      </button>
+    </div>
+    <div class="controls-right">
+      <span class="results-count" id="resultsCount">0 Volumes</span>
+      <select class="sort-select" onchange="sortBooks(this.value)" id="sortSelect">
+        <option value="title"><span class="txt-en">Sort: Title</span></option>
+        <option value="author"><span class="txt-en">Sort: Author</span></option>
+        <option value="rating"><span class="txt-en">Sort: Rating</span></option>
+        <option value="year"><span class="txt-en">Sort: Year</span></option>
+      </select>
+      <button class="view-btn active" onclick="setView('grid',this)" title="Grid View">⊞</button>
+      <button class="view-btn" onclick="setView('list',this)" title="List View">☰</button>
+      <button class="view-btn" onclick="setView('details',this)" title="Details View">≡</button>
+    </div>
+  </div>
+
+  <!-- ===== MAIN LAYOUT ===== -->
+  <div class="main-layout">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-section reveal">
+        <h3 class="sidebar-title">
+          <span class="txt-en">Genres</span><span class="txt-ar" style="display:none;">التصنيفات</span>
+        </h3>
+        <ul class="genre-list" id="genreList">
+          <li class="genre-item selected" onclick="filterGenre('all',null,this)">
+            <div class="genre-inner">
+              <div class="genre-dot" style="background:var(--gold);"></div>
+              <span class="genre-name"><span class="txt-en">All Genres</span><span class="txt-ar"
+                  style="display:none;">جميع التصنيفات</span></span>
+            </div>
+            <span class="genre-count" id="cnt-all">—</span>
+          </li>
+          <!-- ... rest of genres remain the same ... -->
+          <li class="genre-item" onclick="filterGenre('romance',null,this)">
+            <div class="genre-inner">
+              <div class="genre-dot" style="background:#c44f6a;"></div>
+              <span class="genre-name"><span class="txt-en">Romance</span><span class="txt-ar"
+                  style="display:none;">رومانسي</span></span>
+            </div>
+            <span class="genre-count" id="cnt-romance">—</span>
+          </li>
+          <li class="genre-item" onclick="filterGenre('adventure',null,this)">
+            <div class="genre-inner">
+              <div class="genre-dot" style="background:#4a8a5a;"></div>
+              <span class="genre-name"><span class="txt-en">Adventure</span><span class="txt-ar"
+                  style="display:none;">مغامرات</span></span>
+            </div>
+            <span class="genre-count" id="cnt-adventure">—</span>
+          </li>
+          <li class="genre-item" onclick="filterGenre('classic',null,this)">
+            <div class="genre-inner">
+              <div class="genre-dot" style="background:#c9a84c;"></div>
+              <span class="genre-name"><span class="txt-en">Classics</span><span class="txt-ar"
+                  style="display:none;">كلاسيكي</span></span>
+            </div>
+            <span class="genre-count" id="cnt-classic">—</span>
+          </li>
+          <li class="genre-item" onclick="filterGenre('Fiction Books',null,this)">
+            <div class="genre-inner">
+              <div class="genre-dot" style="background:#6a4aaa;"></div>
+              <span class="genre-name"><span class="txt-en">Fiction Books</span><span class="txt-ar"
+                  style="display:none;">روايات</span></span>
+            </div>
+            <span class="genre-count" id="cnt-Fiction Books">—</span>
+          </li>
+          <li class="genre-item" onclick="filterGenre('mystery',null,this)">
+            <div class="genre-inner">
+              <div class="genre-dot" style="background:#1a5a7a;"></div>
+              <span class="genre-name"><span class="txt-en">Mystery</span><span class="txt-ar"
+                  style="display:none;">غموض</span></span>
+            </div>
+            <span class="genre-count" id="cnt-mystery">—</span>
+          </li>
+          <li class="genre-item" onclick="filterGenre('poetry',null,this)">
+            <div class="genre-inner">
+              <div class="genre-dot" style="background:#8a5a2a;"></div>
+              <span class="genre-name"><span class="txt-en">Poetry</span><span class="txt-ar"
+                  style="display:none;">شعر</span></span>
+            </div>
+            <span class="genre-count" id="cnt-poetry">—</span>
+          </li>
+          <li class="genre-item" onclick="filterGenre('cartoon',null,this)">
+            <div class="genre-inner">
+              <div class="genre-dot" style="background:#2a7aaa;"></div>
+              <span class="genre-name"><span class="txt-en">Cartoon</span><span class="txt-ar"
+                  style="display:none;">كرتون</span></span>
+            </div>
+            <span class="genre-count" id="cnt-cartoon">—</span>
+          </li>
+          <li class="genre-item" onclick="filterGenre('Fantasy',null,this)">
+            <div class="genre-inner">
+              <div class="genre-dot" style="background:#aa2a97;"></div>
+              <span class="genre-name"><span class="txt-en">Fantasy</span><span class="txt-ar"
+                  style="display:none;">خيال</span></span>
+            </div>
+            <span class="genre-count" id="cnt-Fantasy">—</span>
+          </li>
+          <li class="genre-item" onclick="filterGenre('Science books',null,this)">
+            <div class="genre-inner">
+              <div class="genre-dot" style="background:#aa2a2a;"></div>
+              <span class="genre-name"><span class="txt-en">Science Books</span><span class="txt-ar"
+                  style="display:none;">علوم</span></span>
+            </div>
+            <span class="genre-count" id="cnt-Science books">—</span>
+          </li>
+          <li class="genre-item" onclick="filterGenre('Self Help Books',null,this)">
+            <div class="genre-inner">
+              <div class="genre-dot" style="background:#8a2aaa;"></div>
+              <span class="genre-name"><span class="txt-en">Self Help Books</span><span class="txt-ar"
+                  style="display:none;">تطوير الذات</span></span>
+            </div>
+            <span class="genre-count" id="cnt-Self Help Books">—</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="sidebar-section reveal">
+        <h3 class="sidebar-title">
+          <span class="txt-en">Minimum Rating</span><span class="txt-ar" style="display:none;">الحد الأدنى
+            للتقييم</span>
+        </h3>
+        <div class="rating-filter">
+          <!-- ... rating rows ... -->
+          <label class="rating-row"><input type="radio" name="rating" value="0" checked style="display:none;">
+            <span class="stars">★★★★★</span>
+            <span class="rating-label"><span class="txt-en">Any</span><span class="txt-ar"
+                style="display:none;">الكل</span></span>
+          </label>
+          <label class="rating-row"><input type="radio" name="rating" value="3" style="display:none;">
+            <span class="stars">★★★☆☆</span>
+            <span class="rating-label"><span class="txt-en">3+</span><span class="txt-ar" style="display:none;">٣
+                فأعلى</span></span>
+          </label>
+          <label class="rating-row"><input type="radio" name="rating" value="4" style="display:none;">
+            <span class="stars">★★★★☆</span>
+            <span class="rating-label"><span class="txt-en">4+</span><span class="txt-ar" style="display:none;">٤
+                فأعلى</span></span>
+          </label>
+          <label class="rating-row"><input type="radio" name="rating" value="5" style="display:none;">
+            <span class="stars">★★★★★</span>
+            <span class="rating-label"><span class="txt-en">5 only</span><span class="txt-ar" style="display:none;">٥
+                فقط</span></span>
+          </label>
+        </div>
+      </div>
+
+      <div class="sidebar-section reveal">
+        <h3 class="sidebar-title">
+          <span class="txt-en">Publication Era</span><span class="txt-ar" style="display:none;">حقبة النشر</span>
+        </h3>
+        <input type="range" class="range-slider" min="1600" max="2026" value="1600" id="yearSlider"
+          oninput="document.getElementById('yearVal').textContent=this.value">
+        <div class="range-label">
+          <span id="yearVal">1600</span><span>2026</span>
+        </div>
+      </div>
+
+      <div class="sidebar-section reveal">
+        <h3 class="sidebar-title">
+          <span class="txt-en">Availability</span><span class="txt-ar" style="display:none;">التوفر</span>
+        </h3>
+        <div class="availability-toggle" onclick="toggleFilter(this, 'toggleAvailable')">
+          <span class="toggle-label"><span class="txt-en">Available Now</span><span class="txt-ar"
+              style="display:none;">متاح الآن</span></span>
+          <div class="toggle-switch on" id="toggleAvailable"></div>
+        </div>
+        <div class="availability-toggle" onclick="toggleFilter(this, 'toggleRare')">
+          <span class="toggle-label"><span class="txt-en">Rare Editions</span><span class="txt-ar"
+              style="display:none;">طبعات نادرة</span></span>
+          <div class="toggle-switch" id="toggleRare"></div>
+        </div>
+        <div class="availability-toggle" onclick="this.querySelector('.toggle-switch').classList.toggle('on'); renderBooks();">
+          <span class="toggle-label"><span class="txt-en">Bookmarked</span><span class="txt-ar"
+              style="display:none;">المحفوظات</span></span>
+          <div class="toggle-switch"></div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Books Area -->
+    <div class="books-area">
+      <div class="featured-banner reveal">
+        <div class="featured-cover"
+          style="background-image:url('../image/Beauty and the Beast.jpg');background-size:cover;background-position:center;">
+        </div>
+        <div class="featured-info">
+          <span class="featured-badge">
+            <span class="txt-en">✦ Favorite Choice</span><span class="txt-ar" style="display:none;">✦ الاختيار
+              المفضل</span>
+          </span>
+          <h2>
+            <span class="txt-en">Beauty &amp; the Beast</span>
+            <span class="txt-ar" style="display:none;">الجميلة والوحش</span>
+          </h2>
+          <p>
+            <span class="txt-en">The original enchanted tale — the story that began it all. A merchant's daughter, a
+              cursed prince, and a library that changed everything between them.</span>
+            <span class="txt-ar" style="display:none;">الحكاية السحرية الأصلية — القصة التي بدأ منها كل شيء. ابنة تاجر
+              وأمير ملعون ومكتبة غيّرت كل شيء بينهما.</span>
+          </p>
+          <div class="featured-meta">
+            <span class="meta-chip"><span class="txt-en">Fantasy</span><span class="txt-ar"
+                style="display:none;">خيال</span></span>
+            <span class="meta-chip">★★★★★ 4.8</span>
+            <span class="meta-chip">1740</span>
+            <span class="meta-chip">Villeneuve</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="books-grid" id="booksContainer"></div>
+      <div class="empty-state" id="emptyState">
+        <div class="empty-icon">📖</div>
+        <h3><span class="txt-en">No volumes found in this collection</span><span class="txt-ar" style="display:none;">لا
+            توجد كتب في هذا التصنيف</span></h3>
+        <p><span class="txt-en">Try a different genre or clear your filters</span><span class="txt-ar"
+            style="display:none;">جرّب تصنيفاً مختلفاً أو أزل الفلاتر</span></p>
+      </div>
+      <div class="pagination" id="pagination"></div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast">📚 <span id="toastMsg"></span></div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="footer-logo" data-en="✦ The Enchanted Library ✦" data-ar="✦ المكتبة المسحورة ✦">
+      ✦ The Enchanted Library ✦
+    </div>
+    <p class="footer-quote" data-en="&quot;There's something there that wasn't there before.&quot;"
+      data-ar="&quot;ثمة شيء هناك لم يكن موجوداً من قبل.&quot;">
+      "There's something there that wasn't there before."
+    </p>
+    <div class="footer-links">
+      <a href="../pages/homepage.html" data-en="Home" data-ar="الرئيسية">Home</a>
+      <a href="#" data-en="Browse" data-ar="تصفح">Browse</a>
+      <a href="SearchPage.html" data-en="Search" data-ar="بحث">Search</a>
+      <a href="MyLibrary.html" data-en="My Library" data-ar="مكتبتي">My Library</a>
+    </div>
+    <p class="footer-copy" data-en="🌹 &nbsp; An Enchanted Tale &nbsp; 🌹" data-ar="🌹 &nbsp; حكاية مسحورة &nbsp; 🌹">🌹
+      &nbsp; An Enchanted Tale &nbsp; 🌹</p>
+  </footer>
+
+  <script src="../js/global.js"></script>
+  <script src="../js/BookPage.js"></script>
+</body>
+
+</html>

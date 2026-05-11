@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Publishers — The Enchanted Library / الناشرون — المكتبة المسحورة</title>
+
+  <!-- Google Fonts (same as home) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=IM+Fell+English:ital@0;1&family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="../css/publishers.css">
+  <link rel="stylesheet" href="../css/shared.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+
+<body>
+
+  <!-- ===== FLOATING PARTICLES ===== -->
+  <div id="particles"></div>
+
+  <!-- ===== MODE TOGGLE ===== -->
+  <div class="mode-toggle-wrap">
+    <button class="mode-btn active" id="modeDay" onclick="setMode('day')"><i class="fa-solid fa-sun"></i> Day</button>
+    <button class="mode-btn" id="modeNight" onclick="setMode('night')"><i class="fa-solid fa-moon"></i> Night</button>
+  </div>
+
+  <!-- ===== NAV ===== -->
+  <nav>
+    <a href="../pages/homepage.html" class="nav-logo" data-en="✦ The Enchanted Library ✦" data-ar="✦ المكتبة المسحورة ✦">✦ The Enchanted
+      Library ✦</a>
+
+    <ul class="nav-links">
+
+      <!-- Browse -->
+      <li class="nav-dropdown">
+        <a href="#" data-en="Browse" data-ar="تصفح">Browse</a>
+        <div class="dropdown-menu">
+          <a href="../pages/SearchPage.html" data-en="Search Books" data-ar="البحث عن الكتب">Search Books</a>
+          <a href="../pages/authors.html" data-en="By Author" data-ar="حسب المؤلف">By Author</a>
+          <a href="../pages/publishers.html" class="active" data-en="By Publisher" data-ar="حسب الناشر">By Publisher</a>
+          <a href="../pages/MyLibrary.html" data-en="My Library" data-ar="مكتبتي">My Library</a>
+        </div>
+      </li>
+
+      <!-- Community -->
+      <li class="nav-dropdown">
+        <a href="#" data-en="Community" data-ar="المجتمع">Community</a>
+        <div class="dropdown-menu">
+          
+          <a href="../pages/community.html" data-en="Book Club Forum" data-ar="منتدى نادي القراءة">Book Club Forum</a>
+          <a href="../pages/blog.html" data-en="Blog" data-ar="المدونة">Blog</a>
+          <a href="../pages/events.html" data-en="Author Events" data-ar="فعاليات المؤلفين">Author Events</a>
+        </div>
+      </li>
+
+      <!-- Fair -->
+      <li>
+        <a href="../pages/BookPage.html" data-en="Book Fair" data-ar="معرض الكتاب">Book Fair</a>
+      </li>
+
+      <!-- About -->
+      <li class="nav-dropdown">
+        <a href="#" data-en="About" data-ar="عن الموقع">About</a>
+        <div class="dropdown-menu">
+          <a href="../pages/contactus.html" data-en="Contact Us" data-ar="اتصل بنا">Contact Us</a>
+          <a href="../pages/newsletter.html" data-en="Subscription" data-ar="الاشتراك">Subscription</a>
+        </div>
+      </li>
+
+      <!-- Auth -->
+
+      <li><a href="../pages/profile.html" data-en="Profile" data-ar="الملف الشخصي">Profile</a></li>
+
+      <!-- Language -->
+      <li>
+        <div class="language-switch">
+          <button onclick="setLanguage('en')" id="btn-en" class="active">EN</button>
+          <button onclick="setLanguage('ar')" id="btn-ar">AR</button>
+        </div>
+      </li>
+
+    </ul>
+  </nav>
+
+  <!-- ===== PAGE HERO ===== -->
+  <section class="page-hero">
+    <div class="page-hero-bg"></div>
+
+    <!-- Decorative SVG watermark -->
+    <svg class="hero-watermark" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" fill="none">
+      <circle cx="200" cy="200" r="180" stroke="#c9a84c" stroke-width="1" />
+      <circle cx="200" cy="200" r="140" stroke="#c9a84c" stroke-width="0.5" />
+      <path d="M200 40 L210 80 L200 75 L190 80 Z" stroke="#c9a84c" stroke-width="1" fill="none" />
+      <line x1="200" y1="80" x2="200" y2="180" stroke="#c9a84c" stroke-width="1.5" />
+      <path d="M185 140 Q200 160 215 140" stroke="#c9a84c" stroke-width="1" fill="none" />
+      <path
+        d="M60 200 Q80 180 100 200 Q120 220 140 200 Q160 180 180 200 Q200 220 220 200 Q240 180 260 200 Q280 220 300 200 Q320 180 340 200"
+        stroke="#c9a84c" stroke-width="0.8" fill="none" />
+    </svg>
+
+    <div class="page-hero-content">
+      <p class="hero-eyebrow" data-en="Literary Houses of the World" data-ar="البيوت الأدبية في العالم">Literary Houses of the World</p>
+      <h1 class="hero-title"><span data-en="The" data-ar="بيوت">The</span> <em data-en="Publishers" data-ar="النشر">Publishers</em></h1>
+      <p class="hero-subtitle" data-en="Guardians of the written word, curators of stories untold" data-ar="حراس الكلمة المكتوبة، قيمون على قصص لم تُروَ بعد">Guardians of the written word, curators of stories untold</p>
+      <div class="hero-divider">
+        <div class="divider-line"></div>
+        <span class="divider-icon">✒</span>
+        <div class="divider-line"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SEARCH & FILTER BAR ===== -->
+  <div class="filter-bar">
+    <div class="filter-card">
+      <div class="filter-group">
+        <label for="searchName" data-en="Publisher Name" data-ar="اسم الناشر">Publisher Name</label>
+        <input type="text" id="searchName" data-placeholder-en="e.g. Penguin, Dar..." data-placeholder-ar="مثال: بنجوين، دار..." placeholder="e.g. Penguin, Dar..." />
+      </div>
+      <div class="filter-group">
+        <label for="filterCountry" data-en="Country" data-ar="الدولة">Country</label>
+        <select id="filterCountry">
+          <option value="" data-en="All Countries" data-ar="كل الدول">All Countries</option>
+          <option data-en="United Kingdom" data-ar="المملكة المتحدة">United Kingdom</option>
+          <option data-en="United States" data-ar="الولايات المتحدة">United States</option>
+          <option data-en="Egypt" data-ar="مصر">Egypt</option>
+          <option data-en="France" data-ar="فرنسا">France</option>
+          <option data-en="Germany" data-ar="ألمانيا">Germany</option>
+          <option data-en="Lebanon" data-ar="لبنان">Lebanon</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label for="filterGenre" data-en="Specialty Genre" data-ar="التخصص">Specialty Genre</label>
+        <select id="filterGenre">
+          <option value="" data-en="All Genres" data-ar="كل التخصصات">All Genres</option>
+          <option data-en="Fiction" data-ar="روايات">Fiction</option>
+          <option data-en="Non-Fiction" data-ar="غير روائي">Non-Fiction</option>
+          <option data-en="Academic" data-ar="أكاديمي">Academic</option>
+          <option data-en="Children's" data-ar="أطفال">Children's</option>
+          <option data-en="Poetry" data-ar="شعر">Poetry</option>
+          <option data-en="Arabic Literature" data-ar="الأدب العربي">Arabic Literature</option>
+        </select>
+      </div>
+      <button class="btn-search" onclick="applyFilters()" data-en="Search" data-ar="بحث">Search</button>
+    </div>
+  </div>
+
+  <!-- ===== STATS BAR ===== -->
+  <div class="stats-bar reveal">
+    <div class="stat-block">
+      <div class="stat-num" id="countTotal">48</div>
+      <div class="stat-label" data-en="Publishers Listed" data-ar="ناشر مدرج">Publishers Listed</div>
+    </div>
+    <div class="stat-block">
+      <div class="stat-num">22</div>
+      <div class="stat-label" data-en="Countries Represented" data-ar="دولة ممثلة">Countries Represented</div>
+    </div>
+    <div class="stat-block">
+      <div class="stat-num">12,400+</div>
+      <div class="stat-label" data-en="Titles in Catalog" data-ar="عنوان في الكتالوج">Titles in Catalog</div>
+    </div>
+  </div>
+
+  <div class="publishers-container">
+    <!-- Grid and List views are handled by publishers.js -->
+    <div class="pub-grid" id="viewGrid">
+      <!-- Standardized content will be injected or maintained by existing JS -->
+    </div>
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="footer-logo" data-en="✦ The Enchanted Library ✦" data-ar="✦ المكتبة المسحورة ✦">✦ المكتبة المسحورة ✦</div>
+    <p class="footer-quote" data-en="«A reader lives a thousand lives before he dies.» — George R.R. Martin" data-ar="«القارئ يعيش ألف حياة قبل أن يموت.» — جورج ر. ر. مارتن">«القارئ يعيش ألف حياة قبل أن يموت.» — جورج ر. ر. مارتن</p>
+    <div class="footer-links">
+      <a href="../pages/homepage.html" data-en="Home" data-ar="الرئيسية">الرئيسية</a>
+      <a href="BookPage.html" data-en="Browse" data-ar="تصفّح">تصفّح</a>
+      <a href="SearchPage.html" data-en="Search" data-ar="البحث">البحث</a>
+      <a href="MyLibrary.html" data-en="My Library" data-ar="مكتبتي">مكتبتي</a>
+    </div>
+    <p class="footer-copy" data-en="🌹 &nbsp; An Enchanted Tale &nbsp; 🌹" data-ar="🌹 &nbsp; حكاية سحرية &nbsp; 🌹">🌹 &nbsp; حكاية سحرية &nbsp; 🌹</p>
+  </footer>
+
+  <script src="../js/global.js"></script>
+  <script src="../js/publishers.js"></script>
+</body>
+
+</html>

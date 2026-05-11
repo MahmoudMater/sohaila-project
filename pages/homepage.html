@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Enchanted Library</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Cormorant+Garamond&family=IM+Fell+English&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../css/homePage.css">
+  <link rel="stylesheet" href="../css/shared.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+  <!-- ===== PARTICLES ===== -->
+  <div id="particles"></div>
+
+  <!-- ===== MODE TOGGLE ===== -->
+  <div class="mode-toggle-wrap">
+    <button class="mode-btn active" id="modeDay" onclick="setMode('day')"><i class="fa-solid fa-sun"></i> Day</button>
+    <button class="mode-btn" id="modeNight" onclick="setMode('night')"><i class="fa-solid fa-moon"></i> Night</button>
+  </div>
+
+  <!-- ===== NAV ===== -->
+  <nav>
+    <a href="#" class="nav-logo" data-en="✦ The Enchanted Library ✦" data-ar="✦ المكتبة المسحورة ✦">✦ The Enchanted
+      Library ✦</a>
+
+    <ul class="nav-links">
+
+      <!-- Browse -->
+      <li class="nav-dropdown">
+        <a href="#" data-en="Browse" data-ar="تصفح">Browse</a>
+        <div class="dropdown-menu">
+          <a href="../pages/SearchPage.html" data-en="Search Books" data-ar="البحث عن الكتب">Search Books</a>
+          <a href="../pages/authors.html" data-en="By Author" data-ar="حسب المؤلف">By Author</a>
+          <a href="../pages/publishers.html" data-en="By Publisher" data-ar="حسب الناشر">By Publisher</a>
+          <a href="../pages/MyLibrary.html" data-en="My Library" data-ar="مكتبتي">My Library</a>
+        </div>
+      </li>
+
+      <!-- Community -->
+      <li class="nav-dropdown">
+        <a href="#" data-en="Community" data-ar="المجتمع">Community</a>
+        <div class="dropdown-menu">
+          
+          <a href="../pages/community.html" data-en="Book Club Forum" data-ar="منتدى نادي القراءة">Book Club Forum</a>
+          <a href="../pages/blog.html" data-en="Blog" data-ar="المدونة">Blog</a>
+          <a href="../pages/events.html" data-en="Author Events" data-ar="فعاليات المؤلفين">Author Events</a>
+        </div>
+      </li>
+
+      <!-- Fair -->
+      <li>
+        <a href="../pages/BookPage.html" data-en="Book Fair" data-ar="معرض الكتاب">Book Fair</a>
+      </li>
+
+      <!-- About -->
+      <li class="nav-dropdown">
+        <a href="#" data-en="About" data-ar="عن الموقع">About</a>
+        <div class="dropdown-menu">
+          <a href="../pages/contactus.html" data-en="Contact Us" data-ar="اتصل بنا">Contact Us</a>
+          <a href="../pages/newsletter.html" data-en="Subscription" data-ar="الاشتراك">Subscription</a>
+        </div>
+      </li>
+
+
+      <!-- Auth -->
+      <li><a href="../pages/profile.html" data-en="Profile" data-ar="الملف الشخصي">Profile</a></li>
+
+      <!-- Language -->
+      <li>
+        <div class="language-switch">
+          <button onclick="setLanguage('en')" id="btn-en" class="active">EN</button>
+          <button onclick="setLanguage('ar')" id="btn-ar">AR</button>
+        </div>
+      </li>
+
+    </ul>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+
+    <svg class="stained-window" viewBox="0 0 600 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="300" cy="300" rx="280" ry="280" stroke="#c9a84c" stroke-width="2" opacity="0.6" />
+      <ellipse cx="300" cy="300" rx="220" ry="220" stroke="#c9a84c" stroke-width="1" opacity="0.4" />
+      <path d="M300 20 L300 580 M20 300 L580 300" stroke="#c9a84c" stroke-width="1" opacity="0.3" />
+      <path d="M300 20 L580 300 L300 580 L20 300 Z" stroke="#c9a84c" stroke-width="1.5" opacity="0.5" />
+      <circle cx="300" cy="300" r="80" stroke="#d4af37" stroke-width="2" opacity="0.7" />
+      <path d="M300 220 Q340 260 300 300 Q260 260 300 220Z" fill="#8b1a3a" opacity="0.4" />
+      <path d="M300 220 Q340 260 300 300 Q260 260 300 220Z" fill="none" stroke="#c9a84c" stroke-width="1" />
+    </svg>
+
+    <div class="floating-books">
+      <div class="float-book" style="top:15%;left:8%;font-size:36px;animation-duration:5s;animation-delay:0s;">📖</div>
+      <div class="float-book" style="top:25%;right:10%;font-size:28px;animation-duration:6.5s;animation-delay:-2s;">📚
+      </div>
+      <div class="float-book" style="top:65%;left:5%;font-size:24px;animation-duration:4s;animation-delay:-1s;">📖</div>
+      <div class="float-book" style="top:70%;right:8%;font-size:32px;animation-duration:7s;animation-delay:-3s;">📚
+      </div>
+      <div class="float-book" style="top:40%;left:3%;font-size:20px;animation-duration:5.5s;animation-delay:-0.5s;">📖
+      </div>
+      <div class="float-book" style="top:55%;right:4%;font-size:22px;animation-duration:6s;animation-delay:-1.5s;">📚
+      </div>
+    </div>
+
+    <div class="hero-content">
+      <p class="hero-eyebrow" data-en="✦ &nbsp; Where Every Story Begins &nbsp; ✦"
+        data-ar="✦ &nbsp; حيث تبدأ كل قصة &nbsp; ✦">✦ &nbsp; Where Every Story Begins &nbsp; ✦</p>
+      <h1 class="hero-title">
+        <span data-en="Enchanted" data-ar="المكتبة">Enchanted</span>
+        <em data-en="Library" data-ar="المسحورة">Library</em>
+      </h1>
+      <p class="hero-subtitle" data-en='"A world of stories awaits you."' data-ar='"عالم من القصص في انتظارك."'>"A world
+        of stories awaits you."</p>
+      <div class="hero-divider">
+        <div class="divider-line"></div>
+        <span class="divider-rose">🌹</span>
+        <div class="divider-line"></div>
+      </div>
+      <p class="hero-quote"
+        data-en="Discover thousands of books, connect with readers around the world, and find your next great story — all in one enchanted place."
+        data-ar="اكتشف آلاف الكتب، تواصل مع القراء حول العالم، وابحث عن قصتك التالية — كل ذلك في مكان واحد مسحور.">
+        Discover thousands of books, connect with readers around the world, and find your next great story — all in one
+        enchanted place.
+      </p>
+      <div class="hero-cta">
+        <a href="../pages/SearchPage.html" class="btn-enchanted" data-en="Explore the Collection"
+          data-ar="استكشف المجموعة">Explore the Collection</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== STATS BAND ===== -->
+  <div class="stats-band reveal">
+    <div class="stat-item">
+      <span class="stat-num">50K+</span>
+      <span class="stat-label" data-en="Books Available" data-ar="كتاب متاح">Books Available</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">120+</span>
+      <span class="stat-label" data-en="Publishers" data-ar="ناشر">Publishers</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">30K+</span>
+      <span class="stat-label" data-en="Community Members" data-ar="عضو في المجتمع">Community Members</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">200+</span>
+      <span class="stat-label" data-en="Author Events" data-ar="فعالية مؤلفين">Author Events</span>
+    </div>
+  </div>
+
+  <!-- ===== BELLE / ABOUT SECTION ===== -->
+  <section id="belle" class="belle-section">
+    <div class="belle-visual reveal">
+      <div class="book-glow"></div>
+      <div class="book-tower">
+        <div class="stacked-book sb1"></div>
+        <div class="stacked-book sb2"></div>
+        <div class="stacked-book sb3"></div>
+        <div class="stacked-book sb4"></div>
+        <div class="stacked-book sb5"></div>
+        <div class="stacked-book sb6"></div>
+        <div class="stacked-book sb7"></div>
+        <div class="stacked-book sb8"></div>
+        <svg class="open-book" viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="pageL" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#f0e6d0" />
+              <stop offset="100%" stop-color="#e0d0b0" />
+            </linearGradient>
+            <linearGradient id="pageR" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#e8d8b8" />
+              <stop offset="100%" stop-color="#f5edd8" />
+            </linearGradient>
+          </defs>
+          <path d="M100 10 Q60 8 20 15 L15 125 Q55 118 100 120 Z" fill="url(#pageL)" stroke="#c9a84c"
+            stroke-width="0.5" />
+          <path d="M100 10 Q140 8 180 15 L185 125 Q145 118 100 120 Z" fill="url(#pageR)" stroke="#c9a84c"
+            stroke-width="0.5" />
+          <line x1="100" y1="10" x2="100" y2="120" stroke="#8b6520" stroke-width="2" />
+          <line x1="35" y1="35" x2="88" y2="33" stroke="#c9a84c" stroke-width="0.8" opacity="0.5" />
+          <line x1="33" y1="45" x2="86" y2="43" stroke="#c9a84c" stroke-width="0.8" opacity="0.5" />
+          <line x1="32" y1="55" x2="85" y2="53" stroke="#c9a84c" stroke-width="0.8" opacity="0.5" />
+          <line x1="31" y1="65" x2="84" y2="63" stroke="#c9a84c" stroke-width="0.8" opacity="0.5" />
+          <line x1="30" y1="75" x2="83" y2="73" stroke="#c9a84c" stroke-width="0.8" opacity="0.5" />
+          <line x1="112" y1="33" x2="165" y2="35" stroke="#c9a84c" stroke-width="0.8" opacity="0.5" />
+          <line x1="114" y1="43" x2="167" y2="45" stroke="#c9a84c" stroke-width="0.8" opacity="0.5" />
+          <line x1="115" y1="53" x2="168" y2="55" stroke="#c9a84c" stroke-width="0.8" opacity="0.5" />
+          <line x1="116" y1="63" x2="169" y2="65" stroke="#c9a84c" stroke-width="0.8" opacity="0.5" />
+          <line x1="117" y1="73" x2="170" y2="75" stroke="#c9a84c" stroke-width="0.8" opacity="0.5" />
+          <circle cx="60" cy="90" r="8" fill="none" stroke="#8b1a3a" stroke-width="0.8" opacity="0.6" />
+          <path d="M60 82 Q65 86 60 90 Q55 86 60 82Z" fill="#8b1a3a" opacity="0.5" />
+        </svg>
+      </div>
+    </div>
+
+    <div class="belle-text reveal">
+      <p style="font-family:'IM Fell English',serif;font-size:12px;letter-spacing:6px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;"
+        data-en="✦ &nbsp; A Girl Unlike Any Other &nbsp; ✦" data-ar="✦ &nbsp; فتاة لا مثيل لها &nbsp; ✦">✦ &nbsp; A Girl
+        Unlike Any Other &nbsp; ✦</p>
+      <h2>
+        <span data-en="She Did Not Dream of" data-ar="لم تحلم بـ">She Did Not Dream of</span>
+        <em data-en="Castles" data-ar="القصور"> Castles</em>
+        <span data-en="— She Dreamed of" data-ar="— بل حلمت بـ"> — She Dreamed of</span>
+        <em data-en="Libraries" data-ar="المكتبات"> Libraries</em>
+      </h2>
+      <p data-en="In a small provincial town, where everyone knew everyone's story, Belle lived in a world painted by ink and bound in leather. She read while walking, read while humming, read while the whole town wondered why."
+        data-ar="في مدينة صغيرة حيث يعرف الجميع قصص بعضهم، عاشت بيل في عالم مرسوم بالحبر ومجلد بالجلد. كانت تقرأ وهي تمشي، وتقرأ وهي تدندن، وتقرأ بينما يتساءل الجميع لماذا.">
+        In a small provincial town, where everyone knew everyone's story, Belle lived in a world painted by ink and
+        bound in leather. She read while walking, read while humming, read while the whole town wondered why.</p>
+      <div class="quote-block" data-en=' ' s my favorite part of this whole town — two words I never thought I\'d say.
+        There\'s a book about adventure and a book about France and I\'ve only read it twice!"'
+        data-ar='"إنها مكتبة! هذا هو الجزء المفضل لدي في هذه المدينة كلها — كلمتان لم أظن أنني سأقولهما يوماً. هناك كتاب عن المغامرة وكتاب عن فرنسا ولم أقرأه سوى مرتين!"'>
+        "It's my favorite part of this whole town — two words I never thought I'd say. There's a book about adventure
+        and a book about France and I've only read it twice!"
+      </div>
+      <p data-en="She didn't need the world to understand. She had stories that took her further than any map. And that is the spirit of the Enchanted Library — where every reader finds their own enchanted castle."
+        data-ar="لم تكن بحاجة إلى أن يفهمها العالم. كانت لديها قصص أخذتها أبعد من أي خريطة. وهذه هي روح المكتبة المسحورة — حيث يجد كل قارئ قلعته السحرية الخاصة.">
+        She didn't need the world to understand. She had stories that took her further than any map. And that is the
+        spirit of the Enchanted Library — where every reader finds their own enchanted castle.</p>
+    </div>
+  </section>
+
+  <!-- ===== FEATURES SECTION ===== -->
+  <section id="features" class="features-section">
+    <div class="features-header reveal">
+      <span class="section-tag" data-en="✦ &nbsp; Everything You Need &nbsp; ✦"
+        data-ar="✦ &nbsp; كل ما تحتاجه &nbsp; ✦">✦ &nbsp; Everything You Need &nbsp; ✦</span>
+      <h2 data-en="Discover Our <em>Services</em>" data-ar="اكتشف <em>خدماتنا</em>">Discover Our <em>Services</em></h2>
+      <p data-en="From browsing to buying, reviewing to discussing — it's all here."
+        data-ar="من التصفح إلى الشراء، ومن المراجعة إلى النقاش — كل شيء هنا.">From browsing to buying, reviewing to
+        discussing — it's all here.</p>
+    </div>
+    <div class="features-grid">
+
+      <a href="../pages/SearchPage.html" class="feature-card reveal">
+        <div class="feature-icon">🔍</div>
+        <h3 data-en="Advanced Search" data-ar="البحث المتقدم">Advanced Search</h3>
+        <p data-en="Search by title, author, genre, or publisher. Filter, sort, and compare results with ease."
+          data-ar="ابحث بالعنوان أو المؤلف أو النوع أو الناشر. فلتر ورتب ونتائج الكتب بسهولة.">Search by title, author,
+          genre, or publisher. Filter, sort, and compare results with ease.</p>
+      </a>
+
+      <a href="../pages/publishers.html" class="feature-card reveal">
+        <div class="feature-icon">🛒</div>
+        <h3 data-en="Online Bookstore" data-ar="المتجر الإلكتروني">Online Bookstore</h3>
+        <p data-en="Buy physical or digital books, compare prices across publishers, and get the best deal."
+          data-ar="اشترِ كتباً ورقية أو رقمية، وقارن الأسعار عبر الناشرين للحصول على أفضل عرض.">Buy physical or digital
+          books, compare prices across publishers, and get the best deal.</p>
+      </a>
+
+      <a href="../pages/book-details.html" class="feature-card reveal">
+        <div class="feature-icon">⭐</div>
+        <h3 data-en="Reviews & Ratings" data-ar="التقييمات والمراجعات">Reviews & Ratings</h3>
+        <p data-en="Read trusted community reviews, rate your reads, and help others find their next favourite."
+          data-ar="اقرأ مراجعات موثوقة من المجتمع، وقيّم ما قرأت، وساعد الآخرين في إيجاد كتابهم القادم.">Read trusted
+          community reviews, rate your reads, and help others find their next favourite.</p>
+      </a>
+
+      <a href="../pages/community.html" class="feature-card reveal">
+        <div class="feature-icon">💬</div>
+        <h3 data-en="Book Club & Forum" data-ar="نادي الكتاب والمنتدى">Book Club & Forum</h3>
+        <p data-en="Join reading groups, discuss plot twists, and meet fellow book lovers around the world."
+          data-ar="انضم إلى مجموعات القراءة وناقش تحولات الحبكة والتقِ بعاشقي الكتب حول العالم.">Join reading groups,
+          discuss plot twists, and meet fellow book lovers around the world.</p>
+      </a>
+
+      <a href="../pages/events.html" class="feature-card reveal">
+        <div class="feature-icon">🎤</div>
+        <h3 data-en="Author Events" data-ar="فعاليات المؤلفين">Author Events</h3>
+        <p data-en="Attend live interviews, signings, and literary events both online and at the annual book fair."
+          data-ar="احضر المقابلات المباشرة والتوقيعات والفعاليات الأدبية سواء أونلاين أو في معرض الكتاب السنوي.">Attend
+          live interviews, signings, and literary events both online and at the annual book fair.</p>
+      </a>
+
+      <a href="../pages/profile.html" class="feature-card reveal">
+        <div class="feature-icon">🔖</div>
+        <h3 data-en="My Bookshelf" data-ar="رف كتبي">My Bookshelf</h3>
+        <p data-en="Bookmark favourites, track reading progress, and build your personal digital library."
+          data-ar="احفظ المفضلة وتتبع تقدم القراءة وابنِ مكتبتك الرقمية الشخصية.">Bookmark favourites, track reading
+          progress, and build your personal digital library.</p>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ===== LIBRARY SECTION (filled bookshelf) ===== -->
+  <section id="library" class="library-section">
+    <div class="library-header reveal">
+      <span class="section-tag" data-en="✦ &nbsp; The Greatest Gift &nbsp; ✦" data-ar="✦ &nbsp; أعظم هبة &nbsp; ✦">✦
+        &nbsp; The Greatest Gift &nbsp; ✦</span>
+      <h2><span data-en="The" data-ar="المكتبة">The</span> <em data-en="Enchanted" data-ar="المسحورة">Enchanted</em>
+        <span data-en="Library" data-ar="">Library</span>
+      </h2>
+      <p data-en="Two stories tall, filled with every book ever written — given freely, out of love"
+        data-ar="طابقان من الكتب، مليئان بكل كتاب كُتب — أُهديت بحرية، من قلب محب">Two stories tall, filled with every
+        book ever written — given freely, out of love</p>
+    </div>
+
+    <div class="bookshelf-container">
+      <!-- ROW 1 -->
+      <div class="shelf-row reveal">
+        <div class="shelf-book" style="width:32px;height:165px;background:linear-gradient(to right,#5a2a7a,#4a1a6a);"
+          data-title="Romeo &amp; Juliet"><span>Shakespeare</span></div>
+        <div class="shelf-book" style="width:28px;height:150px;background:linear-gradient(to right,#7a3a1a,#5a2a0a);"
+          data-title="Don Quixote"><span>Cervantes</span></div>
+        <div class="shelf-book" style="width:36px;height:180px;background:linear-gradient(to right,#1a5a7a,#0a3a5a);"
+          data-title="Pride &amp; Prejudice"><span>Austen</span></div>
+        <div class="shelf-book" style="width:26px;height:140px;background:linear-gradient(to right,#7a1a3a,#5a0a2a);"
+          data-title="Fairy Tales"><span>Grimm</span></div>
+        <div class="shelf-book" style="width:30px;height:160px;background:linear-gradient(to right,#4a6a1a,#2a4a0a);"
+          data-title="Les Misérables"><span>Hugo</span></div>
+        <div class="shelf-book" style="width:38px;height:190px;background:linear-gradient(to right,#6a4a1a,#4a2a0a);"
+          data-title="One Thousand Nights"><span>Alf Layla</span></div>
+        <div class="shelf-book" style="width:28px;height:145px;background:linear-gradient(to right,#1a3a7a,#0a2a5a);"
+          data-title="Odyssey"><span>Homer</span></div>
+        <div class="shelf-book" style="width:32px;height:170px;background:linear-gradient(to right,#5a1a5a,#3a0a3a);"
+          data-title="Hamlet"><span>Shakespeare</span></div>
+        <div class="shelf-book" style="width:24px;height:135px;background:linear-gradient(to right,#7a5a1a,#5a3a0a);"
+          data-title="Fables"><span>Aesop</span></div>
+        <div class="shelf-book" style="width:34px;height:175px;background:linear-gradient(to right,#1a6a4a,#0a4a2a);"
+          data-title="The Count of Monte Cristo"><span>Dumas</span></div>
+        <div class="shelf-book" style="width:28px;height:148px;background:linear-gradient(to right,#6a1a1a,#4a0a0a);"
+          data-title="Jane Eyre"><span>Brontë</span></div>
+        <div class="shelf-book" style="width:30px;height:158px;background:linear-gradient(to right,#1a4a6a,#0a2a4a);"
+          data-title="Great Expectations"><span>Dickens</span></div>
+        <div class="shelf-book" style="width:25px;height:142px;background:linear-gradient(to right,#5a3a6a,#3a1a4a);"
+          data-title="Sense &amp; Sensibility"><span>Austen</span></div>
+        <div class="shelf-book" style="width:29px;height:155px;background:linear-gradient(to right,#2a6a3a,#1a4a2a);"
+          data-title="Crime &amp; Punishment"><span>Dostoevsky</span></div>
+        <div class="shelf-book" style="width:33px;height:168px;background:linear-gradient(to right,#6a2a1a,#4a1a0a);"
+          data-title="The Brothers Karamazov"><span>Dostoevsky</span></div>
+        <div class="shelf-book" style="width:27px;height:143px;background:linear-gradient(to right,#1a5a3a,#0a3a2a);"
+          data-title="Madame Bovary"><span>Flaubert</span></div>
+        <div class="shelf-book" style="width:31px;height:162px;background:linear-gradient(to right,#5a5a1a,#3a3a0a);"
+          data-title="The Stranger"><span>Camus</span></div>
+        <div class="shelf-book" style="width:23px;height:130px;background:linear-gradient(to right,#4a1a4a,#2a0a2a);"
+          data-title="Metamorphosis"><span>Kafka</span></div>
+        <div class="shelf-book" style="width:35px;height:178px;background:linear-gradient(to right,#1a3a5a,#0a1a3a);"
+          data-title="Moby Dick"><span>Melville</span></div>
+
+
+        <div class="shelf-book" style="width:32px;height:165px;background:linear-gradient(to right,#5a2a7a,#4a1a6a);"
+          data-title="Romeo &amp; Juliet"><span>Shakespeare</span></div>
+        <div class="shelf-book" style="width:28px;height:150px;background:linear-gradient(to right,#7a3a1a,#5a2a0a);"
+          data-title="Don Quixote"><span>Cervantes</span></div>
+        <div class="shelf-book" style="width:36px;height:180px;background:linear-gradient(to right,#1a5a7a,#0a3a5a);"
+          data-title="Pride &amp; Prejudice"><span>Austen</span></div>
+        <div class="shelf-book" style="width:26px;height:140px;background:linear-gradient(to right,#7a1a3a,#5a0a2a);"
+          data-title="Fairy Tales"><span>Grimm</span></div>
+        <div class="shelf-book" style="width:30px;height:160px;background:linear-gradient(to right,#4a6a1a,#2a4a0a);"
+          data-title="Les Misérables"><span>Hugo</span></div>
+        <div class="shelf-book" style="width:38px;height:190px;background:linear-gradient(to right,#6a4a1a,#4a2a0a);"
+          data-title="One Thousand Nights"><span>Alf Layla</span></div>
+        <div class="shelf-book" style="width:28px;height:145px;background:linear-gradient(to right,#1a3a7a,#0a2a5a);"
+          data-title="Odyssey"><span>Homer</span></div>
+        <div class="shelf-book" style="width:32px;height:170px;background:linear-gradient(to right,#5a1a5a,#3a0a3a);"
+          data-title="Hamlet"><span>Shakespeare</span></div>
+        <div class="shelf-book" style="width:24px;height:135px;background:linear-gradient(to right,#7a5a1a,#5a3a0a);"
+          data-title="Fables"><span>Aesop</span></div>
+        <div class="shelf-book" style="width:34px;height:175px;background:linear-gradient(to right,#1a6a4a,#0a4a2a);"
+          data-title="The Count of Monte Cristo"><span>Dumas</span></div>
+        <div class="shelf-book" style="width:28px;height:148px;background:linear-gradient(to right,#6a1a1a,#4a0a0a);"
+          data-title="Jane Eyre"><span>Brontë</span></div>
+        <div class="shelf-book" style="width:30px;height:158px;background:linear-gradient(to right,#1a4a6a,#0a2a4a);"
+          data-title="Great Expectations"><span>Dickens</span></div>
+        <div class="shelf-book" style="width:25px;height:142px;background:linear-gradient(to right,#5a3a6a,#3a1a4a);"
+          data-title="Sense &amp; Sensibility"><span>Austen</span></div>
+        <div class="shelf-book" style="width:29px;height:155px;background:linear-gradient(to right,#2a6a3a,#1a4a2a);"
+          data-title="Crime &amp; Punishment"><span>Dostoevsky</span></div>
+        <div class="shelf-book" style="width:33px;height:168px;background:linear-gradient(to right,#6a2a1a,#4a1a0a);"
+          data-title="The Brothers Karamazov"><span>Dostoevsky</span></div>
+        <div class="shelf-book" style="width:27px;height:143px;background:linear-gradient(to right,#1a5a3a,#0a3a2a);"
+          data-title="Madame Bovary"><span>Flaubert</span></div>
+        <div class="shelf-book" style="width:31px;height:162px;background:linear-gradient(to right,#5a5a1a,#3a3a0a);"
+          data-title="The Stranger"><span>Camus</span></div>
+        <div class="shelf-book" style="width:23px;height:130px;background:linear-gradient(to right,#4a1a4a,#2a0a2a);"
+          data-title="Metamorphosis"><span>Kafka</span></div>
+
+        <div class="shelf-book" style="width:26px;height:140px;background:linear-gradient(to right,#7a2a2a,#5a1a1a);"
+          data-title="The Scarlet Letter"><span>Hawthorne</span></div>
+      </div>
+
+      <!-- ROW 2 -->
+      <div class="shelf-row reveal">
+        <div class="shelf-book" style="width:34px;height:172px;background:linear-gradient(to right,#4a1a7a,#2a0a5a);"
+          data-title="Midnight's Children"><span>Rushdie</span></div>
+        <div class="shelf-book" style="width:28px;height:143px;background:linear-gradient(to right,#7a4a1a,#5a2a0a);"
+          data-title="Anna Karenina"><span>Tolstoy</span></div>
+        <div class="shelf-book" style="width:30px;height:163px;background:linear-gradient(to right,#1a6a6a,#0a4a4a);"
+          data-title="Wuthering Heights"><span>Brontë</span></div>
+        <div class="shelf-book" style="width:36px;height:185px;background:linear-gradient(to right,#6a1a4a,#4a0a2a);"
+          data-title="The Divine Comedy"><span>Dante</span></div>
+        <div class="shelf-book" style="width:26px;height:138px;background:linear-gradient(to right,#3a6a1a,#1a4a0a);"
+          data-title="Candide"><span>Voltaire</span></div>
+        <div class="shelf-book" style="width:32px;height:168px;background:linear-gradient(to right,#5a3a1a,#3a1a0a);"
+          data-title="The Iliad"><span>Homer</span></div>
+        <div class="shelf-book" style="width:28px;height:146px;background:linear-gradient(to right,#1a2a7a,#0a1a5a);"
+          data-title="Moby Dick"><span>Melville</span></div>
+        <div class="shelf-book" style="width:38px;height:188px;background:linear-gradient(to right,#7a1a5a,#5a0a3a);"
+          data-title="War and Peace"><span>Tolstoy</span></div>
+        <div class="shelf-book" style="width:24px;height:133px;background:linear-gradient(to right,#4a6a3a,#2a4a1a);"
+          data-title="Emma"><span>Austen</span></div>
+        <div class="shelf-book" style="width:30px;height:155px;background:linear-gradient(to right,#6a3a1a,#4a1a0a);"
+          data-title="Frankenstein"><span>Shelley</span></div>
+        <div class="shelf-book" style="width:32px;height:166px;background:linear-gradient(to right,#1a5a5a,#0a3a3a);"
+          data-title="Northanger Abbey"><span>Austen</span></div>
+        <div class="shelf-book" style="width:28px;height:144px;background:linear-gradient(to right,#5a1a6a,#3a0a4a);"
+          data-title="Paradise Lost"><span>Milton</span></div>
+        <div class="shelf-book" style="width:27px;height:152px;background:linear-gradient(to right,#2a5a2a,#1a3a1a);"
+          data-title="The Aeneid"><span>Virgil</span></div>
+        <div class="shelf-book" style="width:31px;height:161px;background:linear-gradient(to right,#6a5a1a,#4a3a0a);"
+          data-title="Don Juan"><span>Byron</span></div>
+        <div class="shelf-book" style="width:25px;height:137px;background:linear-gradient(to right,#3a1a6a,#1a0a4a);"
+          data-title="The Waste Land"><span>Eliot</span></div>
+        <div class="shelf-book" style="width:33px;height:170px;background:linear-gradient(to right,#1a4a4a,#0a2a2a);"
+          data-title="Ulysses"><span>Joyce</span></div>
+        <div class="shelf-book" style="width:29px;height:149px;background:linear-gradient(to right,#5a2a3a,#3a1a2a);"
+          data-title="To the Lighthouse"><span>Woolf</span></div>
+        <div class="shelf-book" style="width:37px;height:183px;background:linear-gradient(to right,#7a3a3a,#5a1a1a);"
+          data-title="The Canterbury Tales"><span>Chaucer</span></div>
+        <div class="shelf-book" style="width:26px;height:141px;background:linear-gradient(to right,#2a3a6a,#1a2a4a);"
+          data-title="Treasure Island"><span>Stevenson</span></div>
+
+        <div class="shelf-book" style="width:34px;height:172px;background:linear-gradient(to right,#4a1a7a,#2a0a5a);"
+          data-title="Midnight's Children"><span>Rushdie</span></div>
+        <div class="shelf-book" style="width:28px;height:143px;background:linear-gradient(to right,#7a4a1a,#5a2a0a);"
+          data-title="Anna Karenina"><span>Tolstoy</span></div>
+        <div class="shelf-book" style="width:30px;height:163px;background:linear-gradient(to right,#1a6a6a,#0a4a4a);"
+          data-title="Wuthering Heights"><span>Brontë</span></div>
+        <div class="shelf-book" style="width:36px;height:185px;background:linear-gradient(to right,#6a1a4a,#4a0a2a);"
+          data-title="The Divine Comedy"><span>Dante</span></div>
+        <div class="shelf-book" style="width:26px;height:138px;background:linear-gradient(to right,#3a6a1a,#1a4a0a);"
+          data-title="Candide"><span>Voltaire</span></div>
+        <div class="shelf-book" style="width:32px;height:168px;background:linear-gradient(to right,#5a3a1a,#3a1a0a);"
+          data-title="The Iliad"><span>Homer</span></div>
+        <div class="shelf-book" style="width:28px;height:146px;background:linear-gradient(to right,#1a2a7a,#0a1a5a);"
+          data-title="Moby Dick"><span>Melville</span></div>
+        <div class="shelf-book" style="width:38px;height:188px;background:linear-gradient(to right,#7a1a5a,#5a0a3a);"
+          data-title="War and Peace"><span>Tolstoy</span></div>
+        <div class="shelf-book" style="width:24px;height:133px;background:linear-gradient(to right,#4a6a3a,#2a4a1a);"
+          data-title="Emma"><span>Austen</span></div>
+        <div class="shelf-book" style="width:30px;height:155px;background:linear-gradient(to right,#6a3a1a,#4a1a0a);"
+          data-title="Frankenstein"><span>Shelley</span></div>
+        <div class="shelf-book" style="width:32px;height:166px;background:linear-gradient(to right,#1a5a5a,#0a3a3a);"
+          data-title="Northanger Abbey"><span>Austen</span></div>
+        <div class="shelf-book" style="width:28px;height:144px;background:linear-gradient(to right,#5a1a6a,#3a0a4a);"
+          data-title="Paradise Lost"><span>Milton</span></div>
+        <div class="shelf-book" style="width:27px;height:152px;background:linear-gradient(to right,#2a5a2a,#1a3a1a);"
+          data-title="The Aeneid"><span>Virgil</span></div>
+        <div class="shelf-book" style="width:31px;height:161px;background:linear-gradient(to right,#6a5a1a,#4a3a0a);"
+          data-title="Don Juan"><span>Byron</span></div>
+        <div class="shelf-book" style="width:25px;height:137px;background:linear-gradient(to right,#3a1a6a,#1a0a4a);"
+          data-title="The Waste Land"><span>Eliot</span></div>
+        <div class="shelf-book" style="width:33px;height:170px;background:linear-gradient(to right,#1a4a4a,#0a2a2a);"
+          data-title="Ulysses"><span>Joyce</span></div>
+        <div class="shelf-book" style="width:29px;height:149px;background:linear-gradient(to right,#5a2a3a,#3a1a2a);"
+          data-title="To the Lighthouse"><span>Woolf</span></div>
+        <div class="shelf-book" style="width:37px;height:183px;background:linear-gradient(to right,#7a3a3a,#5a1a1a);"
+          data-title="The Canterbury Tales"><span>Chaucer</span></div>
+        <div class="shelf-book" style="width:26px;height:141px;background:linear-gradient(to right,#2a3a6a,#1a2a4a);"
+          data-title="Treasure Island"><span>Stevenson</span></div>
+
+      </div>
+
+
+    </div>
+
+    <div class="candles-row reveal">
+      <div class="candle">
+        <div class="flame"></div>
+        <div class="wick"></div>
+        <div class="wax-body"></div>
+      </div>
+      <div class="candle">
+        <div class="flame"></div>
+        <div class="wick"></div>
+        <div class="wax-body" style="height:80px;"></div>
+      </div>
+      <div class="candle">
+        <div class="flame"></div>
+        <div class="wick"></div>
+        <div class="wax-body" style="height:50px;"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ROSE SECTION (fixed red rose, no color cycling) ===== -->
+  <section id="rose" class="rose-section">
+    <div class="rose-bg"></div>
+    <div class="falling-petals" id="petalContainer"></div>
+
+    <div class="enchanted-rose reveal">
+      <div class="rose-petals">🌹</div>
+    </div>
+
+    <h2 class="reveal">
+      <span data-en="Petals Falling," data-ar="التلاشي يمضي،">Petals Falling,</span><br>
+      <em data-en="Time Running Out" data-ar="والوقت ينفد">Time Running Out</em>
+    </h2>
+    <p class="reveal"
+      data-en="The enchanted rose blooms beneath its glass dome — each fallen petal a reminder that love is the only magic that matters. Belle did not choose the Beast. She chose his library. And in doing so, she chose him."
+      data-ar="تتفتح الوردة المسحورة تحت قبتها الزجاجية — كل بتلة ساقطة تذكرنا بأن الحب هو الوحيد السحر الحقيقي. لم تختر بيل الوحش. بل اختارت مكتبته. وبذلك اختارته.">
+      The enchanted rose blooms beneath its glass dome — each fallen petal a reminder that love is the only magic that
+      matters. Belle did not choose the Beast. She chose his library. And in doing so, she chose him.
+    </p>
+
+    <div class="candles-row" style="justify-content:center;gap:80px;">
+      <div class="candle">
+        <div class="flame"></div>
+        <div class="wick"></div>
+        <div class="wax-body" style="height:75px;"></div>
+      </div>
+      <div class="candle">
+        <div class="flame"></div>
+        <div class="wick"></div>
+        <div class="wax-body" style="height:55px;background:linear-gradient(to bottom,#f5c2cf,#e0a0b0);"></div>
+      </div>
+      <div class="candle">
+        <div class="flame"></div>
+        <div class="wick"></div>
+        <div class="wax-body" style="height:65px;"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== QUOTE SECTION ===== -->
+  <div class="aq-section" id="aqSection">
+    <div class="aq-bg-mark">"</div>
+
+    <div class="aq-inner" id="aqInner">
+      <div class="aq-top-bar">
+        <span class="aq-label" id="aqLabel">Words from the masters</span>
+      </div>
+
+      <div id="aqSlides"></div>
+      <div class="aq-progress">
+        <div class="aq-progress-bar" id="aqBar"></div>
+      </div>
+      <div class="aq-bottom">
+        <div class="aq-dots" id="aqDots"></div>
+        <div class="aq-controls">
+          <button class="aq-btn" onclick="prevSlide()">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <span class="aq-counter" id="aqCounter">1 / 1</span>
+          <button class="aq-btn" id="pauseBtn" onclick="togglePause()">
+            <i class="fas fa-pause"></i>
+          </button>
+          <button class="aq-btn" onclick="nextSlide()">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== NEWSLETTER SECTION ===== -->
+  <section id="newsletter" class="newsletter-section">
+    <div class="reveal">
+      <h2><span data-en="Stay in the" data-ar="ابقَ في">Stay in the</span> <em data-en="Story"
+          data-ar="القصة">Story</em></h2>
+      <p data-en="Subscribe to our newsletter for new releases, author events, and reading recommendations."
+        data-ar="اشترك في نشرتنا البريدية لمعرفة الإصدارات الجديدة وفعاليات المؤلفين وتوصيات القراءة.">Subscribe to our
+        newsletter for new releases, author events, and reading recommendations.</p>
+      <div class="newsletter-form">
+        <input type="email" id="newsletter-email" placeholder="your@email.com" data-placeholder-en="your@email.com"
+          data-placeholder-ar="بريدك@الإلكتروني.com">
+        <button onclick="handleNewsletter()" data-en="Subscribe" data-ar="اشترك">Subscribe</button>
+      </div>
+      <p id="newsletter-msg"
+        style="margin-top:16px;font-family:'Playfair Display',serif;font-style:italic;font-size:16px;color:var(--gold);min-height:24px;">
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <span class="footer-logo" data-en="✦ The Enchanted Library ✦" data-ar="✦ المكتبة المسحورة ✦">✦ The Enchanted
+          Library ✦</span>
+        <p data-en="Your magical destination for books, stories, and literary adventures. Explore, connect, and discover."
+          data-ar="وجهتك السحرية للكتب والقصص والمغامرات الأدبية. استكشف وتواصل واكتشف.">Your magical destination for
+          books, stories, and literary adventures. Explore, connect, and discover.</p>
+        <div class="footer-social">
+          <a href="#" title="Facebook"><i class="fa-brands fa-facebook"></i></a>
+          <a href="#" title="Twitter / X"><i class="fa-brands fa-twitter"></i></a>
+          <a href="#" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" title="Goodreads"><i class="fa-brands fa-goodreads"></i></a>
+          <a href="#" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4 data-en="Explore" data-ar="استكشف">Explore</h4>
+        <ul>
+          <li><a href="../pages/SearchPage.html" data-en="Search Books" data-ar="البحث عن كتب">Search Books</a></li>
+          <li><a href="../pages/book-details.html" data-en="New Releases" data-ar="الإصدارات الجديدة">New Releases</a></li>
+          <li><a href="../pages/SearchPage.html" data-en="Browse Genres" data-ar="تصفح الأنواع">Browse Genres</a></li>
+          <li><a href="../pages/authors.html" data-en="Authors" data-ar="المؤلفون">Authors</a></li>
+          <li><a href="../pages/publishers.html" data-en="Publishers" data-ar="الناشرون">Publishers</a></li>
+          <li><a href="../pages/SearchPage.html" data-en="Book Fair" data-ar="معرض الكتاب">Book Fair</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 data-en="Community" data-ar="المجتمع">Community</h4>
+        <ul>
+          <li><a href="../pages/book-details.html" data-en="Reviews" data-ar="المراجعات">Reviews</a></li>
+          <li><a href="../pages/community.html" data-en="Book Club" data-ar="نادي الكتاب">Book Club</a></li>
+          <li><a href="../pages/blog.html" data-en="Blog" data-ar="المدونة">Blog</a></li>
+          <li><a href="../pages/events.html" data-en="Events" data-ar="الفعاليات">Events</a></li>
+          <li><a href="../pages/MyLibrary.html" data-en="My Bookshelf" data-ar="رف كتبي">My Bookshelf</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 data-en="Account" data-ar="الحساب">Account</h4>
+        <ul>
+          <li><a href="../pages/login.html" data-en="Login" data-ar="تسجيل الدخول">Login</a></li>
+          <li><a href="../pages/registration.html" data-en="Register" data-ar="إنشاء حساب">Register</a></li>
+          <li><a href="../pages/profile.html" data-en="My Profile" data-ar="ملفي الشخصي">My Profile</a></li>
+          <li><a href="../pages/contactus.html" data-en="Contact Us" data-ar="اتصل بنا">Contact Us</a></li>
+          <li><a href="../pages/dashboard.html" data-en="Admin Dashboard" data-ar="لوحة الإدارة">Admin Dashboard</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copy" data-en="🌹 &nbsp; © 2026 Enchanted Library &nbsp;·&nbsp; All Rights Reserved &nbsp; 🌹"
+        data-ar="🌹 &nbsp; © 2026 المكتبة المسحورة &nbsp;·&nbsp; جميع الحقوق محفوظة &nbsp; 🌹">🌹 &nbsp; © 2026
+        Enchanted Library &nbsp;·&nbsp; All Rights Reserved &nbsp; 🌹</p>
+      <p class="footer-tagline" data-en='"There\' s something there that wasn\'t there before."'
+        data-ar='"ثمة شيء هناك لم يكن موجوداً من قبل."'>"There's something there that wasn't there before."</p>
+    </div>
+  </footer>
+
+  <script src="../js/global.js"></script>
+  <script src="../js/footer.js"></script>
+  <script src="../js/Homepage.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" id="htmlRoot">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title id="pageTitle">Authors — The Enchanted Library / المؤلفون — المكتبة السحرية</title>
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=IM+Fell+English:ital@0;1&family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Scheherazade+New:wght@400;700&family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="../css/shared.css">
+  <link rel="stylesheet" href="../css/authors.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+  <!-- ===== PARTICLES ===== -->
+  <div id="particles"></div>
+
+  <!-- ===== MODE TOGGLE ===== -->
+  <div class="mode-toggle-wrap">
+    <button class="mode-btn active" id="modeDay" onclick="setMode('day')"><i class="fa-solid fa-sun"></i> Day</button>
+    <button class="mode-btn" id="modeNight" onclick="setMode('night')"><i class="fa-solid fa-moon"></i> Night</button>
+  </div>
+
+  <!-- ===== NAV ===== -->
+  <nav>
+    <a href="../pages/homepage.html" class="nav-logo" data-en="✦ The Enchanted Library ✦" data-ar="✦ المكتبة المسحورة ✦">✦ The Enchanted
+      Library ✦</a>
+
+    <ul class="nav-links">
+
+      <!-- Browse -->
+      <li class="nav-dropdown">
+        <a href="#" data-en="Browse" data-ar="تصفح">Browse</a>
+        <div class="dropdown-menu">
+          <a href="../pages/SearchPage.html" data-en="Search Books" data-ar="البحث عن الكتب">Search Books</a>
+          <a href="../pages/authors.html" class="active" data-en="By Author" data-ar="حسب المؤلف">By Author</a>
+          <a href="../pages/publishers.html" data-en="By Publisher" data-ar="حسب الناشر">By Publisher</a>
+          <a href="../pages/MyLibrary.html" data-en="My Library" data-ar="مكتبتي">My Library</a>
+        </div>
+      </li>
+
+      <!-- Community -->
+      <li class="nav-dropdown">
+        <a href="#" data-en="Community" data-ar="المجتمع">Community</a>
+        <div class="dropdown-menu">
+          
+          <a href="../pages/community.html" data-en="Book Club Forum" data-ar="منتدى نادي القراءة">Book Club Forum</a>
+          <a href="../pages/blog.html" data-en="Blog" data-ar="المدونة">Blog</a>
+          <a href="../pages/events.html" data-en="Author Events" data-ar="فعاليات المؤلفين">Author Events</a>
+        </div>
+      </li>
+
+      <!-- Fair -->
+      <li>
+        <a href="../pages/BookPage.html" data-en="Book Fair" data-ar="معرض الكتاب">Book Fair</a>
+      </li>
+
+      <!-- About -->
+      <li class="nav-dropdown">
+        <a href="#" data-en="About" data-ar="عن الموقع">About</a>
+        <div class="dropdown-menu">
+          <a href="../pages/contactus.html" data-en="Contact Us" data-ar="اتصل بنا">Contact Us</a>
+          <a href="../pages/newsletter.html" data-en="Subscription" data-ar="الاشتراك">Subscription</a>
+        </div>
+      </li>
+
+      <!-- Auth -->
+
+      <li><a href="../pages/profile.html" data-en="Profile" data-ar="الملف الشخصي">Profile</a></li>
+
+      <!-- Language -->
+      <li>
+        <div class="language-switch">
+          <button onclick="setLanguage('en')" id="btn-en" class="active">EN</button>
+          <button onclick="setLanguage('ar')" id="btn-ar">AR</button>
+        </div>
+      </li>
+
+    </ul>
+  </nav>
+
+  <!-- ===================== PAGE HERO ===================== -->
+  <section class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="page-hero-content">
+      <p class="page-eyebrow" data-en="The Architects of Imagination" data-ar="معماريو الخيال">The Architects of Imagination</p>
+      <h1 class="page-title">
+        <span data-en="Meet the" data-ar="قابل">Meet the</span>
+        <em data-en="Authors" data-ar="المؤلفين">Authors</em>
+      </h1>
+      <p class="page-subtitle" data-en="Voices that shaped literature across centuries and continents" data-ar="أصوات شكّلت الأدب عبر القرون والقارات">Voices that shaped literature across centuries and continents</p>
+      <div class="hero-divider">
+        <div class="divider-line"></div>
+        <span class="divider-symbol">✦</span>
+        <div class="divider-line"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FEATURED AUTHOR ===================== -->
+  <section class="featured-section">
+    <span class="featured-tag" data-en="✦ Author of the Season" data-ar="✦ مؤلف الموسم">✦ Author of the Season</span>
+
+    <div class="featured-card" id="featuredCard">
+
+      <div class="featured-visual">
+        <div class="featured-visual-bg"></div>
+
+        <div class="featured-avatar">
+          <img src="../image/csm_garcia_marquez__gabriel_f26894719d.jpg" alt="Gabriel García Márquez">
+        </div>
+      </div>
+
+      <div class="featured-body">
+        <h2>Gabriel García <em>Márquez</em></h2>
+
+        <p class="dates">1927 — 2014 &nbsp;·&nbsp; 🇨🇴 Colombia</p>
+
+        <p data-en="The father of magical realism, Gabriel García Márquez wove the extraordinary into everyday life. His masterpiece One Hundred Years of Solitude made him one of the most influential writers of the 20th century." data-ar="أبو الواقعية السحرية، غابرييل غارسيا ماركيز نسج غير العادي في الحياة اليومية. تحفته 'مئة عام من العزلة' جعلته أحد أكثر الكتاب تأثيراً في القرن العشرين.">
+          The father of magical realism, Gabriel García Márquez wove the extraordinary into everyday life.
+          His masterpiece <em>One Hundred Years of Solitude</em> made him one of the most influential writers
+          of the 20th century.
+        </p>
+
+        <div class="featured-awards">
+          <span class="award-pill" data-en="🏆 Nobel Prize 1982" data-ar="🏆 جائزة نوبل ١٩٨٢">🏆 Nobel Prize 1982</span>
+          <span class="award-pill" data-en="📖 Magical Realism" data-ar="📖 الواقعية السحرية">📖 Magical Realism</span>
+        </div>
+
+        <button class="featured-cta" onclick="openModal('garcia')" data-en="Explore Full Profile" data-ar="استكشف الملف الشخصي">
+          Explore Full Profile
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===================== FILTER BAR ===================== -->
+  <div class="filter-section">
+    <span class="filter-label" data-en="Filter by genre:" data-ar="تصفية حسب النوع:">Filter by genre:</span>
+    <button class="filter-btn active" data-genre="All Genre" onclick="filterAuthors('All Genre', this)" data-en="All" data-ar="الكل">All</button>
+    <button class="filter-btn" data-genre="Romance" onclick="filterAuthors('Romance', this)" data-en="Romance" data-ar="رومانسي">Romance</button>
+    <button class="filter-btn" data-genre="Adventure" onclick="filterAuthors('Adventure', this)" data-en="Adventure" data-ar="مغامرات">Adventure</button>
+    <button class="filter-btn" data-genre="Classic" onclick="filterAuthors('Classic', this)" data-en="Classic" data-ar="كلاسيكي">Classic</button>
+    <button class="filter-btn" data-genre="Fiction Books" onclick="filterAuthors('Fiction Books', this)" data-en="Fiction" data-ar="روايات">Fiction</button>
+    <button class="filter-btn" data-genre="Mystery" onclick="filterAuthors('Mystery', this)" data-en="Mystery" data-ar="غموض">Mystery</button>
+    <button class="filter-btn" data-genre="Poetry" onclick="filterAuthors('Poetry', this)" data-en="Poetry" data-ar="شعر">Poetry</button>
+    <button class="filter-btn" data-genre="Cartoon" onclick="filterAuthors('Cartoon', this)" data-en="Cartoon" data-ar="كرتون">Cartoon</button>
+    <button class="filter-btn" data-genre="Fantasy" onclick="filterAuthors('Fantasy', this)" data-en="Fantasy" data-ar="خيال">Fantasy</button>
+    <button class="filter-btn" data-genre="Science Books" onclick="filterAuthors('Science Books', this)" data-en="Science" data-ar="علوم">Science</button>
+    <button class="filter-btn" data-genre="Self Help Books" onclick="filterAuthors('Self Help Books', this)" data-en="Self Help" data-ar="تطوير الذات">Self Help</button>
+    <input class="author-search" id="authorSearch" type="text" data-placeholder-en="Search authors…" data-placeholder-ar="ابحث عن المؤلفين…" placeholder="Search authors…"
+      oninput="searchAuthors(this.value)" aria-label="Search authors" />
+  </div>
+
+  <!-- Results count -->
+  <p class="results-count" id="resultsCount" data-en="Showing Authors" data-ar="عرض المؤلفين">Showing Authors</p>
+
+  <!-- ===================== AUTHORS GRID ===================== -->
+  <section class="authors-section">
+    <div class="authors-grid" id="authorsGrid"></div>
+  </section>
+
+  <!-- ===================== WORKS TABLE ===================== -->
+  <section class="table-section">
+    <h2 class="section-heading"><span data-en="Notable" data-ar="أبرز">Notable</span> <em data-en="Works" data-ar="الأعمال">Works</em></h2>
+    <p class="section-sub" data-en="A curated list of landmark literary works from our featured authors" data-ar="قائمة منسقة من الأعمال الأدبية البارزة لمؤلفينا المتميزين">A curated list of landmark literary works from our featured authors</p>
+
+    <div class="table-wrap">
+      <table class="works-table" id="worksTable">
+        <thead>
+          <tr>
+            <th data-en="Author" data-ar="المؤلف" onclick="sortTable(0)">Author</th>
+            <th data-en="Title" data-ar="العنوان" onclick="sortTable(1)">Title</th>
+            <th data-en="Year" data-ar="السنة" onclick="sortTable(2)">Year</th>
+            <th data-en="Genre" data-ar="النوع" onclick="sortTable(3)">Genre</th>
+            <th data-en="Pages" data-ar="الصفحات" onclick="sortTable(4)">Pages</th>
+            <th data-en="Rating" data-ar="التقييم">Rating</th>
+          </tr>
+        </thead>
+        <tbody id="worksBody">
+          <!-- Populated by JS -->
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ===================== MODAL ===================== -->
+  <div class="modal-overlay" id="modalOverlay" onclick="closeModalOnBg(event)">
+    <div class="modal-box" id="modalBox">
+      <button class="modal-close" onclick="closeModal()" aria-label="Close">&times;</button>
+      <div id="modalContent"></div>
+    </div>
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="footer-logo" data-en="✦ The Enchanted Library ✦" data-ar="✦ المكتبة المسحورة ✦">✦ المكتبة المسحورة ✦</div>
+    <p class="footer-quote" data-en="«There's something there that wasn't there before.»" data-ar="«ثمّة شيء هناك لم يكن موجوداً من قبل.»">«ثمّة شيء هناك لم يكن موجوداً من قبل.»</p>
+    <div class="footer-links">
+      <a href="../pages/homepage.html" data-en="Home" data-ar="الرئيسية">الرئيسية</a>
+      <a href="BookPage.html" data-en="Browse" data-ar="تصفّح">تصفّح</a>
+      <a href="SearchPage.html" data-en="Search" data-ar="البحث">البحث</a>
+      <a href="MyLibrary.html" data-en="My Library" data-ar="مكتبتي">مكتبتي</a>
+    </div>
+    <p class="footer-copy" data-en="🌹 &nbsp; An Enchanted Tale &nbsp; 🌹" data-ar="🌹 &nbsp; حكاية سحرية &nbsp; 🌹">🌹 &nbsp; حكاية سحرية &nbsp; 🌹</p>
+  </footer>
+
+  <script src="../js/global.js"></script>
+  <script src="../js/authors.js"></script>
+
+</body>
+
+</html>

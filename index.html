@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  .
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;500;600&family=IM+Fell+English:ital@0;1&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="css/login.css">
+</head>
+
+<body data-theme="enchanted">
+
+  <!-- Background -->
+  <div class="library-bg">
+    <div class="bookshelf-layer"></div>
+    <div class="vignette"></div>
+  </div>
+  <div class="candle-left"></div>
+  <div class="candle-right"></div>
+  <canvas id="particles"></canvas>
+
+  <!-- Controls Bar: Theme + Language -->
+  <div class="controls-bar">
+    <div class="theme-toggle" role="group" aria-label="Switch theme">
+      <button class="theme-btn active" id="btn-enchanted" onclick="setTheme('enchanted')">🌙 Enchanted</button>
+      <button class="theme-btn" id="btn-reader" onclick="setTheme('reader')">☀️ Reader</button>
+    </div>
+    <div class="lang-toggle" role="group" aria-label="Switch language">
+      <button class="lang-btn active" id="btn-lang" onclick="toggleLang()">عربي</button>
+    </div>
+  </div>
+
+  <!-- Login Card -->
+  <div class="login-card" role="main">
+    <p class="eyebrow">✦ Return to the Enchanted Library ✦</p>
+    <h1 class="card-title">Welcome Back,<br>Dear Reader</h1>
+    <p class="card-subtitle">"Your story is waiting where you left it…"</p>
+
+    <div class="divider">
+      <div class="divider-line"></div>
+      <span class="divider-glyph">❧</span>
+      <div class="divider-line"></div>
+    </div>
+
+    <p class="intro-text">The pages remember you. Return to your journey<br>and continue exploring worlds beyond
+      imagination.</p>
+
+    <form id="login-form" novalidate>
+      <div class="form-group">
+        <label for="email">Where shall we find your story?</label>
+        <input type="email" id="email" placeholder="your.name@realm.com" autocomplete="email">
+        <p class="field-error" id="email-error">We couldn't find your story in our library…</p>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Enter your secret key</label>
+        <input type="password" id="password" placeholder="············">
+        <p class="field-error" id="pass-error">That key doesn't unlock this door…</p>
+      </div>
+
+      <button type="submit" class="btn-submit" id="submit-btn">
+        📖 Continue Your Story
+      </button>
+    </form>
+
+    <div class="card-footer">
+      <button class="link-styled" id="forgot-btn" onclick="handleForgot()">Lost your key?</button>
+      <button class="link-styled" id="register-btn" onclick="handleRegister()">New to this story? Begin here.</button>
+    </div>
+  </div>
+
+  <div class="epigraph">"Not all who wander are lost… some are just searching for the right book."</div>
+  <div class="toast" id="toast"></div>
+  <script src="js/global.js"></script>
+  <script src="js/login.js"></script>
+
+</body>
+
+</html>

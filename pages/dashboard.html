@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+    <title>
+        The Enchanted Library
+    </title>
+
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/shared.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Cormorant+Garamond:wght@300;400;500;600;700&family=IM+Fell+English&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<!-- particles -->
+
+<div id="particles"></div>
+
+<!-- ===== MODE TOGGLE ===== -->
+<div class="mode-toggle-wrap">
+    <button class="mode-btn active" id="modeDay" onclick="setMode('day')"><i class="fa-solid fa-sun"></i> Day</button>
+    <button class="mode-btn" id="modeNight" onclick="setMode('night')"><i class="fa-solid fa-moon"></i> Night</button>
+</div>
+
+<!-- navbar -->
+<nav>
+    <a href="../pages/homepage.html" class="nav-logo" data-en="✦ Librarian Dashboard ✦" data-ar="✦ لوحة التحكم ✦">✦ Librarian Dashboard ✦</a>
+    <ul class="nav-links">
+      <li><a href="../pages/dashboard.html" data-en="Dashboard" data-ar="لوحة التحكم">Dashboard</a></li>
+      <li><a href="../pages/admin-store.html" data-en="Admin Store" data-ar="متجر الإدارة">Admin Store</a></li>
+      <li><a href="../pages/homepage.html" data-en="Exit Admin" data-ar="خروج من الإدارة">Exit Admin</a></li>
+      <li>
+        <div class="language-switch">
+          <button onclick="setLanguage('en')" id="btn-en" class="active">EN</button>
+          <button onclick="setLanguage('ar')" id="btn-ar">AR</button>
+        </div>
+      </li>
+    </ul>
+</nav>
+
+<!-- hero -->
+
+<section class="dashboard-hero">
+
+    <div class="dashboard-left reveal">
+
+        <h1 data-en="The Enchanted <span>Library</span>" data-ar="المكتبة <span>المسحورة</span>">
+            The Enchanted <span>Library</span>
+        </h1>
+        <p class="hero-text" data-en="Manage books, community, and bookstore operations in one place." data-ar="إدارة الكتب والمجتمع وعمليات المكتبة في مكان واحد.">
+            Manage books, community, and bookstore operations in one place.
+        </p>
+        <button class="hero-btn primary-btn" data-en="Explore Dashboard" data-ar="استكشاف لوحة التحكم">
+            Explore Dashboard
+        </button>
+
+    </div>
+
+    <div class="dashboard-right">
+
+        <div class="character-glow"></div>
+
+        <div class="magic-ring"></div>
+
+        <div class="character-box">
+
+            <img
+            src="../image/librarychar.jpeg"
+            alt="Library Character">
+
+        </div>
+
+        <div class="floating-book book-1">
+            📖
+        </div>
+
+        <div class="floating-book book-2">
+            📚
+        </div>
+
+        <div class="floating-book book-3">
+            📕
+        </div>
+
+    </div>
+
+</section>
+
+<!-- stats -->
+
+<section class="stats-section">
+
+    <div class="stat-card reveal">
+        <h3 data-en="Total Books" data-ar="إجمالي الكتب">Total Books</h3>
+        <p>100</p>
+    </div>
+    <div class="stat-card reveal">
+        <h3 data-en="Orders" data-ar="الطلبات">Orders</h3>
+        <p>85</p>
+    </div>
+    <div class="stat-card reveal">
+        <h3 data-en="Members" data-ar="الأعضاء">Members</h3>
+        <p>70</p>
+    </div>
+    <div class="stat-card reveal">
+        <h3 data-en="Reviews" data-ar="المراجعات">Reviews</h3>
+        <p>180</p>
+    </div>
+
+</section>
+
+<!-- recent orders -->
+
+<section class="dashboard-table reveal">
+    <h2 data-en="Recent Orders" data-ar="الطلبات الأخيرة">Recent Orders</h2>
+    <table>
+        <thead>
+            <tr>
+                <th data-en="Customer" data-ar="العميل">Customer</th>
+                <th data-en="Book" data-ar="الكتاب">Book</th>
+                <th data-en="Status" data-ar="الحالة">Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td data-en="Emma" data-ar="إيما">Emma</td>
+                <td data-en="Atomic Habits" data-ar="العادات الذرية">Atomic Habits</td>
+                <td data-en="Delivered" data-ar="تم التوصيل">Delivered</td>
+            </tr>
+            <tr>
+                <td data-en="Noah" data-ar="نوح">Noah</td>
+                <td data-en="Deep Work" data-ar="العمل العميق">Deep Work</td>
+                <td data-en="Pending" data-ar="قيد الانتظار">Pending</td>
+            </tr>
+            <tr>
+                <td data-en="Sophia" data-ar="صوفيا">Sophia</td>
+                <td data-en="Clean Code" data-ar="كود نظيف">Clean Code</td>
+                <td data-en="Shipped" data-ar="تم الشحن">Shipped</td>
+            </tr>
+            <tr>
+                <td data-en="James" data-ar="جيمس">James</td>
+                <td data-en="The Hobbit" data-ar="الهوبيت">The Hobbit</td>
+                <td data-en="Delivered" data-ar="تم التوصيل">Delivered</td>
+            </tr>
+            <tr>
+                <td data-en="Isabella" data-ar="إيزابيلا">Isabella</td>
+                <td data-en="1984" data-ar="١٩٨٤">1984</td>
+                <td data-en="Processing" data-ar="قيد المعالجة">Processing</td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+<!-- analytics -->
+
+<section class="analytics-section reveal">
+    <h2 data-en="Monthly Analytics" data-ar="التحليلات الشهرية">Monthly Analytics</h2>
+    <div class="analytics-card card">
+        <canvas id="libraryChart"></canvas>
+    </div>
+</section>
+
+<!-- extra modules -->
+
+<section class="modules-section">
+    <a href="community.html" class="module-card reveal">
+        <h3 data-en="Community" data-ar="المجتمع">Community</h3>
+        <p data-en="Explore discussions and book clubs." data-ar="استكشاف النقاشات ونوادي الكتاب.">Explore discussions and book clubs.</p>
+    </a>
+    <a href="admin-store.html" class="module-card reveal">
+        <h3 data-en="Admin Store" data-ar="متجر الإدارة">Admin Store</h3>
+        <p data-en="Manage store and purchases." data-ar="إدارة المتجر والمشتريات.">Manage store and purchases.</p>
+    </a>
+</section>
+
+<!-- footer -->
+
+<footer>
+    <h2 data-en="The Enchanted Library" data-ar="المكتبة المسحورة">The Enchanted Library</h2>
+    <p data-en="A world of books and stories." data-ar="عالم من الكتب والقصص.">A world of books and stories.</p>
+</footer>
+
+<!-- scripts -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="../js/global.js"></script>
+<script src="../js/dashboard.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us — Enchanted Library / اتصل بنا — المكتبة السحرية</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Cormorant+Garamond&family=IM+Fell+English&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../css/contactus.css">
+  <link rel="stylesheet" href="../css/shared.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+  <!-- ===== PARTICLES ===== -->
+  <div id="particles"></div>
+
+  <!-- ===== MODE TOGGLE ===== -->
+  <div class="mode-toggle-wrap">
+    <button class="mode-btn active" id="modeDay" onclick="setMode('day')"><i class="fa-solid fa-sun"></i> Day</button>
+    <button class="mode-btn" id="modeNight" onclick="setMode('night')"><i class="fa-solid fa-moon"></i> Night</button>
+  </div>
+
+  <!-- ===== NAV ===== -->
+  <nav>
+    <a href="../pages/homepage.html" class="nav-logo" data-en="✦ The Enchanted Library ✦" data-ar="✦ المكتبة المسحورة ✦">✦ The Enchanted
+      Library ✦</a>
+
+    <ul class="nav-links">
+
+      <!-- Browse -->
+      <li class="nav-dropdown">
+        <a href="#" data-en="Browse" data-ar="تصفح">Browse</a>
+        <div class="dropdown-menu">
+          <a href="../pages/SearchPage.html" data-en="Search Books" data-ar="البحث عن الكتب">Search Books</a>
+          <a href="../pages/authors.html" data-en="By Author" data-ar="حسب المؤلف">By Author</a>
+          <a href="../pages/publishers.html" data-en="By Publisher" data-ar="حسب الناشر">By Publisher</a>
+          <a href="../pages/MyLibrary.html" data-en="My Library" data-ar="مكتبتي">My Library</a>
+        </div>
+      </li>
+
+      <!-- Community -->
+      <li class="nav-dropdown">
+        <a href="#" data-en="Community" data-ar="المجتمع">Community</a>
+        <div class="dropdown-menu">
+          
+          <a href="../pages/community.html" data-en="Book Club Forum" data-ar="منتدى نادي القراءة">Book Club Forum</a>
+          <a href="../pages/blog.html" data-en="Blog" data-ar="المدونة">Blog</a>
+          <a href="../pages/events.html" data-en="Author Events" data-ar="فعاليات المؤلفين">Author Events</a>
+        </div>
+      </li>
+
+      <!-- Fair -->
+      <li>
+        <a href="../pages/BookPage.html" data-en="Book Fair" data-ar="معرض الكتاب">Book Fair</a>
+      </li>
+
+      <!-- About -->
+      <li class="nav-dropdown">
+        <a href="#" data-en="About" data-ar="عن الموقع">About</a>
+        <div class="dropdown-menu">
+          <a href="../pages/contactus.html" class="active" data-en="Contact Us" data-ar="اتصل بنا">Contact Us</a>
+          <a href="../pages/newsletter.html" data-en="Subscription" data-ar="الاشتراك">Subscription</a>
+        </div>
+      </li>
+
+      <!-- Auth -->
+
+      <li><a href="../pages/profile.html" data-en="Profile" data-ar="الملف الشخصي">Profile</a></li>
+
+      <!-- Language -->
+      <li>
+        <div class="language-switch">
+          <button onclick="setLanguage('en')" id="btn-en" class="active">EN</button>
+          <button onclick="setLanguage('ar')" id="btn-ar">AR</button>
+        </div>
+      </li>
+
+    </ul>
+  </nav>
+
+  <!-- ===== PAGE HERO ===== -->
+  <section class="page-hero">
+    <div class="page-hero-bg"></div>
+
+    <!-- Quill pen SVG watermark -->
+    <svg class="hero-quill" viewBox="0 0 120 340" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M60 10 C90 40, 110 100, 80 160 C60 200, 50 230, 55 290 L65 290 C60 230, 70 200, 90 160 C120 100, 100 40, 60 10Z"
+        fill="white" />
+      <path d="M60 10 C30 40, 10 100, 40 160 C60 200, 70 230, 65 290" stroke="white" stroke-width="1.5" fill="none" />
+      <line x1="60" y1="280" x2="60" y2="330" stroke="white" stroke-width="2" />
+      <path d="M50 320 Q60 340 70 320" stroke="white" stroke-width="1.5" fill="none" />
+    </svg>
+
+    <div class="page-hero-content">
+      <p class="page-eyebrow" data-en="✦ &nbsp; We'd Love to Hear From You &nbsp; ✦"
+        data-ar="✦ &nbsp; يسعدنا سماع رأيك &nbsp; ✦">✦ &nbsp; We'd Love to Hear From You &nbsp; ✦</p>
+      <h1 class="page-title">
+        <span data-en="Contact" data-ar="تواصل">Contact</span>
+        <em data-en="Us" data-ar="معنا">Us</em>
+      </h1>
+      <div class="hero-divider">
+        <div class="divider-line"></div>
+        <span class="divider-icon">✉️</span>
+        <div class="divider-line"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <div class="contact-wrapper">
+
+    <!-- ── INFO COLUMN ── -->
+    <aside class="contact-info reveal">
+
+      <span class="info-header" data-en="✦ &nbsp; Get in Touch &nbsp; ✦" data-ar="✦ &nbsp; تواصل معنا &nbsp; ✦">✦ &nbsp;
+        Get in Touch &nbsp; ✦</span>
+
+      <h2 class="info-title">
+        <span data-en="Every Great Story" data-ar="كل قصة عظيمة">Every Great Story</span><br>
+        <em data-en="Starts with a Question" data-ar="تبدأ بسؤال">Starts with a Question</em>
+      </h2>
+
+      <p class="info-desc"
+        data-en="Whether you have a question about a book, want to suggest a title, need help with your account, or simply wish to share your love of reading — our team is here."
+        data-ar="سواء كان لديك سؤال عن كتاب، أو تريد اقتراح عنوان، أو تحتاج مساعدة في حسابك، أو تريد ببساطة مشاركة حبك للقراءة — فريقنا هنا لخدمتك.">
+        Whether you have a question about a book, want to suggest a title, need help with your account, or simply wish
+        to share your love of reading — our team is here.
+      </p>
+
+      <div class="info-card">
+        <div class="info-card-icon">📍</div>
+        <div class="info-card-body">
+          <span class="info-card-label" data-en="Visit Us" data-ar="زورونا">Visit Us</span>
+          <div class="info-card-value" data-en="12 Library Lane, Cairo Book Quarter, Egypt, 11511"
+            data-ar="12 شارع المكتبة، حي كتب القاهرة، مصر، 11511">12 Library Lane, Cairo Book Quarter, Egypt, 11511
+          </div>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <div class="info-card-icon">✉️</div>
+        <div class="info-card-body">
+          <span class="info-card-label" data-en="Email Us" data-ar="راسلونا">Email Us</span>
+          <div class="info-card-value">
+            <a href="mailto:hello@enchantedlibrary.eg">hello@enchantedlibrary.eg</a><br>
+            <a href="mailto:support@enchantedlibrary.eg"
+              style="font-size:14px;opacity:0.7;">support@enchantedlibrary.eg</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <div class="info-card-icon">📞</div>
+        <div class="info-card-body">
+          <span class="info-card-label" data-en="Call Us" data-ar="اتصلوا بنا">Call Us</span>
+          <div class="info-card-value"
+            data-en="+20 2 2345 6789<br><span style='font-size:13px;opacity:0.6;'>Sat – Thu · 9 AM – 6 PM</span>"
+            data-ar="+20 2 2345 6789<br><span style='font-size:13px;opacity:0.6;'>السبت – الخميس · 9 ص – 6 م</span>">+20
+            2 2345 6789<br><span style="font-size:13px;opacity:0.6;">Sat – Thu · 9 AM – 6 PM</span></div>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <div class="info-card-icon">💬</div>
+        <div class="info-card-body">
+          <span class="info-card-label" data-en="Response Time" data-ar="وقت الرد">Response Time</span>
+          <div class="info-card-value" data-en="We typically reply within 24 hours on business days."
+            data-ar="نرد عادةً خلال 24 ساعة في أيام العمل.">We typically reply within 24 hours on business days.</div>
+        </div>
+      </div>
+
+      <div class="info-social">
+        <a href="#" title="Facebook">📘</a>
+        <a href="#" title="Twitter">🐦</a>
+        <a href="#" title="Instagram">📸</a>
+        <a href="#" title="Goodreads">📚</a>
+      </div>
+
+    </aside>
+
+    <!-- ── FORM COLUMN ── -->
+    <div class="contact-form-wrap reveal">
+
+      <h2 class="form-title" data-en="Send a Message" data-ar="أرسل رسالة">Send a Message</h2>
+      <p class="form-subtitle" data-en="Fill in the form below and we'll get back to you as soon as possible."
+        data-ar="أكمل النموذج أدناه وسنعود إليك في أقرب وقت ممكن.">Fill in the form below and we'll get back to you as
+        soon as possible.</p>
+
+      <!-- Name row -->
+      <div class="form-row">
+        <div class="form-group half">
+          <label for="fname">
+            <span data-en="First Name" data-ar="الاسم الأول">First Name</span>
+            <span class="required-mark">*</span>
+          </label>
+          <input type="text" id="fname" data-placeholder-en="Belle" data-placeholder-ar="بيل" placeholder="Belle">
+          <span class="field-msg" id="fname-msg"></span>
+        </div>
+        <div class="form-group half">
+          <label for="lname">
+            <span data-en="Last Name" data-ar="اسم العائلة">Last Name</span>
+            <span class="required-mark">*</span>
+          </label>
+          <input type="text" id="lname" data-placeholder-en="Reader" data-placeholder-ar="القارئ" placeholder="Reader">
+          <span class="field-msg" id="lname-msg"></span>
+        </div>
+      </div>
+
+      <!-- Email + Phone -->
+      <div class="form-row">
+        <div class="form-group half">
+          <label for="email">
+            <span data-en="Email Address" data-ar="البريد الإلكتروني">Email Address</span>
+            <span class="required-mark">*</span>
+          </label>
+          <input type="email" id="email" data-placeholder-en="your@email.com" data-placeholder-ar="بريدك@الإلكتروني.com"
+            placeholder="your@email.com">
+          <span class="field-msg" id="email-msg"></span>
+        </div>
+        <div class="form-group half">
+          <label for="phone">
+            <span data-en="Phone (Optional)" data-ar="الهاتف (اختياري)">Phone (Optional)</span>
+          </label>
+          <input type="tel" id="phone" data-placeholder-en="+20 1XX XXX XXXX" data-placeholder-ar="+20 1XX XXX XXXX"
+            placeholder="+20 1XX XXX XXXX">
+          <span class="field-msg" id="phone-msg"></span>
+        </div>
+      </div>
+
+      <!-- Subject -->
+      <div class="form-group">
+        <label for="subject">
+          <span data-en="Subject" data-ar="الموضوع">Subject</span>
+          <span class="required-mark">*</span>
+        </label>
+        <select id="subject">
+          <option value="" data-en="— Select a subject —" data-ar="— اختر موضوعاً —">— Select a subject —</option>
+          <option value="book" data-en="Book Inquiry" data-ar="استفسار عن كتاب">Book Inquiry</option>
+          <option value="order" data-en="Order & Purchase" data-ar="الطلبات والشراء">Order &amp; Purchase</option>
+          <option value="account" data-en="Account Help" data-ar="مساعدة في الحساب">Account Help</option>
+          <option value="event" data-en="Events & Book Fair" data-ar="الفعاليات ومعرض الكتاب">Events &amp; Book Fair
+          </option>
+          <option value="suggestion" data-en="Book / Author Suggestion" data-ar="اقتراح كتاب / مؤلف">Book / Author
+            Suggestion</option>
+          <option value="feedback" data-en="Feedback" data-ar="ملاحظات">Feedback</option>
+          <option value="other" data-en="Other" data-ar="أخرى">Other</option>
+        </select>
+        <span class="field-msg" id="subject-msg"></span>
+      </div>
+
+      <!-- Message -->
+      <div class="form-group">
+        <label for="message">
+          <span data-en="Your Message" data-ar="رسالتك">Your Message</span>
+          <span class="required-mark">*</span>
+        </label>
+        <textarea id="message" data-placeholder-en="Tell us how we can help you…"
+          data-placeholder-ar="أخبرنا كيف يمكننا مساعدتك…" placeholder="Tell us how we can help you…"></textarea>
+        <span class="field-msg" id="message-msg"></span>
+      </div>
+
+      <!-- Experience rating -->
+      <div class="form-group">
+        <label data-en="Rate Your Experience With Us" data-ar="قيّم تجربتك معنا">Rate Your Experience With Us</label>
+        <div class="stars-row" id="star-row" aria-label="rating">
+          <span class="star" data-val="1" onclick="setRating(1)" title="1">★</span>
+          <span class="star" data-val="2" onclick="setRating(2)" title="2">★</span>
+          <span class="star" data-val="3" onclick="setRating(3)" title="3">★</span>
+          <span class="star" data-val="4" onclick="setRating(4)" title="4">★</span>
+          <span class="star" data-val="5" onclick="setRating(5)" title="5">★</span>
+        </div>
+        <input type="hidden" id="rating" value="0">
+      </div>
+
+      <button class="btn-submit" onclick="submitForm()">
+        <span data-en="✦ &nbsp; Send Your Message &nbsp; ✦" data-ar="✦ &nbsp; أرسل رسالتك &nbsp; ✦">✦ &nbsp; Send Your
+          Message &nbsp; ✦</span>
+      </button>
+
+      <div id="form-global-msg"></div>
+
+    </div><!-- /form wrap -->
+  </div><!-- /contact-wrapper -->
+
+  <!-- ===== LOCATION ===== -->
+  <div class="location-band reveal">
+    <span class="section-tag" data-en="✦ &nbsp; Find Us &nbsp; ✦" data-ar="✦ &nbsp; موقعنا &nbsp; ✦">✦ &nbsp; Find Us
+      &nbsp; ✦</span>
+    <h2><em data-en="Our Location" data-ar="موقعنا">Our Location</em></h2>
+    <p data-en="Open for walk-ins and book lovers every day of the week."
+      data-ar="نرحب بزيارتكم ومحبي الكتب طوال أيام الأسبوع.">Open for walk-ins and book lovers every day of the week.
+    </p>
+    <div class="map-frame">
+      <div class="map-pin">📍</div>
+      <div class="map-address" data-en="12 Library Lane, Cairo Book Quarter, Egypt"
+        data-ar="12 شارع المكتبة، حي كتب القاهرة، مصر">12 Library Lane, Cairo Book Quarter, Egypt</div>
+    </div>
+  </div>
+
+  <!-- ===== FAQ ===== -->
+  <section class="faq-section">
+    <div class="faq-header reveal">
+      <span class="section-tag" data-en="✦ &nbsp; Common Questions &nbsp; ✦" data-ar="✦ &nbsp; أسئلة شائعة &nbsp; ✦">✦
+        &nbsp; Common Questions &nbsp; ✦</span>
+      <h2><em data-en="FAQ" data-ar="الأسئلة الشائعة">FAQ</em></h2>
+    </div>
+
+    <!-- FAQ items — data-en/ar on each part -->
+    <div class="faq-item reveal">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span data-en="How do I search for a specific book or author?" data-ar="كيف أبحث عن كتاب أو مؤلف معين؟">How do I
+          search for a specific book or author?</span>
+        <span class="faq-arrow">▾</span>
+      </button>
+      <div class="faq-a"
+        data-en="Use our Advanced Search page to filter by title, author, genre, publisher, or ISBN. You can also sort results by rating, price, or release date."
+        data-ar="استخدم صفحة البحث المتقدم لتصفية النتائج حسب العنوان أو المؤلف أو النوع أو الناشر أو رقم ISBN. يمكنك أيضاً ترتيب النتائج حسب التقييم أو السعر أو تاريخ الإصدار.">
+        Use our Advanced Search page to filter by title, author, genre, publisher, or ISBN. You can also sort results by
+        rating, price, or release date.
+      </div>
+    </div>
+
+    <div class="faq-item reveal">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span data-en="Can I read a preview before buying?" data-ar="هل يمكنني قراءة معاينة قبل الشراء؟">Can I read a
+          preview before buying?</span>
+        <span class="faq-arrow">▾</span>
+      </button>
+      <div class="faq-a"
+        data-en="Yes! Most books in our catalogue have a free digital preview of the first chapter. Look for the 'Preview Sample' button on any book details page."
+        data-ar="نعم! معظم الكتب في كتالوجنا تتوفر لها معاينة رقمية مجانية للفصل الأول. ابحث عن زر 'معاينة عينة' في صفحة تفاصيل أي كتاب.">
+        Yes! Most books in our catalogue have a free digital preview of the first chapter. Look for the 'Preview Sample'
+        button on any book details page.
+      </div>
+    </div>
+
+    <div class="faq-item reveal">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span data-en="How do I join a book club discussion?" data-ar="كيف أنضم إلى نقاش نادي الكتاب؟">How do I join a
+          book club discussion?</span>
+        <span class="faq-arrow">▾</span>
+      </button>
+      <div class="faq-a"
+        data-en="Create a free account and head to the Community → Book Club Forum page. You can join existing groups or start your own reading circle."
+        data-ar="أنشئ حساباً مجانياً وانتقل إلى صفحة المجتمع ← منتدى نادي الكتاب. يمكنك الانضمام إلى مجموعات موجودة أو إنشاء دائرة قراءة خاصة بك.">
+        Create a free account and head to the Community → Book Club Forum page. You can join existing groups or start
+        your own reading circle.
+      </div>
+    </div>
+
+    <div class="faq-item reveal">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span data-en="Is the website available in Arabic?" data-ar="هل الموقع متاح باللغة العربية؟">Is the website
+          available in Arabic?</span>
+        <span class="faq-arrow">▾</span>
+      </button>
+      <div class="faq-a"
+        data-en="Yes — use the EN / AR toggle in the top navigation bar to switch the site to full Arabic with right-to-left layout."
+        data-ar="نعم — استخدم زر EN / AR في شريط التنقل العلوي للتبديل إلى اللغة العربية الكاملة مع تخطيط من اليمين إلى اليسار.">
+        Yes — use the EN / AR toggle in the top navigation bar to switch the site to full Arabic with right-to-left
+        layout.
+      </div>
+    </div>
+
+    <div class="faq-item reveal">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span data-en="How long does delivery take?" data-ar="كم يستغرق التوصيل؟">How long does delivery take?</span>
+        <span class="faq-arrow">▾</span>
+      </button>
+      <div class="faq-a"
+        data-en="Physical books are delivered within 3–7 business days inside Egypt. International shipping is available and takes 10–18 days. Digital books are available instantly after purchase."
+        data-ar="يُسلَّم الكتب الورقية خلال 3–7 أيام عمل داخل مصر. الشحن الدولي متاح ويستغرق 10–18 يوماً. الكتب الرقمية متاحة فوراً بعد الشراء.">
+        Physical books are delivered within 3–7 business days inside Egypt. International shipping is available and
+        takes 10–18 days. Digital books are available instantly after purchase.
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="footer-logo" data-en="✦ The Enchanted Library ✦" data-ar="✦ المكتبة المسحورة ✦">✦ المكتبة المسحورة ✦</div>
+    <p class="footer-quote" data-en="«Not all those who wander are lost — some are just lost in books.»" data-ar="«ليس كل من يهيم على وجهه تائهاً - البعض تائهون في الكتب فحسب.»">«ليس كل من يهيم على وجهه تائهاً - البعض تائهون في الكتب فحسب.»</p>
+    <div class="footer-links">
+      <a href="../pages/homepage.html" data-en="Home" data-ar="الرئيسية">الرئيسية</a>
+      <a href="BookPage.html" data-en="Browse" data-ar="تصفّح">تصفّح</a>
+      <a href="SearchPage.html" data-en="Search" data-ar="البحث">البحث</a>
+      <a href="MyLibrary.html" data-en="My Library" data-ar="مكتبتي">مكتبتي</a>
+    </div>
+    <p class="footer-copy" data-en="🌹 &nbsp; An Enchanted Tale &nbsp; 🌹" data-ar="🌹 &nbsp; حكاية سحرية &nbsp; 🌹">🌹 &nbsp; حكاية سحرية &nbsp; 🌹</p>
+  </footer>
+
+  <script src="../js/global.js"></script>
+  <script src="../js/contactus.js"></script>
+
+</body>
+
+</html>

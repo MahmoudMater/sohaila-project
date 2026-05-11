@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" id="htmlRoot">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title id="pageTitle">My Library — The Enchanted Library / مكتبتي — المكتبة المسحورة</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=IM+Fell+English:ital@0;1&family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Scheherazade+New:wght@400;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../css/shared.css">
+  <link rel="stylesheet" href="../css/MyLibrary.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+  <div id="particles"></div>
+  <div class="candle-glow"></div>
+
+  <!-- ===== MODE TOGGLE ===== -->
+  <div class="mode-toggle-wrap">
+    <button class="mode-btn active" id="modeDay" onclick="setMode('day')"><i class="fa-solid fa-sun"></i> Day</button>
+    <button class="mode-btn" id="modeNight" onclick="setMode('night')"><i class="fa-solid fa-moon"></i> Night</button>
+  </div>
+
+  <!-- ===== NAV ===== -->
+  <nav>
+    <a href="../pages/homepage.html" class="nav-logo" data-en="✦ The Enchanted Library ✦" data-ar="✦ المكتبة المسحورة ✦">✦ The Enchanted
+      Library ✦</a>
+
+    <ul class="nav-links">
+
+      <!-- Browse -->
+      <li class="nav-dropdown">
+        <a href="#" data-en="Browse" data-ar="تصفح">Browse</a>
+        <div class="dropdown-menu">
+          <a href="../pages/SearchPage.html" data-en="Search Books" data-ar="البحث عن الكتب">Search Books</a>
+          <a href="../pages/authors.html" data-en="By Author" data-ar="حسب المؤلف">By Author</a>
+          <a href="../pages/publishers.html" data-en="By Publisher" data-ar="حسب الناشر">By Publisher</a>
+          <a href="../pages/MyLibrary.html" class="active" data-en="My Library" data-ar="مكتبتي">My Library</a>
+        </div>
+      </li>
+
+      <!-- Community -->
+      <li class="nav-dropdown">
+        <a href="#" data-en="Community" data-ar="المجتمع">Community</a>
+        <div class="dropdown-menu">
+          
+          <a href="../pages/community.html" data-en="Book Club Forum" data-ar="منتدى نادي القراءة">Book Club Forum</a>
+          <a href="../pages/blog.html" data-en="Blog" data-ar="المدونة">Blog</a>
+          <a href="../pages/events.html" data-en="Author Events" data-ar="فعاليات المؤلفين">Author Events</a>
+        </div>
+      </li>
+
+      <!-- Fair -->
+      <li>
+        <a href="../pages/BookPage.html" data-en="Book Fair" data-ar="معرض الكتاب">Book Fair</a>
+      </li>
+
+      <!-- About -->
+      <li class="nav-dropdown">
+        <a href="#" data-en="About" data-ar="عن الموقع">About</a>
+        <div class="dropdown-menu">
+          <a href="../pages/contactus.html" data-en="Contact Us" data-ar="اتصل بنا">Contact Us</a>
+          <a href="../pages/newsletter.html" data-en="Subscription" data-ar="الاشتراك">Subscription</a>
+        </div>
+      </li>
+
+      <!-- Auth -->
+
+      <li><a href="../pages/profile.html" data-en="Profile" data-ar="الملف الشخصي">Profile</a></li>
+
+      <!-- Language -->
+      <li>
+        <div class="language-switch">
+          <button onclick="setLanguage('en')" id="btn-en" class="active">EN</button>
+          <button onclick="setLanguage('ar')" id="btn-ar">AR</button>
+        </div>
+      </li>
+
+    </ul>
+  </nav>
+
+  <!-- ======== HEADER ======== -->
+  <header class="page-header">
+    <div class="header-bg-roses"></div>
+    <div class="header-content">
+      <span class="eyebrow" id="eyebrow" data-en="✦ &nbsp; Your Personal Collection &nbsp; ✦" data-ar="✦ &nbsp; مجموعتك الشخصية &nbsp; ✦">✦ &nbsp; مجموعتك الشخصية &nbsp; ✦</span>
+      <h1 id="pageH1"><span data-en="My" data-ar="مكتبتي">مكتبتي</span> <em id="pageH1Em" data-en="Enchanted" data-ar="المسحورة">المسحورة</em> <span data-en="Library" data-ar=""></span></h1>
+      <p id="pageQuote" data-en="«A reader lives a thousand lives before he dies»" data-ar="«القارئ يعيش ألف حياة قبل أن يموت»">«القارئ يعيش ألف حياة قبل أن يموت»</p>
+      <div class="header-divider">
+        <div class="divider-line"></div>
+        <span class="divider-icon">🌹</span>
+        <div class="divider-line"></div>
+      </div>
+    </div>
+    <div class="stats-row">
+      <div class="stat-card">
+        <span class="stat-num" id="statFav">0</span>
+        <span class="stat-label" id="labelFav" data-en="Favourites" data-ar="المفضّلة">المفضّلة</span>
+        <span class="stat-icon">❤</span>
+      </div>
+      <div class="stat-divider">✦</div>
+      <div class="stat-card">
+        <span class="stat-num" id="statBook">0</span>
+        <span class="stat-label" id="labelBook" data-en="Bookmarks" data-ar="الإشارات المرجعية">الإشارات المرجعية</span>
+        <span class="stat-icon">🔖</span>
+      </div>
+      <div class="stat-divider">✦</div>
+      <div class="stat-card">
+        <span class="stat-num" id="statGenres">0</span>
+        <span class="stat-label" id="labelGenres" data-en="Genres" data-ar="التصنيفات">التصنيفات</span>
+        <span class="stat-icon">📚</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ======== TABS ======== -->
+  <div class="tabs-bar" id="tabsBar">
+    <button class="tab active" data-tab="favourites" onclick="switchTab('favourites', this)">
+      <span class="tab-icon">❤</span> <span id="tabFavLabel" data-en="Favourites" data-ar="المفضّلة">المفضّلة</span>
+      <span class="tab-count" id="tabCntFav">0</span>
+    </button>
+    <button class="tab" data-tab="bookmarks" onclick="switchTab('bookmarks', this)">
+      <span class="tab-icon">🔖</span> <span id="tabBookLabel" data-en="Bookmarks" data-ar="الإشارات المرجعية">الإشارات المرجعية</span>
+      <span class="tab-count" id="tabCntBook">0</span>
+    </button>
+    <button class="tab" data-tab="all" onclick="switchTab('all', this)">
+      <span class="tab-icon">✦</span> <span id="tabAllLabel" data-en="All Saved" data-ar="جميع المحفوظات">جميع المحفوظات</span>
+      <span class="tab-count" id="tabCntAll">0</span>
+    </button>
+    <div class="tabs-right">
+      <select class="sort-select" onchange="sortCollection(this.value)" id="sortSelect">
+        <option value="added" id="sortAdded" data-en="Sort: Date Added" data-ar="ترتيب: تاريخ الإضافة">ترتيب: تاريخ الإضافة</option>
+        <option value="title" id="sortTitle" data-en="Sort: Title" data-ar="ترتيب: العنوان">ترتيب: العنوان</option>
+        <option value="author" id="sortAuthor" data-en="Sort: Author" data-ar="ترتيب: المؤلف">ترتيب: المؤلف</option>
+        <option value="rating" id="sortRating" data-en="Sort: Rating ↓" data-ar="ترتيب: التقييم ↓">ترتيب: التقييم ↓</option>
+        <option value="year" id="sortYear" data-en="Sort: Year" data-ar="ترتيب: السنة">ترتيب: السنة</option>
+      </select>
+      <button class="view-btn active" onclick="setView('grid',this)" title="Grid">⊞</button>
+      <button class="view-btn" onclick="setView('list',this)" title="List">☰</button>
+      <button class="view-btn" onclick="setView('details',this)" title="Details">≡</button>
+    </div>
+  </div>
+
+  <!-- ======== MAIN CONTENT ======== -->
+  <main class="main-content">
+    <div class="genre-pills" id="genrePills"></div>
+    <div id="booksContainer" class="books-grid"></div>
+    <div class="empty-state" id="emptyState" style="display:none;">
+      <div class="empty-candle">🕯️</div>
+      <h3 id="emptyTitle" data-en="Your collection is empty" data-ar="مجموعتك فارغة">مجموعتك فارغة</h3>
+      <p id="emptyDesc" data-en="Go to the library and add your favorite books or bookmark them." data-ar="توجّه إلى المكتبة وأضف كتبك المفضّلة أو ضع إشارات مرجعية عليها.">توجّه إلى المكتبة وأضف كتبك المفضّلة أو ضع إشارات مرجعية عليها.</p>
+      <a href="BookPage.html" class="btn-browse"><span id="emptyBtn" data-en="✦ Browse Library" data-ar="✦ تصفّح المكتبة">✦ تصفّح المكتبة</span></a>
+    </div>
+  </main>
+
+  <!-- ======== DEMO NOTICE ======== -->
+  <div class="demo-notice" id="demoNotice">
+    <button class="demo-close" onclick="this.parentElement.style.display='none'">✕</button>
+    <span id="demoText" data-en="This is a <strong>demo collection</strong> — in the final version, it will connect to your real bookmarks and favourites." data-ar="هذه <strong>مجموعة تجريبية</strong> — في الإصدار النهائي، ستتصل بإشاراتك ومفضّلاتك الحقيقية.">هذه <strong>مجموعة تجريبية</strong> — في الإصدار النهائي، ستتصل بإشاراتك ومفضّلاتك
+      الحقيقية.</span>
+    <span class="demo-icon">✦</span>
+  </div>
+
+  <div class="toast" id="toast">🌹 <span id="toastMsg"></span></div>
+
+  <!-- ======== FOOTER ======== -->
+  <footer>
+    <div class="footer-logo" id="footerLogo" data-en="✦ Belle's Enchanted Library ✦" data-ar="✦ المكتبة المسحورة لبيل ✦">✦ المكتبة المسحورة لبيل ✦</div>
+    <p class="footer-quote" id="footerQuote" data-en="«There's something there that wasn't there before»" data-ar="«ثمّة شيء هناك لم يكن موجودًا من قبل»">«ثمّة شيء هناك لم يكن موجودًا من قبل»</p>
+    <div class="footer-links">
+      <a href="../pages/homepage.html" data-ar="الرئيسية" data-en="Home">الرئيسية</a>
+      <a href="BookPage.html" data-ar="تصفّح الكتب" data-en="Browse">تصفّح الكتب</a>
+      <a href="SearchPage.html" data-ar="بحث" data-en="Search">بحث</a>
+      <a href="#" data-ar="مكتبتي" data-en="My Library">مكتبتي</a>
+    </div>
+    <p class="footer-copy" data-en="🌹 &nbsp; An Enchanted Tale &nbsp; 🌹" data-ar="🌹 &nbsp; حكاية مسحورة &nbsp; 🌹">🌹 &nbsp; حكاية مسحورة &nbsp; 🌹</p>
+  </footer>
+
+  <script src="../js/global.js"></script>
+  <script src="../js/MyLibrary.js"></script>
+</body>
+
+</html>

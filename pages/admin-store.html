@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Admin Store | The Enchanted Library
+    </title>
+
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/store.css">
+    <link rel="stylesheet" href="../css/shared.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Cormorant+Garamond:wght@300;400;500;600;700&family=IM+Fell+English&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div id="particles"></div>
+
+<!-- ===== MODE TOGGLE ===== -->
+<div class="mode-toggle-wrap">
+    <button class="mode-btn active" id="modeDay" onclick="setMode('day')"><i class="fa-solid fa-sun"></i> Day</button>
+    <button class="mode-btn" id="modeNight" onclick="setMode('night')"><i class="fa-solid fa-moon"></i> Night</button>
+</div>
+
+<!-- navbar -->
+<nav>
+    <a href="../pages/homepage.html" class="nav-logo" data-en="✦ Librarian Store ✦" data-ar="✦ متجر الإدارة ✦">✦ Librarian Store ✦</a>
+    <ul class="nav-links">
+      <li><a href="../pages/dashboard.html" data-en="Dashboard" data-ar="لوحة التحكم">Dashboard</a></li>
+      <li><a href="../pages/admin-store.html" data-en="Admin Store" data-ar="متجر الإدارة">Admin Store</a></li>
+      <li><a href="../pages/homepage.html" data-en="Exit Admin" data-ar="خروج من الإدارة">Exit Admin</a></li>
+      <li>
+        <div class="language-switch">
+          <button onclick="setLanguage('en')" id="btn-en" class="active">EN</button>
+          <button onclick="setLanguage('ar')" id="btn-ar">AR</button>
+        </div>
+      </li>
+    </ul>
+</nav>
+
+<!-- hero -->
+
+<section class="store-hero">
+
+    <div class="store-left reveal">
+
+        <h1 data-en="Store Management" data-ar="إدارة المتجر">Store Management</h1>
+        <p class="hero-text" data-en="Track purchases, manage inventory, and monitor store performance." data-ar="تتبع المشتريات، وإدارة المخزون، ومراقبة أداء المتجر.">
+            Track purchases, manage inventory, and monitor store performance.
+        </p>
+
+    </div>
+
+</section>
+
+<!-- store stats -->
+
+<section class="store-stats">
+
+    <div class="store-card reveal">
+        <h3 data-en="Total Orders" data-ar="إجمالي الطلبات">Total Orders</h3>
+        <p>145</p>
+    </div>
+    <div class="store-card reveal">
+        <h3 data-en="Pending Orders" data-ar="طلبات قيد الانتظار">Pending Orders</h3>
+        <p>23</p>
+    </div>
+    <div class="store-card reveal">
+        <h3 data-en="Completed Orders" data-ar="طلبات مكتملة">Completed Orders</h3>
+        <p>122</p>
+    </div>
+
+</section>
+
+<!-- sales summary -->
+
+<section class="sales-section">
+    <h2 data-en="Sales Summary" data-ar="ملخص المبيعات">Sales Summary</h2>
+    <div class="sales-grid">
+        <div class="sales-card card reveal">
+            <h3 data-en="Revenue" data-ar="الإيرادات">Revenue</h3>
+            <p>$4,850</p>
+        </div>
+        <div class="sales-card card reveal">
+            <h3 data-en="Best Seller" data-ar="الأكثر مبيعاً">Best Seller</h3>
+            <p data-en="Atomic Habits" data-ar="العادات الذرية">Atomic Habits</p>
+        </div>
+        <div class="sales-card card reveal">
+            <h3 data-en="Growth" data-ar="النمو">Growth</h3>
+            <p>+18%</p>
+        </div>
+    </div>
+</section>
+
+<!-- inventory -->
+
+<section class="inventory-section">
+    <h2 data-en="Inventory Status" data-ar="حالة المخزون">Inventory Status</h2>
+    <div class="inventory-box card reveal">
+        <table>
+            <thead>
+                <tr>
+                    <th data-en="Book" data-ar="الكتاب">Book</th>
+                    <th data-en="Stock" data-ar="المخزون">Stock</th>
+                    <th data-en="Status" data-ar="الحالة">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td data-en="Atomic Habits" data-ar="العادات الذرية">Atomic Habits</td>
+                    <td>15</td>
+                    <td data-en="Available" data-ar="متوفر">Available</td>
+                </tr>
+                <tr>
+                    <td data-en="Deep Work" data-ar="العمل العميق">Deep Work</td>
+                    <td>5</td>
+                    <td data-en="Low" data-ar="منخفض">Low</td>
+                </tr>
+                <tr>
+                    <td data-en="Clean Code" data-ar="كود نظيف">Clean Code</td>
+                    <td>20</td>
+                    <td data-en="Available" data-ar="متوفر">Available</td>
+                </tr>
+                <tr>
+                    <td data-en="The Alchemist" data-ar="الخيميائي">The Alchemist</td>
+                    <td>0</td>
+                    <td data-en="Out of Stock" data-ar="نفذ المخزون" style="color: #c0622a;">Out of Stock</td>
+                </tr>
+                <tr>
+                    <td data-en="Harry Potter" data-ar="هاري بوتر">Harry Potter</td>
+                    <td>50</td>
+                    <td data-en="In Stock" data-ar="متوفر">In Stock</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<!-- footer -->
+
+<footer>
+    <h2 data-en="The Enchanted Library" data-ar="المكتبة المسحورة">The Enchanted Library</h2>
+    <p data-en="A world of books and stories." data-ar="عالم من الكتب والقصص.">A world of books and stories.</p>
+</footer>
+
+<script src="../js/global.js"></script>
+
+</body>
+
+</html>
